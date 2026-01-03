@@ -14,10 +14,23 @@ class TimelineGenerator:
         items = []
         for i, ev in enumerate(self.events):
             content = f"<b>{ev.source}</b><br>{ev.headline}"
+            
+            # Determine category style
+            group_class = "default"
+            tags_set = set(ev.tags)
+            
+            if any(t in tags_set for t in ["cyber", "malware", "vulns", "threat-intel", "ics", "ot"]):
+                group_class = "cyber"
+            elif any(t in tags_set for t in ["finance", "macro", "quant", "algo", "trading", "crypto"]):
+                group_class = "finance"
+            elif any(t in tags_set for t in ["maritime", "naval", "cables", "logistics", "nuclear", "infra"]):
+                group_class = "maritime"
+                
             items.append({
                 "id": i,
                 "content": content,
                 "start": ev.published_at.isoformat(),
+                "className": group_class,
                 "title": ev.summary[:200] + "..." # Tooltip
             })
             
@@ -37,14 +50,27 @@ class TimelineGenerator:
         body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }}
         h1 {{ text-align: center; color: #58a6ff; margin-bottom: 20px; }}
         #timeline {{ width: 100%; height: 800px; border: 1px solid #30363d; background-color: #161b22; border-radius: 6px; }}
-        .vis-item {{ border-color: #238636; background-color: #238636; color: white; border-radius: 4px; font-size: 14px; }}
-        .vis-item.vis-selected {{ border-color: #f0f6fc; background-color: #1f6feb; z-index: 2; }}
+        
+        /* Default Item Style */
+        .vis-item {{ border-color: #30363d; background-color: #21262d; color: #c9d1d9; border-radius: 4px; font-size: 14px; border-width: 2px; }}
+        .vis-item.vis-selected {{ border-color: #f0f6fc; background-color: #1f6feb; z-index: 2; color: white; }}
+        
+        /* Domain Specific Colors */
+        .vis-item.cyber {{ border-color: #da3633; background-color: #3b1616; color: #ff7b72; }} /* Red for Threats */
+        .vis-item.finance {{ border-color: #d29922; background-color: #392b11; color: #d29922; }} /* Gold for Money */
+        .vis-item.maritime {{ border-color: #2da042; background-color: #122616; color: #7ee787; }} /* Green/Teal for Physical/Infra */
+        
         .vis-time-axis .vis-text {{ color: #8b949e; }}
         .vis-loading {{ display: none; }}
     </style>
 </head>
 <body>
     <h1>GreySignal: Cyber Intelligence Timeline</h1>
+    <div style="text-align: center; margin-bottom: 15px;">
+        <span style="color:#ff7b72; margin-right: 15px;">● Cyber Threat</span>
+        <span style="color:#d29922; margin-right: 15px;">● Finance & Macro</span>
+        <span style="color:#7ee787;">● Infrastructure & Maritime</span>
+    </div>
     <div id="timeline"></div>
     <div id="error-msg" style="color: red; text-align: center; display: none;"></div>
 
