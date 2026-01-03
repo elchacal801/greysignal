@@ -18,7 +18,8 @@ class BriefingGenerator:
         
         md = f"# GreySignal Intelligence Briefing: {title_suffix}\n"
         md += f"**Date**: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
-        md += f"**Classification**: TLP:CLEAR (Internal Use Only)\n\n"
+        md += f"**Classification**: TLP:RED (Internal Use Only)\n"
+        md += f"**Interactive Timeline**: [View Timeline (HTML)](timeline.html)\n\n"
         
         if ai_summary:
             md += f"{ai_summary}\n\n"
