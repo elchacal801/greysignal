@@ -105,7 +105,41 @@ sources:
     tags: ["maritime", "logistics", "security"]
     weight: 1.2
 
-  - name: "Naval News"
-    url: "https://www.navalnews.com/feed/"
-    tags: ["naval", "defense", "maritime"]
+  # -------------------------------------------------------------
+  # CYBERSECURITY MAJORS (User Requested)
+  # -------------------------------------------------------------
+  - name: "Dark Reading"
+    url: "https://www.darkreading.com/rss.xml"
+    tags: ["cyber", "enterprise", "news"]
+    weight: 1.4
+
+  - name: "Bleeping Computer"
+    url: "https://www.bleepingcomputer.com/feed/"
+    tags: ["cyber", "malware", "news"]
+    weight: 1.4
+
+  - name: "The Hacker News"
+    url: "https://feeds.feedburner.com/TheHackersNews"
+    tags: ["cyber", "news", "vulns"]
+    weight: 1.4
+
+  # -------------------------------------------------------------
+  # FINANCIAL INTELLIGENCE (Central Banks, Macro)
+  # -------------------------------------------------------------
+  - name: "Federal Reserve Board"
+    url: "https://www.federalreserve.gov/feeds/press_all.xml"
+    tags: ["finance", "macro", "us-gov"]
+    weight: 1.5
+
+  - name: "Bank of England"
+    url: "https://www.bankofengland.co.uk/rss/news"
+    tags: ["finance", "macro", "uk"]
     weight: 1.3
+
+  # -------------------------------------------------------------
+  # ALGORITHMIC TRADING & QUANT
+  # -------------------------------------------------------------
+  - name: "QuantInsti Blog"
+    url: "https://blog.quantinsti.com/rss"
+    tags: ["quant", "algo", "education"]
+    weight: 1.1
