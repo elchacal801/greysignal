@@ -1,0 +1,6 @@
+theme: jekyll-theme-slate
+title: GreySignal Intelligence
+description: Global Cyber & Financial Intelligence System
+show_downloads: false
+plugins:
+  - jekyll-seo-tag
