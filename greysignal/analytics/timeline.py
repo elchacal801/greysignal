@@ -34,26 +34,50 @@ class TimelineGenerator:
     <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
     <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
     <style>
-        body {{ font-family: sans-serif; background-color: #1e1e1e; color: #fff; }}
-        #timeline {{ width: 100%; height: 600px; border: 1px solid #444; }}
-        .vis-item {{ border-color: #4cd137; background-color: #4cd137; color: black; }}
-        .vis-item.vis-selected {{ border-color: white; background-color: white; }}
+        body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }}
+        h1 {{ text-align: center; color: #58a6ff; margin-bottom: 20px; }}
+        #timeline {{ width: 100%; height: 800px; border: 1px solid #30363d; background-color: #161b22; border-radius: 6px; }}
+        .vis-item {{ border-color: #238636; background-color: #238636; color: white; border-radius: 4px; font-size: 14px; }}
+        .vis-item.vis-selected {{ border-color: #f0f6fc; background-color: #1f6feb; z-index: 2; }}
+        .vis-time-axis .vis-text {{ color: #8b949e; }}
+        .vis-loading {{ display: none; }}
     </style>
 </head>
 <body>
-    <h1 style="text-align: center; color: #4cd137;">GreySignal: Cyber Intelligence Timeline</h1>
+    <h1>GreySignal: Cyber Intelligence Timeline</h1>
     <div id="timeline"></div>
+    <div id="error-msg" style="color: red; text-align: center; display: none;"></div>
 
     <script type="text/javascript">
-        var container = document.getElementById('timeline');
-        var data = {json_data}; // Injected JSON
-        var items = new vis.DataSet(data);
-        var options = {{
-            height: '600px',
-            start: '{start_date}',
-            end: '{end_date}'
-        }};
-        var timeline = new vis.Timeline(container, items, options);
+        try {{
+            var container = document.getElementById('timeline');
+            var rawData = {json_data}; 
+            
+            if (!rawData || rawData.length === 0) {{
+                document.getElementById('timeline').innerHTML = '<p style="text-align:center; padding-top: 50px;">No events to display.</p>';
+            }} else {{
+                var items = new vis.DataSet(rawData);
+                
+                // Calculate range with buffers
+                var start = '{start_date}';
+                var end = '{end_date}';
+                
+                var options = {{
+                    height: '800px',
+                    start: start,
+                    end: end,
+                    zoomMin: 1000 * 60 * 60 * 24, // 1 day min zoom
+                    zoomMax: 1000 * 60 * 60 * 24 * 31 * 12, // 1 year max
+                    orientation: 'top'
+                }};
+                
+                var timeline = new vis.Timeline(container, items, options);
+            }}
+        }} catch (e) {{
+            console.error("Timeline Error:", e);
+            document.getElementById('error-msg').innerText = "Error loading timeline: " + e.message;
+            document.getElementById('error-msg').style.display = 'block';
+        }}
     </script>
 </body>
 </html>

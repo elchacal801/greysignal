@@ -5,10 +5,19 @@ on:
     - cron: '0 8 * * *' # Daily Morning (08:00 UTC) Brief
     - cron: '0 8 * * 5' # Weekly Friday (08:00 UTC) Deep Dive
   workflow_dispatch:
+    inputs:
+      report_period:
+        description: 'Report Period'
+        required: true
+        default: 'daily'
+        type: choice
+        options:
+          - daily
+          - weekly
 
 jobs:
   daily_brief:
-    if: github.event.schedule == '0 8 * * *' || github.event_name == 'workflow_dispatch'
+    if: github.event.schedule == '0 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.report_period == 'daily')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -32,12 +41,12 @@ jobs:
         run: |
           git config --global user.name 'GreySignal Bot'
           git config --global user.email 'bot@greysignal.local'
-          git add docs/briefing.md docs/timeline.html data/events.jsonl
+          git add docs/briefing.md docs/timeline.html data/events.jsonl docs/archive/
           git commit -m "Daily Intel Briefing [skip ci]" || echo "No changes"
           git push
 
   weekly_brief:
-    if: github.event.schedule == '0 8 * * 5'
+    if: github.event.schedule == '0 8 * * 5' || (github.event_name == 'workflow_dispatch' && inputs.report_period == 'weekly')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -61,6 +70,6 @@ jobs:
         run: |
           git config --global user.name 'GreySignal Bot'
           git config --global user.email 'bot@greysignal.local'
-          git add docs/briefing.md docs/timeline.html data/events.jsonl
+          git add docs/briefing.md docs/timeline.html data/events.jsonl docs/archive/
           git commit -m "Weekly Intel Deep Dive [skip ci]" || echo "No changes"
           git push

@@ -108,7 +108,7 @@ def report(
         console.print("[bold yellow]No events found for the selected period.[/bold yellow]")
         raise typer.Exit()
     
-    # 1. Timeline
+    # 1. Timeline (Latest)
     timeline_gen = TimelineGenerator(events)
     timeline_gen.generate(os.path.join(out_dir, "timeline.html"))
     
@@ -120,11 +120,46 @@ def report(
         llm = LLMSummarizer()
         ai_summary = llm.generate_briefing(events, period_name)
     
-    # 2. Briefing
+    # 2. Briefing (Latest)
     briefing_gen = BriefingGenerator(events)
     briefing_gen.generate(os.path.join(out_dir, "briefing.md"), title_suffix=period_name, ai_summary=ai_summary)
     
-    console.print(f"[bold blue]Reports generated in {out_dir}/ ({len(events)} events)[/bold blue]")
+    # 3. Archiving
+    # Format: docs/archive/YYYY/MM/YYYY-MM-DD_ID_briefing.md
+    today = datetime.now(timezone.utc)
+    archive_dir = os.path.join(out_dir, "archive", f"{today.year:04d}", f"{today.month:02d}")
+    os.makedirs(archive_dir, exist_ok=True)
+    
+    archive_id = today.strftime("%Y-%m-%d")
+    archive_briefing_path = os.path.join(archive_dir, f"{archive_id}_briefing.md")
+    archive_timeline_path = os.path.join(archive_dir, f"{archive_id}_timeline.html")
+    
+    # Save Archive Timeline
+    timeline_gen.generate(archive_timeline_path)
+    
+    # Save Archive Briefing (with adjusted link to timeline)
+    # We re-generate or copy? Re-generating allows changing the link.
+    # The BriefingGenerator currently hardcodes the link or takes it?
+    # It hardcodes [View Timeline (HTML)](timeline.html).
+    # We can rely on relative paths properly.
+    # docs/archive/2026/01/timeline.html is sibling to briefing.md.
+    # So `(timeline.html)` link works fine if we rename the file to `timeline.html`?
+    # No, we named it `{archive_id}_timeline.html`.
+    # Let's simple copy the content and replace the link, or update generator.
+    # For now, let's keep it simple: Archive filenames match.
+    
+    # Actually, let's update BriefingGenerator to accept timeline_link argument or just Post-process the file.
+    # Post-process is easier here.
+    with open(os.path.join(out_dir, "briefing.md"), "r", encoding="utf-8") as f:
+        content = f.read()
+        
+    # Replace link for archive
+    archive_content = content.replace("(timeline.html)", f"({os.path.basename(archive_timeline_path)})")
+    
+    with open(archive_briefing_path, "w", encoding="utf-8") as f:
+        f.write(archive_content)
+        
+    console.print(f"[bold blue]Reports generated in {out_dir}/ and archived to {archive_dir}/[/bold blue]")
 
 if __name__ == "__main__":
     app()
