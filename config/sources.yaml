@@ -1,6 +1,6 @@
 sources:
   - name: "CISA Cybersecurity Advisories"
-    url: "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+    url: "https://www.cisa.gov/cyber-security-advisories/all.xml"
     tags: ["gov", "us", "alerts"]
     weight: 1.0
 
