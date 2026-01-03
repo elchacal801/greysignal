@@ -54,6 +54,7 @@ def report(
     input: str = typer.Option("data/events.jsonl", help="Input events file"),
     out_dir: str = typer.Option("docs", help="Output directory"),
     period: str = typer.Option("weekly", help="Filter: daily, weekly, all"),
+    ai: bool = typer.Option(False, help="Enable AI Executive Summary (requires OPENAI_API_KEY)"),
 ):
     """
     Generate intelligence briefing (Markdown) and Timeline (HTML).
@@ -111,9 +112,17 @@ def report(
     timeline_gen = TimelineGenerator(events)
     timeline_gen.generate(os.path.join(out_dir, "timeline.html"))
     
+    # AI Summary
+    ai_summary = None
+    if ai:
+        from .processors.llm import LLMSummarizer
+        console.print("[bold purple]Querying AI Intelligence Engine...[/bold purple]")
+        llm = LLMSummarizer()
+        ai_summary = llm.generate_briefing(events, period_name)
+    
     # 2. Briefing
     briefing_gen = BriefingGenerator(events)
-    briefing_gen.generate(os.path.join(out_dir, "briefing.md"), title_suffix=period_name)
+    briefing_gen.generate(os.path.join(out_dir, "briefing.md"), title_suffix=period_name, ai_summary=ai_summary)
     
     console.print(f"[bold blue]Reports generated in {out_dir}/ ({len(events)} events)[/bold blue]")
 

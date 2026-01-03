@@ -2,37 +2,65 @@ name: Daily Threat Intel Collection
 
 on:
   schedule:
-    - cron: '0 12 * * *' # Noon UTC daily
-  workflow_dispatch: # Manual trigger
+    - cron: '0 8 * * *' # Daily Morning (08:00 UTC) Brief
+    - cron: '0 8 * * 5' # Weekly Friday (08:00 UTC) Deep Dive
+  workflow_dispatch:
 
 jobs:
-  collect-and-report:
+  daily_brief:
+    if: github.event.schedule == '0 8 * * *' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
-      contents: write # To commit data back
-      
+      contents: write
     steps:
       - uses: actions/checkout@v3
-      
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-          
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           python -m spacy download en_core_web_sm
-          
-      - name: Run Collection
-        run: python -m greysignal.main collect --days 1
-        
-      - name: Generate Reports
-        run: python -m greysignal.main report
-        
-      - name: Commit and Push changes
+      - name: Run Collection (24h)
+        run: python -m greysignal.main collect --days 2 # 2 days to be safe for 24h
+      - name: Generate Reports (Daily + AI)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python -m greysignal.main report --period daily --ai
+      - name: Commit artifacts
         run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add data/events.jsonl docs/timeline.html docs/briefing.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Threat Intel [skip ci]" && git push)
+          git config --global user.name 'GreySignal Bot'
+          git config --global user.email 'bot@greysignal.local'
+          git add docs/briefing.md docs/timeline.html data/events.jsonl
+          git commit -m "Daily Intel Briefing [skip ci]" || echo "No changes"
+          git push
+
+  weekly_brief:
+    if: github.event.schedule == '0 8 * * 5'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m spacy download en_core_web_sm
+      - name: Run Collection (7 Days)
+        run: python -m greysignal.main collect --days 7
+      - name: Generate Reports (Weekly + AI)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python -m greysignal.main report --period weekly --ai
+      - name: Commit artifacts
+        run: |
+          git config --global user.name 'GreySignal Bot'
+          git config --global user.email 'bot@greysignal.local'
+          git add docs/briefing.md docs/timeline.html data/events.jsonl
+          git commit -m "Weekly Intel Deep Dive [skip ci]" || echo "No changes"
+          git push

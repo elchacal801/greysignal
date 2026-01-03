@@ -7,7 +7,7 @@ class BriefingGenerator:
     def __init__(self, events: List[Event]):
         self.events = events
         
-    def generate(self, output_path: str, title_suffix: str = ""):
+    def generate(self, output_path: str, title_suffix: str = "", ai_summary: str = None):
         """Generate Markdown Briefing."""
         
         # Analytics
@@ -17,10 +17,15 @@ class BriefingGenerator:
         top_countries = Counter([c for e in self.events for c in e.countries]).most_common(5)
         
         md = f"# GreySignal Intelligence Briefing: {title_suffix}\n"
-        md += f"**Date**: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+        md += f"**Date**: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
+        md += f"**Classification**: TLP:CLEAR (Internal Use Only)\n\n"
         
-        md += "## Executive Summary\n"
-        md += f"Analysis of **{total_events}** cyber intelligence events collected from **{len(sources)}** sources.\n\n"
+        if ai_summary:
+            md += f"{ai_summary}\n\n"
+            md += "---\n"
+        else:
+            md += "## Executive Summary (stats-based)\n"
+            md += f"Analysis of **{total_events}** cyber intelligence events collected from **{len(sources)}** sources.\n\n"
         
         md += "### Key Statistics\n"
         md += f"- **Top Sources**: {', '.join([f'{s} ({c})' for s, c in sources.most_common(3)])}\n"
