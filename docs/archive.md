@@ -1,3 +1,8 @@
+---
+layout: default
+title: Intelligence Archive
+---
+
 # 🗄️ Intelligence Archive
 
 Access historical intelligence briefings and timelines.

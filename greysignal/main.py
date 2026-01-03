@@ -172,7 +172,11 @@ def generate_archive_index(out_dir: str):
     if not os.path.exists(archive_root):
         return
         
-    index_lines = ["# 🗄️ Intelligence Archive\n", "Access historical intelligence briefings and timelines.\n"]
+    index_lines = [
+        "---\nlayout: default\ntitle: Intelligence Archive\n---\n",
+        "# 🗄️ Intelligence Archive\n", 
+        "Access historical intelligence briefings and timelines.\n"
+    ]
     
     # Walk Years
     years = sorted([d for d in os.listdir(archive_root) if d.isdigit()], reverse=True)

@@ -16,7 +16,8 @@ class BriefingGenerator:
         top_actors = Counter([a for e in self.events for a in e.actors]).most_common(10)
         top_countries = Counter([c for e in self.events for c in e.countries]).most_common(5)
         
-        md = f"# GreySignal Intelligence Briefing: {title_suffix}\n"
+        md = "---\nlayout: default\ntitle: GreySignal Briefing\n---\n"
+        md += f"# GreySignal Intelligence Briefing: {title_suffix}\n"
         md += f"**Date**: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
         md += f"**Classification**: TLP:RED (Internal Use Only)\n"
         md += f"**Interactive Timeline**: [View Timeline (HTML)](timeline.html)\n\n"
