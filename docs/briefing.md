@@ -1,8 +1,8 @@
 # GreySignal Intelligence Briefing: Daily (24h)
-**Date**: 2026-01-03 01:05
+**Date**: 2026-01-03 06:08
 **Classification**: TLP:CLEAR (Internal Use Only)
 
-<!-- LLM Summary Unavailable: Check API Key -->
+<!-- LLM Generation Failed: Error code: 403 - {'error': {'message': 'Project `proj_mY5SyKh7LGh6jPKOcP4Lvflx` does not have access to model `gpt-4-turbo-preview`', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}} -->
 
 ---
 ### Key Statistics
