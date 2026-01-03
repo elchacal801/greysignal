@@ -1,16 +1,74 @@
 # GreySignal Intelligence Briefing: Daily (24h)
-**Date**: 2026-01-03 06:08
-**Classification**: TLP:CLEAR (Internal Use Only)
+**Date**: 2026-01-03 06:59
+**Classification**: TLP:RED (Internal Use Only)
+**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
 
-<!-- LLM Generation Failed: Error code: 403 - {'error': {'message': 'Project `proj_mY5SyKh7LGh6jPKOcP4Lvflx` does not have access to model `gpt-4-turbo-preview`', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}} -->
+## 🚨 Key Judgments
+
+- **Increased Cyber Espionage Activity by State-Sponsored Groups**: The recent campaign by Pakistan-linked APT36 targeting Indian government and academic institutions illustrates a persistent trend of state-sponsored cyber espionage in South Asia. These activities not only heighten geopolitical tensions but also pose risks to sensitive governmental and educational data, which could be leveraged to influence regional stability.
+
+- **Vulnerabilities in Critical Infrastructure**: The exposure of over 10,000 Fortinet firewalls to a long-standing 2FA bypass vulnerability, coupled with the Kimwolf Botnet exploiting internal networks, underscores a significant vulnerability within critical infrastructure. Such security lapses could lead to widespread disruptions across sectors reliant on these technologies, notably finance and healthcare.
+
+- **Persistent Threats from Past Breaches**: The ongoing ramifications of the 2022 LastPass breach, now linked to cryptocurrency thefts, highlight the long-term impact of breaches on financial systems. This exemplifies the need for continuous monitoring and proactive security measures post-incident, as attackers exploit dormant vulnerabilities over extended periods.
+
+## 🌍 Geopolitical & Financial Implications
+
+The intersection of these cyber threats with global stability and financial markets is increasingly evident. The South Asian espionage activities exacerbate regional tensions, potentially affecting bilateral trade and investment, particularly in the tech and defense sectors. Additionally, the exploitation of vulnerabilities in critical infrastructure could disrupt operations in key financial markets, leading to volatility and a potential loss of investor confidence. This is particularly pertinent in regions like Europe, where regulatory actions are intensifying, as seen in the investigation into deepfake incidents on social media platforms.
+
+## 🛡️ Strategic Recommendations
+
+### For Executive Leadership
+- **Enhance Regional Cyber Defense Collaborations**: Establish strategic partnerships with regional cyber defense agencies to share intelligence and bolster defenses against state-sponsored cyber threats.
+- **Invest in Advanced Threat Detection Technologies**: Allocate resources towards AI-driven security solutions that can preemptively identify and mitigate threats, particularly those emerging from past breaches.
+
+### For Security & Risk Teams
+- **Conduct Comprehensive Security Audits**: Prioritize audits of critical systems, especially those employing legacy technology, to identify and remediate vulnerabilities such as the 2FA bypass in Fortinet firewalls.
+- **Implement Continuous Threat Monitoring**: Deploy continuous monitoring systems to detect and respond to threats swiftly, focusing on both internal network security and external attack vectors.
+
+## 🔍 Top Critical Alerts (Selected High-Risk Events)
+
+**1. Transparent Tribe Launches New RAT Attacks Against Indian Government and Academia**
+- **Risk/Opportunity**: Heightened risk of data exfiltration and regional instability.
+- **Stakeholders**: Government cybersecurity agencies, educational institutions, defense contractors.
+- **Context**: APT36's use of advanced malware tactics poses a significant threat to India's national security and intellectual property.
+
+**2. Over 10K Fortinet Firewalls Exposed to Actively Exploited 2FA Bypass**
+- **Risk/Opportunity**: Potential widespread access to sensitive data and operational disruptions.
+- **Stakeholders**: IT departments, cybersecurity firms, affected enterprises.
+- **Context**: A persistent vulnerability highlights the crucial need for regular updates and security patches.
+
+**3. Cryptocurrency Theft Attacks Traced to 2022 LastPass Breach**
+- **Risk/Opportunity**: Financial losses and erosion of trust in digital financial systems.
+- **Stakeholders**: Cryptocurrency exchanges, financial regulators, cybersecurity teams.
+- **Context**: The aftermath of a significant breach demonstrates the long-term strategic exploitation of compromised data.
 
 ---
 ### Key Statistics
-- **Top Sources**: War on the Rocks (8), Schneier on Security (5), The Record by Recorded Future (5)
-- **Targeted Countries**: the United States (3), China (2), U.S. (2), India (2), Pakistan (1)
-- **Identified Actors/Entities**: ToneShell (2), Squid Blogging (1), Covenant Health (1), Transparent Tribe (1), Grok (1), Elon Musk’s (1), Sedgwick (1), The Kimwolf Botnet is (1), Media (1), Flock’s Condor (1)
+- **Top Sources**: The Maritime Executive (12), The Record by Recorded Future (5), Bleeping Computer (5)
+- **Targeted Countries**: AI (3), Finland (2), Wales (1), Hong Kong (1), Yokohama (1)
+- **Identified Actors/Entities**: Transparent Tribe (2), Google (2), British Ports Welcome (1), The British Ports Association (1), Ports (1), Marine Facilities Safety (1), Equinor Sue Challenging Stop-Work Orders for (1), Trump (1), Squid Blogging (1), Hong Kong Court (1)
 
 ## Event Feed
+### 🛡️ British Ports Welcome New UK Marine Safety Compliance Exercise
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+The British Ports Association (BPA) has welcomed the launch of the latest three-yearly compliance exercise for the Ports and Marine Facilities Safety...
+
+[Read Original Report](https://maritime-executive.com/article/british-ports-welcome-new-uk-marine-safety-compliance-exercise)
+
+*Entities: British Ports Welcome, The British Ports Association, Ports, Marine Facilities Safety*
+
+---
+### 🛡️ Ørsted and Equinor Sue Challenging Stop-Work Orders for Offshore Wind Farms
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+Two more offshore wind farms filed suits against the Trump administration after they were ordered in late December to stop work due to “national secu...
+
+[Read Original Report](https://maritime-executive.com/article/oersted-files-suit-contesting-u-s-stop-work-order-for-revolution-wind)
+
+*Entities: Equinor Sue Challenging Stop-Work Orders for, Trump*
+
+---
 ### 🛡️ Friday Squid Blogging: Squid Found in Light Fixture
 **Source**: Schneier on Security | **Date**: 2026-01-02
 
@@ -19,6 +77,46 @@ Probably a college prank . As usual, you can also use this squid post to talk ab
 [Read Original Report](https://www.schneier.com/blog/archives/2026/01/friday-squid-blogging-squid-found-in-light-fixture.html)
 
 *Entities: Squid Blogging*
+
+---
+### 🛡️ Mystery as a Cargo of Shoes Likely Lost 150 Years Ago Washes Up in Wales
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+A charitable organization dedicated to marine and environmental education has sparked a bit of mystery after reporting it has found a large quantity...
+
+[Read Original Report](https://maritime-executive.com/article/mystery-as-a-cargo-of-shoes-likely-lost-150-years-ago-washes-up-in-wales)
+
+*Entities: Wales*
+
+---
+### 🛡️ Hong Kong Court Sentences Oil Tanker Captain to Jail for Poor Seamanship
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+A court in Hong Kong sentenced the master of a Chinese-registered oil tanker to 14 months in jail after he pleaded guilty to one count of endangering...
+
+[Read Original Report](https://maritime-executive.com/article/hong-kong-court-sentences-oil-tanker-captain-to-jail-for-poor-seamanship)
+
+*Entities: Hong Kong Court, Hong Kong*
+
+---
+### 🛡️ NYK Plans Long-Term Preservation of Japan’s Last Surviving Ocean Liner
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+Planning is underway for the long-term preservation of the 95-year-old former ocean liner Hikawa Maru, which is now on permanent display in Yokohama....
+
+[Read Original Report](https://maritime-executive.com/article/nyk-plans-long-term-preservation-of-japan-s-last-surviving-ocean-liner)
+
+*Entities: Hikawa Maru, Yokohama*
+
+---
+### 🛡️ U.S. Navy Supply Ship Starts 2026 by Rescuing Adrift Filipino Fishermen
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+The crew of a U.S. Navy supply ship started 2026 on a high note as they rescued three Filipino fishermen who had been adrift at sea for five days. The...
+
+[Read Original Report](https://maritime-executive.com/article/u-s-navy-supply-ship-starts-2026-by-rescuing-adrift-filipino-fishermen)
+
+*Entities: U.S. Navy Supply Ship Starts, U.S. Navy*
 
 ---
 ### 💰 Nearly 480,000 impacted by Covenant Health data breach
@@ -31,6 +129,16 @@ A cyberattack last year against the Catholic healthcare organization Covenant He
 *Entities: Covenant Health*
 
 ---
+### 🛡️ Appeals Court Suspends Hawaii’s “Green Fee” for Cruise Ships Pending Appeal
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+Hawaii’s hotly contested and closely followed “Green Fee,” a new tax on hotels, short-stay rentals, and cruises, suffered a setback just hours before...
+
+[Read Original Report](https://maritime-executive.com/article/appeals-court-suspends-hawaii-s-green-fee-for-cruise-ships-pending-appeal)
+
+*Entities: Suspends Hawaii, Hawaii*
+
+---
 ### 💰 Pakistan-linked hackers target Indian government, universities in new spying campaign
 **Source**: The Record by Recorded Future | **Date**: 2026-01-02
 
@@ -39,6 +147,16 @@ The campaign has been attributed to APT36, also known as Transparent Tribe, a lo
 [Read Original Report](https://therecord.media/pakistan-linked-hacking-group-targets-indian-orgs)
 
 *Entities: Transparent Tribe, Pakistan*
+
+---
+### 🛡️ Covenant Health says May data breach impacted nearly 478,000 patients
+**Source**: Bleeping Computer | **Date**: 2026-01-02
+
+The Covenant Health organization has revised to nearly 500,000 the number of individuals affected by a data breach discovered last May. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/covenant-health-says-may-data-breach-impacted-nearly-478-000-patients/)
+
+*Entities: The Covenant Health*
 
 ---
 ### 💰 European regulators take aim at X after Grok creates deepfake of minor
@@ -61,6 +179,84 @@ The claims administration company Sedgwick confirmed that a subsidiary that cont
 *Entities: Sedgwick*
 
 ---
+### 🛡️ Cryptocurrency theft attacks traced to 2022 LastPass breach
+**Source**: Bleeping Computer | **Date**: 2026-01-02
+
+Blockchain investigation firm TRM Labs says ongoing cryptocurrency thefts have been traced to the 2022 LastPass breach, with attackers draining wallets years after encrypted vaults were stolen and laundering the crypto through Russian exchanges. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/cryptocurrency-theft-attacks-traced-to-2022-lastpass-breach/)
+
+*Entities: LastPass, TRM Labs*
+
+---
+### 🛡️ ClassNK Grants AiP for Designs of Cable Jointing & Cable Burial Vessels
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+ClassNK has issued an Approval in Principle (AiP) for the designs of a cable jointing vessel and a cable burial vessel developed by Mitsui O.S.K. Line...
+
+[Read Original Report](https://maritime-executive.com/article/classnk-grants-aip-for-designs-of-cable-jointing-cable-burial-vessels)
+
+*Entities: Cable Jointing & Cable Burial Vessels, Mitsui O.S.K. Line*
+
+---
+### 🛡️ SMART-SEA System Guides Seafarers Away From Collisions
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+Collisions between marine vessels and stationary structures, like offshore oil platforms and depleted wellheads, are becoming increasingly common. The...
+
+[Read Original Report](https://maritime-executive.com/article/smart-sea-system-guides-seafarers-away-from-collisions)
+
+*Entities: SMART-SEA System*
+
+---
+### 🛡️ Major Cargo Improvements on Track for 2026 Completion
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+While the Port of Galveston made headlines with the opening of its fourth cruise terminal in 2025, next year we’ll celebrate another port milestone –...
+
+[Read Original Report](https://maritime-executive.com/article/major-cargo-improvements-on-track-for-2026-completion)
+
+---
+### 🛡️ Finland and Estonia Cooperate on Investigation into Damaged Telecom Cables
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+The Helsinki Police confirmed that they are making progress on the investigation into the damage to a subsea cable running between Finland and Estonia...
+
+[Read Original Report](https://maritime-executive.com/article/finland-and-estonia-cooperate-on-investigation-into-damaged-telecom-cables)
+
+*Entities: Estonia Cooperate on Investigation, Finland, Estonia*
+
+---
+### 🛡️ Over 10K Fortinet firewalls exposed to actively exploited 2FA bypass
+**Source**: Bleeping Computer | **Date**: 2026-01-02
+
+Over 10,000 Internet-exposed Fortinet firewalls are still vulnerable to attacks exploiting a five-year-old two-factor authentication (2FA) bypass vulnerability. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/over-10-000-fortinet-firewalls-exposed-to-ongoing-2fa-bypass-attacks/)
+
+*Entities: K Fortinet, Fortinet*
+
+---
+### 🛡️ UAE Withdrawal Underway from Red Sea and Gulf of Aden Positions
+**Source**: The Maritime Executive | **Date**: 2026-01-02
+
+The deployment of Emirati forces in locations to the north and south of the Maritime Security Transit Corridor (MSTC) in the Gulf of Aden, and in sim...
+
+[Read Original Report](https://maritime-executive.com/article/uae-withdrawal-underway-from-red-sea-and-gulf-of-aden-positions)
+
+*Entities: UAE Withdrawal Underway, the Maritime Security Transit Corridor, Emirati*
+
+---
+### 🛡️ Google is testing a new image AI and it's going to be its fastest model
+**Source**: Bleeping Computer | **Date**: 2026-01-02
+
+Google is testing a new image AI model called "Nano Banana 2 Flash," and it's going to be as good as the Gemini 3 Pro Nano Banana, but it'll be cheaper. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/google/google-is-testing-a-new-image-ai-and-its-going-to-be-its-fastest-model/)
+
+*Entities: Google, the Gemini 3, AI*
+
+---
 ### 💰 Finland arrests two crew members of ship suspected of cable break
 **Source**: The Record by Recorded Future | **Date**: 2026-01-02
 
@@ -81,6 +277,16 @@ The story you are reading is a series of scoops nestled inside a far more urgent
 *Entities: The Kimwolf Botnet is*
 
 ---
+### 🛡️ Trust Wallet links $8.5 million crypto theft to Shai-Hulud NPM attack
+**Source**: Bleeping Computer | **Date**: 2026-01-02
+
+Trust Wallet believes the compromise of its web browser to steal roughly $8.5 million from over 2,500 crypto wallets is likely related to an "industry-wide" Sha1-Hulud attack in November. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/trust-wallet-links-85-million-crypto-theft-to-shai-hulud-npm-attack/)
+
+*Entities: Trust Wallet, Shai-Hulud NPM*
+
+---
 ### 🛡️ The Good, the Bad and the Ugly in Cybersecurity – Week 1
 **Source**: SentinelOne | **Date**: 2026-01-02
 
@@ -89,6 +295,36 @@ Police crack down on malicious insiders, Chinese hackers deploy stealthy ToneShe
 [Read Original Report](https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-1-7/)
 
 *Entities: ToneShell*
+
+---
+### 🛡️ Cybersecurity Predictions for 2026: Navigating the Future of Digital Threats
+**Source**: Dark Reading | **Date**: 2026-01-02
+
+Cybersecurity experts discuss 2026 predictions, highlighting the rise of AI-driven threats, the shift to resilience over prevention, and the urgent need for advanced security measures to combat evolving risks
+
+[Read Original Report](https://www.darkreading.com/threat-intelligence/cybersecurity-predictions-for-2026-navigating-the-future-of-digital-threats)
+
+*Entities: Cybersecurity Predictions, AI*
+
+---
+### 🛡️ CTO New Year Resolutions for a More Secure 2026
+**Source**: Dark Reading | **Date**: 2026-01-02
+
+From securing MCPs and supply chain defenses to formal AI and quantum governance, experts share their wish lists for cyber safety in 2026.
+
+[Read Original Report](https://www.darkreading.com/cyber-risk/cto-new-year-resolutions-for-a-more-secure-2026)
+
+*Entities: CTO New Year Resolutions, AI*
+
+---
+### 🛡️ Transparent Tribe Launches New RAT Attacks Against Indian Government and Academia
+**Source**: The Hacker News | **Date**: 2026-01-02
+
+The threat actor known as Transparent Tribe has been attributed to a fresh set of attacks targeting Indian governmental, academic, and strategic entities with a remote access trojan (RAT) that grants them persistent control over compromised hosts. "The campaign employs deceptive delivery techniques, including a weaponized Windows shortcut (LNK) file masquerading as a legitimate PDF document
+
+[Read Original Report](https://thehackernews.com/2026/01/transparent-tribe-launches-new-rat.html)
+
+*Entities: Academia, Transparent Tribe, LNK, PDF*
 
 ---
 ### 🛡️ Flock Exposes Its AI-Enabled Surveillance Cameras
@@ -101,203 +337,23 @@ Police crack down on malicious insiders, Chinese hackers deploy stealthy ToneShe
 *Entities: Media, Flock’s Condor*
 
 ---
-### 🛡️ Why Mechanized Warfare Will Still Be Decisive in the Next Land War
-**Source**: War on the Rocks | **Date**: 2026-01-02
+### 🛡️ The ROI Problem in Attack Surface Management
+**Source**: The Hacker News | **Date**: 2026-01-02
 
-Mechanized warfare is not dead. Observers have been debating this topic since the Ukrainian military and volunteers beat back the Russian assault on Kiev in 2022. The professional discourse that has ensued often devolves into disputes about specific technologies or weapon systems and their perceived value on the future battlefield. Everyone is missing the big picture.Frontlines in Ukraine today present eerie similarities to World War I but with advanced technologies inhibiting mechanized attacks...
+Attack Surface Management (ASM) tools promise reduced risk. What they usually deliver is more information. Security teams deploy ASM, asset inventories grow, alerts start flowing, and dashboards fill up. There is visible activity and measurable output. But when leadership asks a simple question, “Is this reducing incidents?” the answer is often unclear. This gap between effort and
 
-[Read Original Report](https://warontherocks.com/2026/01/why-mechanized-warfare-will-still-be-decisive-in-the-next-land-war/)
+[Read Original Report](https://thehackernews.com/2026/01/the-roi-problem-in-attack-surface.html)
 
-*Entities: Mechanized Warfare, Kiev, Ukraine*
-
----
-### 🛡️ Seatbelts for Speeders: Why Beijing Ignores Washington’s Red Phone
-**Source**: War on the Rocks | **Date**: 2026-01-02
-
-In early November, after meeting China’s defense minister, U.S. Secretary of Defense Pete Hegseth performed a longstanding ritual in military relations between the United States and China: He announced that the two countries would “set up military-to-military channels to deconflict and de-escalate” problems between them. Like most rituals, this one is unlikely to have any practical effect. The pursuit of effective crisis communications channels between the American and Chinese militaries to miti...
-
-[Read Original Report](https://warontherocks.com/2026/01/seatbelts-for-speeders-why-beijing-ignores-washingtons-red-phone/)
-
-*Entities: Pete Hegseth, Washington, China, U.S., the United States*
+*Entities: Attack Surface Management, ASM*
 
 ---
-### 🛡️ FDR’s Message on the Defense Industry for the New Year
-**Source**: War on the Rocks | **Date**: 2026-01-01
+### 🛡️ Cybercriminals Abuse Google Cloud Email Feature in Multi-Stage Phishing Campaign
+**Source**: The Hacker News | **Date**: 2026-01-02
 
-Editor’s Note: Defense tech enthusiasts may be familiar with President Franklin Delano Roosevelt’s famous Arsenal of Democracy speech, which solemnly and urgently called for material support to Europe in its fight against the Nazis. In that “fireside chat,” broadcast to radios across the country, Roosevelt appealed to the American people to break from their tradition of noninterventionism and appeasement to support the war effort. But Roosevelt delivered another speech two weeks later to Congres...
+Cybersecurity researchers have disclosed details of a phishing campaign that involves the attackers impersonating legitimate Google-generated messages by abusing Google Cloud's Application Integration service to distribute emails. The activity, Check Point said, takes advantage of the trust associated with Google Cloud infrastructure to send the messages from a legitimate email address ("
 
-[Read Original Report](https://warontherocks.com/2026/01/fdrs-message-on-the-defense-industry-for-the-new-year/)
+[Read Original Report](https://thehackernews.com/2026/01/cybercriminals-abuse-google-cloud-email.html)
 
-*Entities: FDR’s Message, the Defense Industry for the New Year, ’s Note, Franklin Delano Roosevelt, Arsenal of Democracy, Roosevelt*
-
----
-### 🛡️ LinkedIn Job Scams
-**Source**: Schneier on Security | **Date**: 2025-12-31
-
-Interesting article on the variety of LinkedIn job scams around the world: In India, tech jobs are used as bait because the industry employs millions of people and offers high-paying roles. In Kenya, the recruitment industry is largely unorganized, so scamsters leverage fake personal referrals. In Mexico, bad actors capitalize on the informal nature of the job economy by advertising fake formal roles that carry a promise of security. In Nigeria, scamsters often manage to get LinkedIn users to sh...
-
-[Read Original Report](https://www.schneier.com/blog/archives/2025/12/linkedin-job-scams.html)
-
-*Entities: LinkedIn Job Scams, LinkedIn, India, Kenya, Mexico, Nigeria*
-
----
-### 🛡️ Most Read War on the Rocks Articles of 2025
-**Source**: War on the Rocks | **Date**: 2025-12-31
-
-As 2025 comes to an end, we at War on the Rocks reflect on the stories and events that our readers found most compelling in a year marked by fresh conflicts, long-standing rivalries, cutting-edge military technology, and the ongoing importance of learning from the past. Our most-read pieces show the variety of our interests and the complexity of our world, from geopolitical conflicts in the Indo-Pacific, Europe, and the Middle East to the change in how the United States views itself and interact...
-
-[Read Original Report](https://warontherocks.com/2025/12/most-read-war-on-the-rocks-articles-of-2025/)
-
-*Entities: the Indo-Pacific, the United States*
-
----
-### 🛡️ U.S. Foreign Policy Surprises in 2025
-**Source**: War on the Rocks | **Date**: 2025-12-30
-
-The first year of President Donald Trump’s second term brought many significant changes to U.S. foreign policy, as the administration worked to reshape policy to fit its priorities and to respond to emerging challenges to U.S. interests. As the 2025 National Security Strategy laid out, the Trump administration’s tone and approach to the world departs from many long-held assumptions in American foreign policy. The last year also saw events such as Israeli and U.S. strikes on Iran in June, the bui...
-
-[Read Original Report](https://warontherocks.com/2025/12/u-s-foreign-policy-surprises-in-2025/)
-
-*Entities: Donald Trump, National Security Strategy, Trump, U.S., Iran*
-
----
-### 🛡️ Using AI-Generated Images to Get Refunds
-**Source**: Schneier on Security | **Date**: 2025-12-30
-
-Scammers are generating images of broken merchandise in order to apply for refunds.
-
-[Read Original Report](https://www.schneier.com/blog/archives/2025/12/using-ai-generated-images-to-get-refunds.html)
-
-*Entities: AI-Generated Images*
-
----
-### 🛡️ CISA Releases Two Industrial Control Systems Advisories
-**Source**: CISA Cybersecurity Advisories | **Date**: 2025-12-30
-
-CISA released two Industrial Control Systems (ICS) Advisories. These advisories provide timely information about current security issues, vulnerabilities, and exploits surrounding ICS. ICSA-25-364-01: WHILL C2 Wheelchairs ICSA-25-345-03: AzeoTech DAQFactory (Update A) CISA encourages users and administrators to review newly released ICS Advisories for technical details and mitigations.
-
-[Read Original Report](https://www.cisa.gov/news-events/alerts/2025/12/30/cisa-releases-two-industrial-control-systems-advisories)
-
-*Entities: CISA, Industrial Control Systems, ICS, WHILL C2 Wheelchairs ICSA-25-345, AzeoTech, ICS Advisories*
-
----
-### 🛡️ WHILL Model C2 Electric Wheelchairs and Model F Power Chairs
-**Source**: CISA Cybersecurity Advisories | **Date**: 2025-12-30
-
-View CSAF Summary Successful exploitation of this vulnerability could allow an attacker within Bluetooth range to take control over the product. The following versions of WHILL Model C2 Electric Wheelchairs and Model F Power Chairs are affected: Model C2 Electric WheelChair (CVE-2025-14346) Model F Power Chair (CVE-2025-14346) CVSS Vendor Equipment Vulnerabilities v3 9.8 WHILL Inc. WHILL Model C2 Electric Wheelchairs and Model F Power Chairs Missing Authentication for Critical Function Backgroun...
-
-[Read Original Report](https://www.cisa.gov/news-events/ics-medical-advisories/icsma-25-364-01)
-
-*Entities: WHILL, Model C2 Electric Wheelchairs, Model C2 Electric WheelChair, WHILL Inc.*
-
----
-### 💰 How IRS-CI Follows The Crypto: Podcast Ep. 176
-**Source**: Chainalysis | **Date**: 2025-12-30
-
-In the last year alone, IRS-CI identified more than $10 billion in financial crime, executed over 1400 warrants, seized hundreds… The post How IRS-CI Follows The Crypto: Podcast Ep. 176 appeared first on Chainalysis .
-
-[Read Original Report](https://www.chainalysis.com/blog/how-irs-ci-follows-the-crypto-ep-176/)
-
-*Entities: IRS, IRS-CI*
-
----
-### 🛡️ Most Read Cogs of War Articles of 2025
-**Source**: War on the Rocks | **Date**: 2025-12-30
-
-2025 was a busy year for defense tech, but this year’s most-read Cogs of War pieces have a clear throughline. Readers were most interested in whether the United States can still build things that matter at scale. From drones and shipyards to software, data centers, quantum materials, and missile defense, our writers expressed frustration with systems and processes that slow production, reward hype, and turn industrial weakness into risk. Factories, labs, infrastructure, and the laws that govern ...
-
-[Read Original Report](https://warontherocks.com/2025/12/most-read-cogs-of-war-articles-of-2025/)
-
-*Entities: Cogs of War, the United States*
-
----
-### 🛡️ From Restraint to Readiness? Germany Considers Conscription
-**Source**: War on the Rocks | **Date**: 2025-12-30
-
-On Dec. 5, 2025, German Chancellor Friedrich Merz reached a significant milestone in his bid to build “Europe’s strongest conventional army”: Germany’s parliament passed a controversial bill requiring all German men to register for potential military service, which could become the first step toward reinstating a draft if volunteer numbers fall short. The breakthrough followed weeks of tense negotiations within Merz’s governing coalition, during which leading members accused one another of “torp...
-
-[Read Original Report](https://warontherocks.com/2025/12/from-restraint-to-readiness-germany-considers-conscription/)
-
-*Entities: Restraint, Readiness, Germany Considers Conscription, Friedrich Merz, Merz, Germany*
-
----
-### 💰 Happy 16th Birthday, KrebsOnSecurity.com!
-**Source**: Krebs on Security | **Date**: 2025-12-29
-
-KrebsOnSecurity.com celebrates its 16th anniversary today! A huge "thank you" to all of our readers -- newcomers, long-timers and drive-by critics alike. Your engagement this past year here has been tremendous and truly a salve on a handful of dark days. Happily, comeuppance was a strong theme running through our coverage in 2025, with a primary focus on entities that enabled complex and globally-dispersed cybercrime services.
-
-[Read Original Report](https://krebsonsecurity.com/2025/12/happy-16th-birthday-krebsonsecurity-com/)
-
-*Entities: KrebsOnSecurity.com*
-
----
-### 🛡️ Are We Ready to Be Governed by Artificial Intelligence?
-**Source**: Schneier on Security | **Date**: 2025-12-29
-
-Artificial Intelligence (AI) overlords are a common trope in science-fiction dystopias, but the reality looks much more prosaic. The technologies of artificial intelligence are already pervading many aspects of democratic government, affecting our lives in ways both large and small. This has occurred largely without our notice or consent. The result is a government incrementally transformed by AI rather than the singular technological overlord of the big screen. Let us begin with the executive b...
-
-[Read Original Report](https://www.schneier.com/blog/archives/2025/12/are-we-ready-to-be-governed-by-artificial-intelligence.html)
-
-*Entities: Artificial Intelligence, Artificial Intelligence (AI, AI*
-
----
-### 🛡️ CISA Adds One Known Exploited Vulnerability to Catalog
-**Source**: CISA Cybersecurity Advisories | **Date**: 2025-12-29
-
-CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-14847 MongoDB and MongoDB Server Improper Handling of Length Parameter Inconsistency Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities established t...
-
-[Read Original Report](https://www.cisa.gov/news-events/alerts/2025/12/29/cisa-adds-one-known-exploited-vulnerability-catalog)
-
-*Entities: Known Exploited Vulnerabilities, KEV, CISA, Catalog*
-
----
-### 🛡️ 29th December – Threat Intelligence Report
-**Source**: Check Point Research | **Date**: 2025-12-29
-
-For the latest discoveries in cyber research for the week of 29th December, please download our Threat Intelligence Bulletin. TOP ATTACKS AND BREACHES Romanian Waters, the country’s national water management authority, was hit by a ransomware attack that resulted in nearly 1,000 computer systems across national and regional offices being encrypted. The attack affected geographic […] The post 29th December – Threat Intelligence Report appeared first on Check Point Research .
-
-[Read Original Report](https://research.checkpoint.com/2025/29th-december-threat-intelligence-report/)
-
-*Entities: Romanian Waters, Check Point Research*
-
----
-### 🚨 The HoneyMyte APT evolves with a kernel-mode rootkit and a ToneShell backdoor
-**Source**: Securelist (Kaspersky) | **Date**: 2025-12-29
-
-Kaspersky discloses a 2025 HoneyMyte (aka Mustang Panda or Bronze President) APT campaign, which uses a kernel-mode rootkit to deliver and protect a ToneShell backdoor.
-
-[Read Original Report](https://securelist.com/honeymyte-kernel-mode-rootkit/118590/)
-
-*Entities: HoneyMyte, ToneShell, Kaspersky, Mustang Panda, Bronze, APT*
-
----
-### 🛡️ The Indispensable Adversary: India’s Approach to China
-**Source**: War on the Rocks | **Date**: 2025-12-29
-
-On a frozen Himalayan ridgeline, Indian and Chinese troops still stare at each other through rifle sights. Thousands of miles away, Indian factories hum along on Chinese parts. Few rivalries in the world look this schizophrenic — or have lasted this long without snapping.India’s approach to China tests whether asymmetric interdependence gives countries strategic options that more deeply integrated economies lack. India’s import-based exposure with minimal corporate presence in China enables stra...
-
-[Read Original Report](https://warontherocks.com/2025/12/the-indispensable-adversary-indias-approach-to-china/)
-
-*Entities: India, China*
-
----
-### 🛡️ Get Executives on board with managing Cyber Risk
-**Source**: Trend Micro Research | **Date**: 2025-12-29
-
-Learn how the 2025 Trend Micro Defenders Survey Report helps paint a clear picture of how security teams are looking to work with executive leaders to manage cyber risk.
-
-[Read Original Report](https://www.trendmicro.com/en_us/research/25/l/managing-cyber-risk-with-executives.html)
-
-*Entities: Cyber Risk, Trend Micro Defenders Survey Report*
-
----
-### 🛡️ Trend Micro's Pivotal Role in INTERPOL's Operation Sentinel: Dismantling Digital Extortion Networks Across Africa
-**Source**: Trend Micro Research | **Date**: 2025-12-29
-
-Continuing a Legacy of Successful Collaboration
-
-[Read Original Report](https://www.trendmicro.com/en_us/research/25/l/operation-sentinel-digital-extortion-campaigns-identified.html)
-
-*Entities: Trend Micro's, INTERPOL, Operation Sentinel, Dismantling Digital Extortion Networks Across Africa*
+*Entities: Google, Google Cloud's Application Integration, Check Point*
 
 ---
