@@ -19,16 +19,16 @@ class LLMSummarizer:
 
     def generate_briefing(self, events: List[Event], period: str) -> str:
         """
-        Generates a high-level executive summary using LLM.
+        Generates an executive summary using OpenAI.
         """
         if not self.client:
             return "<!-- LLM Summary Unavailable: Check API Key -->"
 
-        # Prepare context (Increase limit for deeper analysis)
-        max_events = 100
+        # Prepare context (Maximized for GPT-5.1 / GPT-4o context windows)
+        max_events = 1000  # Cap at 1000 events to ensure full 7-day coverage
         context_lines = []
         for ev in events[:max_events]:
-            context_lines.append(f"- [{ev.source}] {ev.headline}: {ev.summary[:250]}...")
+            context_lines.append(f"- [{ev.source}] {ev.headline}: {ev.summary[:400]}...")  # Increased summary fidelity
             
         context_str = "\n".join(context_lines)
         
