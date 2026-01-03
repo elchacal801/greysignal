@@ -1,0 +1,30 @@
+sources:
+  - name: "CISA Cybersecurity Advisories"
+    url: "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+    tags: ["gov", "us", "alerts"]
+    weight: 1.0
+
+  - name: "Google Threat Analysis Group"
+    url: "https://blog.google/threat-analysis-group/rss/"
+    tags: ["vendor", "apt", "research"]
+    weight: 0.9
+
+  - name: "Microsoft Security"
+    url: "https://www.microsoft.com/security/blog/feed/"
+    tags: ["vendor", "research", "threats"]
+    weight: 0.9
+
+  - name: "The Record by Recorded Future"
+    url: "https://therecord.media/feed/"
+    tags: ["news", "geopolitics", "cybercrime"]
+    weight: 0.8
+
+  - name: "Krebs on Security"
+    url: "https://krebsonsecurity.com/feed/"
+    tags: ["news", "investigation", "crime"]
+    weight: 0.8
+    
+  - name: "Mandiant Threat Research"
+    url: "https://www.mandiant.com/resources/blog/rss.xml"
+    tags: ["vendor", "apt", "ir"]
+    weight: 0.9
