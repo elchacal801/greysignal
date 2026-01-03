@@ -1,7 +1,7 @@
 import os
 from typing import List
 from ..models import Event
-import ujson
+import json
 
 class TimelineGenerator:
     def __init__(self, events: List[Event]):
@@ -21,8 +21,11 @@ class TimelineGenerator:
                 "title": ev.summary[:200] + "..." # Tooltip
             })
             
-        json_data = ujson.dumps(items)
+        json_data = json.dumps(items)
         
+        start_date = items[-1]["start"] if items else ""
+        end_date = items[0]["start"] if items else ""
+
         html_template = f"""
 <!DOCTYPE html>
 <html>
@@ -43,11 +46,12 @@ class TimelineGenerator:
 
     <script type="text/javascript">
         var container = document.getElementById('timeline');
-        var items = new vis.DataSet({json_data});
+        var data = {json_data}; // Injected JSON
+        var items = new vis.DataSet(data);
         var options = {{
             height: '600px',
-            start: '{items[-1]["start"] if items else ""}', # Default view
-            end: '{items[0]["start"] if items else ""}'
+            start: '{start_date}',
+            end: '{end_date}'
         }};
         var timeline = new vis.Timeline(container, items, options);
     </script>

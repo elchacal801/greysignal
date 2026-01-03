@@ -1,6 +1,6 @@
 sources:
   - name: "CISA Cybersecurity Advisories"
-    url: "https://www.cisa.gov/cyber-security-advisories/all.xml"
+    url: "https://www.cisa.gov/cybersecurity-advisories/all.xml"
     tags: ["gov", "us", "alerts"]
     weight: 1.0
 
@@ -19,6 +19,18 @@ sources:
     tags: ["news", "geopolitics", "cybercrime"]
     weight: 0.8
 
+  - name: "UK NCSC"
+    url: "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml"
+  - name: "CERT-UA (Ukraine)"
+    url: "https://cert.gov.ua/api/articles/rss"
+  - name: "SentinelOne"
+    url: "https://www.sentinelone.com/feed/"
+  - name: "Check Point Research"
+    url: "https://research.checkpoint.com/feed/"
+  - name: "Trend Micro Research"
+    url: "https://feeds.feedburner.com/TrendMicroResearch"
+    weight: 0.8
+    
   - name: "Krebs on Security"
     url: "https://krebsonsecurity.com/feed/"
     tags: ["news", "investigation", "crime"]
@@ -28,3 +40,40 @@ sources:
     url: "https://www.mandiant.com/resources/blog/rss.xml"
     tags: ["vendor", "apt", "ir"]
     weight: 0.9
+
+  # Geopolitics & Intelligence
+  - name: "Bellingcat"
+    url: "https://www.bellingcat.com/feed/"
+    tags: ["osint", "investigation", "geopolitics"]
+    weight: 1.0
+  - name: "War on the Rocks"
+    url: "https://warontherocks.com/feed/"
+    tags: ["geopolitics", "defense", "strategy"]
+  - name: "IntelNews"
+    url: "https://intelnews.org/feed/"
+    tags: ["espionage", "intelligence"]
+  - name: "Lawfare"
+    url: "https://www.lawfaremedia.org/rss"
+    tags: ["policy", "legal", "national_security"]
+  - name: "Institute for the Study of War"
+    url: "http://feeds.feedburner.com/InstituteForTheStudyOfWar"
+    tags: ["war", "conflict", "strategic"]
+
+  # Advanced Threat Research
+  - name: "Cisco Talos"
+    url: "https://blog.talosintelligence.com/feeds/posts/default"
+    tags: ["technical", "malware", "research"]
+  - name: "Securelist (Kaspersky)"
+    url: "https://securelist.com/feed/"
+    tags: ["malware", "apt", "research"]
+  - name: "Schneier on Security"
+    url: "https://www.schneier.com/blog/atom.xml"
+    tags: ["analysis", "crypto", "privacy"]
+
+  # Crypto & Financial Crime
+  - name: "Rekt News"
+    url: "https://rekt.news/rss/feed.xml"
+    tags: ["crypto", "defi", "hack"]
+  - name: "Chainalysis"
+    url: "https://blog.chainalysis.com/feed/"
+    tags: ["crypto", "forensics", "crime"]

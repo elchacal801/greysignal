@@ -7,7 +7,7 @@ class BriefingGenerator:
     def __init__(self, events: List[Event]):
         self.events = events
         
-    def generate(self, output_path: str):
+    def generate(self, output_path: str, title_suffix: str = ""):
         """Generate Markdown Briefing."""
         
         # Analytics
@@ -16,7 +16,7 @@ class BriefingGenerator:
         top_actors = Counter([a for e in self.events for a in e.actors]).most_common(10)
         top_countries = Counter([c for e in self.events for c in e.countries]).most_common(5)
         
-        md = f"# GreySignal Intelligence Briefing\n"
+        md = f"# GreySignal Intelligence Briefing: {title_suffix}\n"
         md += f"**Date**: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
         
         md += "## Executive Summary\n"
