@@ -125,12 +125,12 @@ def report(
     briefing_gen.generate(os.path.join(out_dir, "briefing.md"), title_suffix=period_name, ai_summary=ai_summary)
     
     # 3. Archiving
-    # Format: docs/archive/YYYY/MM/YYYY-MM-DD_ID_briefing.md
+    # Format: docs/archive/YYYY/MM/YYYY-MM-DD_period_briefing.md
     today = datetime.now(timezone.utc)
     archive_dir = os.path.join(out_dir, "archive", f"{today.year:04d}", f"{today.month:02d}")
     os.makedirs(archive_dir, exist_ok=True)
     
-    archive_id = today.strftime("%Y-%m-%d")
+    archive_id = f"{today.strftime('%Y-%m-%d')}_{period}"
     archive_briefing_path = os.path.join(archive_dir, f"{archive_id}_briefing.md")
     archive_timeline_path = os.path.join(archive_dir, f"{archive_id}_timeline.html")
     
@@ -201,26 +201,29 @@ def generate_archive_index(out_dir: str):
             index_lines.append(f"\n### {month_name}")
             
             for f_name in files:
-                # 2026-01-03_briefing.md
-                date_str = f_name.split("_briefing.md")[0]
-                timeline_name = f"{date_str}_timeline.html"
+                # 2026-01-03_daily_briefing.md or 2026-01-03_weekly_briefing.md
+                # fallback for old files: 2026-01-03_briefing.md
                 
-                # Relative link from docs/archive.md (root/docs/archive.md) -> archive/YYYY/MM/...
-                rel_path = f"archive/{year}/{month}"
+                parts = f_name.replace("_briefing.md", "").split("_")
+                date_str = parts[0]
+                period_label = "Daily"
+                if len(parts) > 1:
+                    period_label = parts[1].title() # "Weekly", "Daily"
                 
-                # Check if timeline exists
+                # Check for timeline
+                timeline_file = f_name.replace("briefing.md", "timeline.html")
                 timeline_link = ""
-                if os.path.exists(os.path.join(month_path, timeline_name)):
-                    timeline_link = f" | [Interactive Timeline]({rel_path}/{timeline_name})"
-                    
-                index_lines.append(f"- **{date_str}**: [Briefing]({rel_path}/{f_name}){timeline_link}")
+                if os.path.exists(os.path.join(month_path, timeline_file)):
+                    timeline_link = f" | [Interactive Timeline]({year}/{month}/{timeline_file})"
+                
+                index_lines.append(f"- **{date_str} ({period_label})**: [Briefing]({year}/{month}/{f_name}){timeline_link}")
         
         index_lines.append("\n---\n")
         
     with open(os.path.join(out_dir, "archive.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(index_lines))
-    
-    console.print("[bold green]Updated Intelligence Archive Index (docs/archive.md)[/bold green]")
+        
+    console.print(f"[bold green]Updated archive index at {os.path.join(out_dir, 'archive.md')}[/bold green]")
 
 if __name__ == "__main__":
     app()

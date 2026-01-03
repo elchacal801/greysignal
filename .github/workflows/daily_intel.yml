@@ -43,6 +43,7 @@ jobs:
           git config --global user.email 'bot@greysignal.local'
           git add docs/briefing.md docs/timeline.html data/events.jsonl docs/archive/ docs/index.md docs/archive.md
           git commit -m "Daily Intel Briefing + Portal Update [skip ci]" || echo "No changes"
+          git pull --rebase
           git push
 
   weekly_brief:
@@ -72,4 +73,5 @@ jobs:
           git config --global user.email 'bot@greysignal.local'
           git add docs/briefing.md docs/timeline.html data/events.jsonl docs/archive/ docs/index.md docs/archive.md
           git commit -m "Weekly Intel Deep Dive + Portal Update [skip ci]" || echo "No changes"
+          git pull --rebase
           git push
