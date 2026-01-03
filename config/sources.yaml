@@ -75,5 +75,37 @@ sources:
     url: "https://rekt.news/rss/feed.xml"
     tags: ["crypto", "defi", "hack"]
   - name: "Chainalysis"
-    url: "https://blog.chainalysis.com/feed/"
-    tags: ["crypto", "forensics", "crime"]
+    url: "https://blog.chainalysis.com/reports/feed/"
+    tags: ["crypto", "forensics", "investigation"]
+    weight: 1.0
+
+  # -------------------------------------------------------------
+  # CRITICAL INFRASTRUCTURE (ICS, OT, Energy)
+  # -------------------------------------------------------------
+  - name: "CISA ICS Advisories"
+    url: "https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml"
+    tags: ["ics", "infra", "us-gov"]
+    weight: 1.5
+
+  - name: "Data Center Knowledge"
+    url: "https://www.datacenterknowledge.com/rss.xml"
+    tags: ["datacenter", "cloud", "infra"]
+    weight: 1.0
+
+  # -------------------------------------------------------------
+  # MARITIME & HYBRID WARFARE (Cables, Logistics)
+  # -------------------------------------------------------------
+  - name: "Submarine Telecoms Forum"
+    url: "https://subtelforum.com/feed/"
+    tags: ["maritime", "cables", "comms"]
+    weight: 1.4
+
+  - name: "The Maritime Executive"
+    url: "https://www.maritime-executive.com/articles.rss"
+    tags: ["maritime", "logistics", "security"]
+    weight: 1.2
+
+  - name: "Naval News"
+    url: "https://www.navalnews.com/feed/"
+    tags: ["naval", "defense", "maritime"]
+    weight: 1.3

@@ -24,7 +24,14 @@ class RSSCollector:
         for source in self.sources:
             print(f"Fetching {source['name']}...")
             try:
-                feed = feedparser.parse(source['url'])
+                # Use a custom User-Agent to avoid bot blocking & Enforce Timeout
+                import socket
+                socket.setdefaulttimeout(15) # Global timeout safety
+                
+                feed = feedparser.parse(
+                    source['url'],
+                    request_headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+                )
                 
                 # Check for parsing errors
                 if feed.bozo and len(feed.entries) == 0:
