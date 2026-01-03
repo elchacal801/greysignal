@@ -7,9 +7,9 @@ except ImportError:
     OpenAI = None
 
 class LLMSummarizer:
-    def __init__(self, api_key: str = None, model: str = "gpt-4-turbo-preview"):
+    def __init__(self, api_key: str = None, model: str = "gpt-4o"):
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
-        self.model = model
+        self.model = os.getenv("OPENAI_MODEL", model)
         self.client = None
         
         if self.api_key and OpenAI:
