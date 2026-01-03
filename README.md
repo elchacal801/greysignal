@@ -1,6 +1,15 @@
-# GreySignal: Cyber Counterintelligence Pipeline
+# GreySignal 📡
 
-GreySignal is an open-source OSINT pipeline designed to track state-aligned operations, influence campaigns, and emerging cyber threats correlated with geopolitical triggers.
+**State-of-the-Art Cyber Counterintelligence & Financial OSINT Pipeline.**
+
+### [🔴 Enter Intelligence Portal (Live Reports)](https://elchacal801.github.io/greysignal/)
+
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Classification](https://img.shields.io/badge/TLE-RED-red)
+
+GreySignal is an advanced agentic intelligence system designed to collect, normalize, and synthesize high-priority signals from:iggers.
 
 ## Features
 

@@ -159,7 +159,64 @@ def report(
     with open(archive_briefing_path, "w", encoding="utf-8") as f:
         f.write(archive_content)
         
+    # 4. Update Archive Index (docs/archive.md)
+    generate_archive_index(out_dir)
+    
     console.print(f"[bold blue]Reports generated in {out_dir}/ and archived to {archive_dir}/[/bold blue]")
+
+def generate_archive_index(out_dir: str):
+    """
+    Scans docs/archive/YYYY/MM/*.md and generates docs/archive.md
+    """
+    archive_root = os.path.join(out_dir, "archive")
+    if not os.path.exists(archive_root):
+        return
+        
+    index_lines = ["# 🗄️ Intelligence Archive\n", "Access historical intelligence briefings and timelines.\n"]
+    
+    # Walk Years
+    years = sorted([d for d in os.listdir(archive_root) if d.isdigit()], reverse=True)
+    
+    for year in years:
+        year_path = os.path.join(archive_root, year)
+        months = sorted([d for d in os.listdir(year_path) if d.isdigit()], reverse=True)
+        
+        index_lines.append(f"## {year}")
+        
+        for month in months:
+            month_path = os.path.join(year_path, month)
+            # Find briefing files
+            files = [f for f in os.listdir(month_path) if f.endswith("_briefing.md")]
+            files.sort(reverse=True) # Sort by date desc
+            
+            if not files:
+                continue
+                
+            from datetime import date
+            month_name = date(int(year), int(month), 1).strftime("%B")
+            index_lines.append(f"\n### {month_name}")
+            
+            for f_name in files:
+                # 2026-01-03_briefing.md
+                date_str = f_name.split("_briefing.md")[0]
+                timeline_name = f"{date_str}_timeline.html"
+                
+                # Relative link from docs/archive.md (root/docs/archive.md) -> archive/YYYY/MM/...
+                rel_path = f"archive/{year}/{month}"
+                
+                # Check if timeline exists
+                timeline_link = ""
+                if os.path.exists(os.path.join(month_path, timeline_name)):
+                    timeline_link = f" | [Interactive Timeline]({rel_path}/{timeline_name})"
+                    
+                index_lines.append(f"- **{date_str}**: [Briefing]({rel_path}/{f_name}){timeline_link}")
+        
+        index_lines.append("\n---\n")
+        
+    with open(os.path.join(out_dir, "archive.md"), "w", encoding="utf-8") as f:
+        f.write("\n".join(index_lines))
+    
+    console.print("[bold green]Updated Intelligence Archive Index (docs/archive.md)[/bold green]")
 
 if __name__ == "__main__":
     app()
