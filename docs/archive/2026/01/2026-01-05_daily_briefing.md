@@ -5,7 +5,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Daily (24h)
 **Date**: 2026-01-05 08:46
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-01-05_daily_timeline.html)
 
 ## 🚨 Key Judgments
 - **Emergence of Sophisticated Information Stealers**: The development and sale of the VVS Stealer malware targeting Discord accounts highlight a strategic shift towards exploiting popular communication platforms. This trend signifies a broader move by cybercriminals to harvest valuable credentials from platforms that are less traditionally secured compared to corporate environments.
