@@ -5,7 +5,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Daily (24h)
 **Date**: 2026-01-06 08:43
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-01-06_daily_timeline.html)
 
 ## 🚨 Key Judgments
 - **Exploitation of Critical Vulnerabilities in Open-Source Platforms**: Recent disclosures of high-severity vulnerabilities in open-source systems such as n8n (CVE-2025-68668) and AdonisJS highlight a strategic trend of threat actors targeting widely used software frameworks. The exploitation of these vulnerabilities allows for arbitrary command execution and file writing, presenting significant risk to organizations relying on these platforms without timely updates.
