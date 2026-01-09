@@ -5,7 +5,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Weekly (7d)
 **Date**: 2026-01-09 08:19
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-01-09_weekly_timeline.html)
 
 ## 🚨 Key Judgments
 
