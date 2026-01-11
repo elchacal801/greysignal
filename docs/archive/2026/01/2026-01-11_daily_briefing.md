@@ -5,7 +5,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Daily (24h)
 **Date**: 2026-01-11 08:37
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-01-11_daily_timeline.html)
 
 ## 🚨 Key Judgments
 - **Resurgence of High-Profile Cybercrime Forums**: The data breach of the BreachForums database, exposing 324,000 accounts, signifies a persistent threat environment where cybercriminals leverage and compromise platforms to proliferate illicit activities. This trend highlights vulnerabilities in underground forums and the potential for significant information leaks impacting numerous sectors.
