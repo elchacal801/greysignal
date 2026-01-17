@@ -5,7 +5,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Daily (24h)
 **Date**: 2026-01-17 08:37
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-01-17_daily_timeline.html)
 
 ## 🚨 Key Judgments
 - **Advancements in Cyber Exploitation Techniques**: The exploitation of vulnerabilities in widely used software, such as Fortinet's FortiSIEM and Cisco's AsyncOS, underscores a strategic trend where threat actors are increasingly leveraging both zero-day and known vulnerabilities to gain unauthorized access to critical systems. These actions are often associated with nation-state actors, such as the China-linked group targeting North American infrastructure, highlighting a growing sophistication in cyber warfare capabilities.
