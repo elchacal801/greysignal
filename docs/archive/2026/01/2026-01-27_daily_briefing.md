@@ -5,7 +5,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Daily (24h)
 **Date**: 2026-01-27 08:45
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-01-27_daily_timeline.html)
 
 ## 🚨 Key Judgments
 - **[APT Evolution and Malware Sophistication]**: The recent campaigns by HoneyMyte and Konni demonstrate a trend of advanced persistent threats (APTs) employing sophisticated tools such as AI-generated malware and multi-stage backdoors. The strategic use of these technologies indicates a shift towards more covert and resilient cyber operations, targeting sensitive sectors like blockchain and software development environments.
