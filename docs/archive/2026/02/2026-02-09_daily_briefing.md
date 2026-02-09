@@ -5,7 +5,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Daily (24h)
 **Date**: 2026-02-09 09:05
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-02-09_daily_timeline.html)
 
 <!-- LLM Generation Failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}} -->
 
