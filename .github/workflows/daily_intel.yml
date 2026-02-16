@@ -15,24 +15,30 @@ on:
           - daily
           - weekly
 
+permissions:
+  contents: write
+
 jobs:
   daily_brief:
     if: github.event.schedule == '0 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.report_period == 'daily')
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           python -m spacy download en_core_web_sm
       - name: Run Collection (24h)
-        run: python -m greysignal.main collect --days 2 # 2 days to be safe for 24h
+        env:
+          FETCH_DELAY_SECONDS: 2
+          FETCH_TIMEOUT_SECONDS: 15
+        run: python -m greysignal.main collect --days 2
       - name: Generate Reports (Daily + AI)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -41,27 +47,30 @@ jobs:
         run: |
           git config --global user.name 'GreySignal Bot'
           git config --global user.email 'bot@greysignal.local'
-          git add docs/briefing.md docs/timeline.html data/events.jsonl docs/archive/ docs/index.md docs/archive.md
-          git commit -m "Daily Intel Briefing + Portal Update [skip ci]" || echo "No changes"
+          git add docs/briefing.md docs/timeline.html data/events.jsonl data/audit.jsonl docs/archive/ docs/index.md docs/archive.md || true
+          git diff --cached --quiet || git commit -m "Daily Intel Briefing + Portal Update [skip ci]"
           git pull --rebase
           git push
 
   weekly_brief:
     if: github.event.schedule == '0 8 * * 5' || (github.event_name == 'workflow_dispatch' && inputs.report_period == 'weekly')
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           python -m spacy download en_core_web_sm
       - name: Run Collection (7 Days)
+        env:
+          FETCH_DELAY_SECONDS: 2
+          FETCH_TIMEOUT_SECONDS: 15
         run: python -m greysignal.main collect --days 7
       - name: Generate Reports (Weekly + AI)
         env:
@@ -71,7 +80,7 @@ jobs:
         run: |
           git config --global user.name 'GreySignal Bot'
           git config --global user.email 'bot@greysignal.local'
-          git add docs/briefing.md docs/timeline.html data/events.jsonl docs/archive/ docs/index.md docs/archive.md
-          git commit -m "Weekly Intel Deep Dive + Portal Update [skip ci]" || echo "No changes"
+          git add docs/briefing.md docs/timeline.html data/events.jsonl data/audit.jsonl docs/archive/ docs/index.md docs/archive.md || true
+          git diff --cached --quiet || git commit -m "Weekly Intel Deep Dive + Portal Update [skip ci]"
           git pull --rebase
           git push
