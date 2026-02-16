@@ -40,15 +40,6 @@ class TimelineGenerator:
             return "geopolitics"
         return "default"
 
-    def _severity_prefix(self, event: Event) -> str:
-        """Get severity indicator for timeline items."""
-        mapping = {
-            "critical": "🔴",
-            "high": "🟠",
-            "medium": "🟡",
-            "low": "🟢",
-            "info": "🔵",
-        }
         return mapping.get(event.severity.value, "")
 
     def generate(self, output_path: str) -> None:
@@ -61,9 +52,7 @@ class TimelineGenerator:
             safe_headline = html.escape(ev.headline, quote=True)
             safe_summary = html.escape(ev.summary[:300], quote=True)
             safe_url = html.escape(ev.url, quote=True)
-            sev = self._severity_prefix(ev)
-
-            content = f"{sev} <b>{safe_source}</b><br>{safe_headline}"
+            content = f"<b>{safe_source}</b><br>{safe_headline}"
 
             items.append({
                 "id": i,

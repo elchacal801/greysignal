@@ -1,33 +1,34 @@
-# GreySignal: Global Cyber & Financial Intelligence System
+# GreySignal Intelligence Portal
 
-> **Classification**: `TLP:RED` (Internal/Authorized Use Only)  
-> **System Status**: 🟢 Active  
+## Global Cyber & Financial Intelligence System
+
+> **Classification**: `TLP:RED` (Internal/Authorized Use Only)
+> **System Status**: Active
 > **Engine**: GreySignal AI-v2 (GPT-4o / Context-Aware)
 
-## 🚨 Current Intelligence Status
+## Current Intelligence Status
 
 Access the latest generated intelligence products below. These are updated daily at 08:00 UTC.
 
-### [📄 Read Latest Executive Summary (Briefing)](briefing.html)
-*High-level strategic analysis, key judgments, and geopolitical implications.*
-
-### [🌍 View Interactive Threat Timeline](timeline.html)
-*Visual temporal analysis of 24h/7d events, focusing on infrastructure, cyber espionage, and financial anomalies.*
+| Product | Description | Link |
+| :--- | :--- | :--- |
+| **Executive Summary** | High-level strategic analysis, key judgments, and geopolitical implications. | [**Read Briefing**](briefing.html) |
+| **Threat Timeline** | Visual temporal analysis of 24h/7d events, focusing on infrastructure, cyber espionage, and financial anomalies. | [**View Timeline**](timeline.html) |
 
 ---
 
-## 🗄️ Historical Data
+## Historical Data
 
 Access past operations and intelligence reports.
 
-### [📂 Access Intelligence Archive](archive.html)
-*Full repository of past daily and weekly briefings, organized by date.*
+- [**Access Intelligence Archive**](archive.html) - Full repository of past daily and weekly briefings, organized by date.
 
 ---
 
-## 📊 Coverage Map
+## Coverage Map
 
 GreySignal monitors the following sectors:
+
 - **Critical Infrastructure**: ICS/OT, Nuclear, Energy Grids.
 - **Maritime Security**: Undersea Cables, Logistics, Naval Movements.
 - **Cyber Warfare**: APT Groups, Ransomware, Zero-Day Exploits.

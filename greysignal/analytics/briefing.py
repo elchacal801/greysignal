@@ -23,31 +23,24 @@ class BriefingGenerator:
     def __init__(self, events: List[Event]):
         self.events = events
 
-    def _severity_emoji(self, event: Event) -> str:
-        """Map severity to visual indicator."""
-        mapping = {
-            "critical": "🔴",
-            "high": "🟠",
-            "medium": "🟡",
-            "low": "🟢",
-            "info": "🔵",
-        }
-        return mapping.get(event.severity.value, "⚪")
+    def _severity_label(self, event: Event) -> str:
+        """Get text label for severity."""
+        return event.severity.value.upper()
 
-    def _domain_emoji(self, event: Event) -> str:
-        """Map event domain to emoji based on tags."""
+    def _domain_label(self, event: Event) -> str:
+        """Get text label for domain."""
         tags_str = " ".join(event.tags).lower()
         if any(t in tags_str for t in ("apt", "malware", "cyber", "vulns", "ics")):
-            return "🛡️"
+            return "CYBER"
         if any(t in tags_str for t in ("crypto", "finance", "macro", "quant")):
-            return "💰"
+            return "FINANCE"
         if any(t in tags_str for t in ("maritime", "cables", "logistics")):
-            return "🚢"
+            return "MARITIME"
         if any(t in tags_str for t in ("espionage", "intelligence", "osint")):
-            return "🕵️"
+            return "INTEL"
         if any(t in tags_str for t in ("geopolitics", "defense", "strategy")):
-            return "🌍"
-        return "📋"
+            return "GEO"
+        return "GEN"
 
     def generate(
         self,
@@ -127,13 +120,13 @@ class BriefingGenerator:
         lines.append("")
 
         for ev in self.events:
-            sev_icon = self._severity_emoji(ev)
-            domain_icon = self._domain_emoji(ev)
+            sev_label = self._severity_label(ev)
+            domain_label = self._domain_label(ev)
 
             # Escape headline for Markdown safety
             safe_headline = ev.headline.replace("[", "\\[").replace("]", "\\]")
 
-            lines.append(f"### {sev_icon} {domain_icon} {safe_headline}")
+            lines.append(f"### [{sev_label}] [{domain_label}] {safe_headline}")
             lines.append(
                 f"**Source**: {ev.source} | "
                 f"**Date**: {ev.published_at.strftime('%Y-%m-%d')} | "
