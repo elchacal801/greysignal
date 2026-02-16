@@ -11,6 +11,54 @@
 
 GreySignal is an advanced agentic intelligence system designed to collect, normalize, and synthesize high-priority signals from diverse open sources.
 
+## Architecture
+
+```mermaid
+graph TD
+    subgraph Sources
+        S1[US Govt<br>CISA, NSA]
+        S2[Intel Vendors<br>Google, MSFT]
+        S3[Global Certs<br>UK, UA, EU]
+        S4[News<br>Record, Bleeping]
+    end
+
+    subgraph Ingestion
+        C[RSS Collector<br>Async Fetch]
+    end
+
+    subgraph "Normalization Pipeline"
+        P1[Clean HTML]
+        P2[Deduplication<br>SHA-256]
+        P3[Entity Extraction<br>SpaCy NLP]
+        P4[Classification<br>Sector & Severity]
+    end
+
+    subgraph Storage
+        DB[(Events DB<br>JSONL)]
+        AL[(Audit Log<br>Tamper-Evident)]
+    end
+
+    subgraph Analytics
+        A1[Timeline Gen]
+        A2[Briefing Gen<br>LLM Global Summary]
+        A3[Exporters<br>JSON/CSV]
+    end
+
+    S1 --> C
+    S2 --> C
+    S3 --> C
+    S4 --> C
+    C --> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> DB
+    P4 --> AL
+    DB --> A1
+    DB --> A2
+    DB --> A3
+```
+
 ## Features
 
 - **Multi-Source Ingestion**: Aggregates high-fidelity RSS feeds from CISA, Google TAG, Microsoft, Mandiant, and more.
