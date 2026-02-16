@@ -2,7 +2,7 @@
 
 **State-of-the-Art Cyber Counterintelligence & Financial OSINT Pipeline.**
 
-### [Enter Intelligence Portal (Live Reports)](https://elchacal801.github.io/greysignal/)
+**[Enter Intelligence Portal (Live Reports)](https://elchacal801.github.io/greysignal/)**
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
