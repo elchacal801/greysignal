@@ -164,7 +164,7 @@ class BriefingGenerator:
         # Write to file
         os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
         with open(output_path, "w", encoding="utf-8") as f:
-            f.write(content)
+            f.write(content + "\n")
 
         log.info(f"Briefing saved to {output_path} ({total_events} events)")
         return content

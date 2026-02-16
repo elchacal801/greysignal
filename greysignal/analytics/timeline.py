@@ -353,6 +353,6 @@ class TimelineGenerator:
 
         os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
         with open(output_path, "w", encoding="utf-8") as f:
-            f.write(html_template)
+            f.write(html_template + "\n")
 
         log.info(f"Timeline saved to {output_path} ({len(items)} events)")
