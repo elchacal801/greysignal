@@ -3,14 +3,14 @@ layout: default
 title: Intelligence Archive
 ---
 
-## Intelligence Archive
+# Intelligence Archive
 
 Access historical intelligence briefings and timelines.
 
 ## 2026
 
 ### February
-
+- **2026-02-17 (Daily)**: [Briefing](2026/02/2026-02-17_daily_briefing.md) | [Timeline](2026/02/2026-02-17_daily_timeline.html)
 - **2026-02-16 (Daily)**: [Briefing](2026/02/2026-02-16_daily_briefing.md) | [Timeline](2026/02/2026-02-16_daily_timeline.html)
 - **2026-02-15 (Daily)**: [Briefing](2026/02/2026-02-15_daily_briefing.md) | [Timeline](2026/02/2026-02-15_daily_timeline.html)
 - **2026-02-14 (Daily)**: [Briefing](2026/02/2026-02-14_daily_briefing.md) | [Timeline](2026/02/2026-02-14_daily_timeline.html)
@@ -31,7 +31,6 @@ Access historical intelligence briefings and timelines.
 - **2026-02-01 (Daily)**: [Briefing](2026/02/2026-02-01_daily_briefing.md) | [Timeline](2026/02/2026-02-01_daily_timeline.html)
 
 ### January
-
 - **2026-01-31 (Daily)**: [Briefing](2026/01/2026-01-31_daily_briefing.md) | [Timeline](2026/01/2026-01-31_daily_timeline.html)
 - **2026-01-30 (Weekly)**: [Briefing](2026/01/2026-01-30_weekly_briefing.md) | [Timeline](2026/01/2026-01-30_weekly_timeline.html)
 - **2026-01-30 (Daily)**: [Briefing](2026/01/2026-01-30_daily_briefing.md) | [Timeline](2026/01/2026-01-30_daily_timeline.html)
@@ -66,3 +65,5 @@ Access historical intelligence briefings and timelines.
 - **2026-01-04 (Daily)**: [Briefing](2026/01/2026-01-04_daily_briefing.md) | [Timeline](2026/01/2026-01-04_daily_timeline.html)
 - **2026-01-03 (Weekly)**: [Briefing](2026/01/2026-01-03_weekly_briefing.md) | [Timeline](2026/01/2026-01-03_weekly_timeline.html)
 - **2026-01-03 (Daily)**: [Briefing](2026/01/2026-01-03_daily_briefing.md) | [Timeline](2026/01/2026-01-03_daily_timeline.html)
+
+---
