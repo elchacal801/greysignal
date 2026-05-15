@@ -6,7 +6,7 @@ title: GreySignal Briefing
 # GreySignal Intelligence Briefing: Weekly (7d)
 **Generated**: 2026-05-15 10:13 UTC
 **Classification**: TLP:RED (Internal Use Only)
-**Interactive Timeline**: [View Timeline (HTML)](timeline.html)
+**Interactive Timeline**: [View Timeline (HTML)](2026-05-15_weekly_timeline.html)
 
 *AI Executive Summary unavailable — generation error. Check server logs.*
 
