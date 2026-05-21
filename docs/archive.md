@@ -10,6 +10,7 @@ Access historical intelligence briefings and timelines.
 ## 2026
 
 ### May
+- **2026-05-21 (Daily)**: [Briefing](2026/05/2026-05-21_daily_briefing.md) | [Timeline](2026/05/2026-05-21_daily_timeline.html)
 - **2026-05-20 (Daily)**: [Briefing](2026/05/2026-05-20_daily_briefing.md) | [Timeline](2026/05/2026-05-20_daily_timeline.html)
 - **2026-05-19 (Daily)**: [Briefing](2026/05/2026-05-19_daily_briefing.md) | [Timeline](2026/05/2026-05-19_daily_timeline.html)
 - **2026-05-18 (Daily)**: [Briefing](2026/05/2026-05-18_daily_briefing.md) | [Timeline](2026/05/2026-05-18_daily_timeline.html)
