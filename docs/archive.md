@@ -9,6 +9,9 @@ Access historical intelligence briefings and timelines.
 
 ## 2026
 
+### August
+- **2026-08-08 (Daily)**: [Briefing](2026/08/2026-08-08_daily_briefing.md) | [Timeline](2026/08/2026-08-08_daily_timeline.html)
+
 ### May
 - **2026-05-25 (Daily)**: [Briefing](2026/05/2026-05-25_daily_briefing.md) | [Timeline](2026/05/2026-05-25_daily_timeline.html)
 - **2026-05-24 (Daily)**: [Briefing](2026/05/2026-05-24_daily_briefing.md) | [Timeline](2026/05/2026-05-24_daily_timeline.html)
