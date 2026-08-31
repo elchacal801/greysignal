@@ -1,6 +1,6 @@
 requests>=2.31.0
 ujson>=5.9.0
-feedparser>=6.0.11
+feedparser>=6.0.12
 pandas>=2.1.0
 typer>=0.9.0
 rich>=13.7.0
