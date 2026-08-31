@@ -1,4 +1,4 @@
-requests>=2.31.0
+requests>=2.33.1
 ujson>=5.9.0
 feedparser>=6.0.11
 pandas>=2.1.0
