@@ -4,7 +4,7 @@ title: GreySignal Briefing
 ---
 
 # GreySignal Intelligence Briefing: Daily (24h)
-**Generated**: 2026-10-13 15:51 UTC
+**Generated**: 2026-10-14 13:36 UTC
 **Classification**: TLP:RED (Internal Use Only)
 **Interactive Timeline**: [View Timeline (HTML)](timeline.html)
 
@@ -14,15 +14,15 @@ title: GreySignal Briefing
 
 ## Overview
 
-**50** events collected from **10** sources.
+**69** events collected from **12** sources.
 
-**Severity**: CRITICAL: 1 | MEDIUM: 1 | LOW: 48
+**Severity**: CRITICAL: 4 | MEDIUM: 13 | LOW: 52
 
 ### Key Statistics
-- **Top Sources**: The Maritime Executive (16), Bleeping Computer (8), The Hacker News (8), Dark Reading (5), The Record by Recorded Future (5)
-- **Targeted Countries**: Russia (2), U.S. (2), Taiwan (2), Louisiana (2), Ukrainian (1)
-- **Identified Actors/Entities**: Russian (4), Microsoft (3), Southeast Asian (2), French (2), Virtual Event] Cybersecurity Outlook 2027 (1)
-- **Targeted Sectors**: Maritime (6), Defense (4), Energy (1), Telecom (1), Critical Infrastructure (1)
+- **Top Sources**: Bleeping Computer (17), The Hacker News (15), The Maritime Executive (13), Dark Reading (7), The Record by Recorded Future (6)
+- **Targeted Countries**: San Francisco (3), U.S. (2), Turkey (2), Ukraine (2), OpenAI (2)
+- **Identified Actors/Entities**: Microsoft (11), Android (4), Windows (4), Saudi (4), Ivanti (3)
+- **Targeted Sectors**: Maritime (9), Defense (5), Government (3), Finance (3), Healthcare (1)
 
 ## Event Feed
 
@@ -39,6 +39,638 @@ title: GreySignal Briefing
 **Source**: Dark Reading | **Date**: 2026-11-12 | **Severity**: LOW
 
 [Read Original Report](https://www.darkreading.com/events/virtual-event-what-every-enterprise-know-securing-cloud-2026)
+
+---
+
+### [MEDIUM] [CYBER] Microsoft takes down 3 major phishing platforms used by Chinese cybercriminals
+**Source**: The Record by Recorded Future | **Date**: 2026-10-14 | **Severity**: MEDIUM
+
+The tech giant worked with Japan’s National Police Agency and healthcare cybersecurity organization Health-ISAC to obtain a U.S. court order seizing and redirecting domains that were part of the infrastructure underlying YAM Store, CoGUI and Iron Man.
+
+[Read Original Report](https://therecord.media/microsoft-takes-down-3-major-chinese-phishing-platforms)
+
+*Actors: Microsoft, Chinese, Japan’s National Police Agency, healthcare cybersecurity organization Health-ISAC, YAM Store | Countries: U.S. | Sectors: Healthcare*
+
+---
+
+### [MEDIUM] [CYBER] Global takedown hits network behind 1 billion phishing messages
+**Source**: Bleeping Computer | **Date**: 2026-10-14 | **Severity**: MEDIUM
+
+A massive cybercriminal ecosystem facilitating more than a billion malicious messages targeting over 75,000 organizations across 150 countries has been disrupted by law enforcement agencies and partners worldwide. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/global-takedown-hits-network-behind-1-billion-phishing-messages/)
+
+---
+
+### [LOW] [CYBER] Russian travel booking platform suspends reservations after cyberattack
+**Source**: The Record by Recorded Future | **Date**: 2026-10-14 | **Severity**: LOW
+
+Customers of Russian travel website Anywayanyday were unable to book tickets or hotel rooms as the company responded to a cyberattack.
+
+[Read Original Report](https://therecord.media/russia-anywayanyday-travel-website-cyberattack)
+
+*Actors: Russian, Anywayanyday*
+
+---
+
+### [LOW] [CYBER] Russian Influence Operation Widely Targeting Latin America
+**Source**: Dark Reading | **Date**: 2026-10-14 | **Severity**: LOW
+
+The AI-enabled operation used spoofed emails, fake government documents, and the creation of a local organization to target schools in Peru and Ecuador, among other efforts.
+
+[Read Original Report](https://www.darkreading.com/cyberattacks-data-breaches/russian-influence-operation-targeting-latin-america)
+
+*Actors: Russian Influence Operation Widely Targeting | Countries: Peru, Ecuador | Sectors: Government*
+
+---
+
+### [CRITICAL] [CYBER] CISA warns admins to immediately fix Ivanti flaw exploited as zero-day
+**Source**: Bleeping Computer | **Date**: 2026-10-14 | **Severity**: CRITICAL
+
+The U.S. Cybersecurity and Infrastructure Security Agency (CISA) urged security teams to immediately patch an Ivanti Connect Secure (ICS) flaw exploited in zero-day attacks since at least October 1st. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/)
+
+*Actors: Ivanti, The U.S. Cybersecurity and Infrastructure Security Agency, Ivanti Connect Secure, ICS*
+
+---
+
+### [LOW] [CYBER] North America: Inside the Growth of Agentic Commerce
+**Source**: Chainalysis | **Date**: 2026-10-14 | **Severity**: LOW
+
+Summary North America’s $3 trillion crypto economy remained the most influential in the world, with advancements in agentic commerce, exports… The post North America: Inside the Growth of Agentic Commerce appeared first on Chainalysis .
+
+[Read Original Report](https://www.chainalysis.com/blog/north-america-crypto-adoption-2026/)
+
+---
+
+### [MEDIUM] [CYBER] CISA warns of new Ivanti bug being exploited as latest Patch Tuesday breaks records
+**Source**: The Record by Recorded Future | **Date**: 2026-10-14 | **Severity**: MEDIUM
+
+The sixth exploited Ivanti bug this year drew attention from the feds and researchers, while a severe Microsoft vulnerability was one of more than 1,400 listed for Patch Tuesday.
+
+[Read Original Report](https://therecord.media/new-ivanti-microsoft-bugs-exploitation)
+
+*Actors: Ivanti, Microsoft, Patch Tuesday*
+
+---
+
+### [LOW] [CYBER] Congressional probe faults Match Group for failing to rein in dating app scams
+**Source**: The Record by Recorded Future | **Date**: 2026-10-14 | **Severity**: LOW
+
+The Joint Economic Committee on Tuesday released the results of a year-long investigation into Tinder, Hinge, Match, Plenty of Fish and several other dating sites owned by Match Group.
+
+[Read Original Report](https://therecord.media/congressional-probe-faults-match-group-for-failing-to-stop-dating-app-scams)
+
+*Actors: Match Group, The Joint Economic Committee, Tinder, Hinge, Match, Plenty of Fish*
+
+---
+
+### [LOW] [CYBER] CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: LOW
+
+The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Connect Secure (ICS) appliances and deployments to the latest version following the disclosure of an actively exploited vulnerability. The security flaw, tracked as CVE-2026-104935 (CVSS score: 8.6), is a case of authentication bypass impacting ICS
+
+[Read Original Report](https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html)
+
+*Actors: The U.S. Cybersecurity and Infrastructure Security Agency, Ivanti Connect Secure, ICS*
+
+---
+
+### [LOW] [CYBER] curl Patches HTTP/2 Upload Flaw After PoC Demonstrates Client-Side Code Execution
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: LOW
+
+A flaw in how curl handles HTTP/2 uploads lets a malicious server receiving an upload corrupt the client's memory, and the researcher who reported it turned that into code execution on the uploading machine. The curl project fixed it on October 14 in curl 8.23.0. Taking over a client needs exact knowledge of its build and memory layout, and curl expects a real attack to end in a crash
+
+[Read Original Report](https://thehackernews.com/2026/10/curl-patches-http2-upload-flaw-after.html)
+
+*Actors: Upload Flaw*
+
+---
+
+### [LOW] [CYBER] How to Run a Deepfake Readiness Drill Before a Cloned Voice Calls Your Team
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: LOW
+
+Cloned voices and synthetic video calls now show up in payment fraud, help desk resets, and access requests. A structured drill shows security teams exactly where verification breaks down, while nothing is at stake. The call comes in at 4:40 on a Friday. It's the CFO, or it sounds exactly like her, asking the controller to push a supplier payment out before the weekend because a deal closes
+
+[Read Original Report](https://thehackernews.com/2026/10/how-to-run-deepfake-readiness-drill.html)
+
+*Actors: a Cloned Voice Calls Your Team, CFO | Sectors: Finance*
+
+---
+
+### [LOW] [CYBER] Hirudo Android malware replaces banking apps to evade security checks
+**Source**: Bleeping Computer | **Date**: 2026-10-14 | **Severity**: LOW
+
+A new Android malware called Hirudo steals bank account credentials by replacing legitimate banking apps with modified versions that disable security checks. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/hirudo-android-malware-replaces-banking-apps-to-evade-security-checks/)
+
+*Actors: Hirudo Android, Android, Hirudo | Sectors: Finance*
+
+---
+
+### [LOW] [CYBER] Researchers Used a Public OpenAI Model to Build a $250,000 Chrome Full-Chain Exploit in Six Days
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: LOW
+
+A team at security firm XBOW chained three then-unknown Google Chrome bugs into a single attack that runs code on a Windows computer when the user only loads a web page, the company said. Its researchers built the attack in six days by directing AI agents running OpenAI's publicly available GPT-5.6 Sol model. Google has since confirmed all three bugs, fixed them, and paid XBOW its top $
+
+[Read Original Report](https://thehackernews.com/2026/10/researchers-used-public-openai-model-to.html)
+
+*Actors: Chrome Full-Chain, XBOW, Google Chrome, Windows, OpenAI*
+
+---
+
+### [MEDIUM] [CYBER] Hirudo Android Trojan Uses Patched Banking Apps to Bypass Their Built-In Security Checks
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: MEDIUM
+
+Cybersecurity researchers have disclosed details of a new Android banking trojan called Hirudo that works by replacing legitimate banking apps with purpose-built patched versions designed to bypass security checks from inside the app itself, marking a new escalation in financial fraud. Dutch mobile security company ThreatFabric said it identified replacements for eight Indonesian banking
+
+[Read Original Report](https://thehackernews.com/2026/10/hirudo-android-trojan-uses-patched.html)
+
+*Actors: Bypass Their Built-In Security Checks, Android, Hirudo, Dutch, ThreatFabric | Sectors: Finance*
+
+---
+
+### [LOW] [CYBER] An AI Agent Found a Critical OTP Bypass in Production. The Attack Was the Easy Part.
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: LOW
+
+The bug was simple: the login let you choose where your sign-in code went. Proving it on a live website was the hard part. TL;DR During an authorized assessment, an AI pentesting agent found a critical authentication bypass on a major insurer's production website, on its own. One login request let the user choose where the one-time passcode went. The attack was the easy part. Proving it
+
+[Read Original Report](https://thehackernews.com/2026/10/an-ai-agent-found-critical-otp-bypass.html)
+
+---
+
+### [LOW] [CYBER] Microsoft: Recent Windows updates may trigger Remote Desktop failures
+**Source**: Bleeping Computer | **Date**: 2026-10-14 | **Severity**: LOW
+
+Microsoft has confirmed that non-admin users may be unable to connect to devices via Remote Desktop after installing recent Windows updates if the "Administrator protection" security feature is enabled. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/microsoft-recent-windows-updates-may-trigger-remote-desktop-failures/)
+
+*Actors: Microsoft, Remote Desktop, Windows*
+
+---
+
+### [LOW] [CYBER] AI-Found Linux Kernel Flaw Gives Local Users Root, and Can Break a Guest Out to the Host
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: LOW
+
+A flaw in Linux's vhost subsystem lets a local user read and write kernel memory at will and become root across nearly a decade of kernel versions. In one virtualization setup, it lets an untrusted virtual machine write to the host's memory and hijack the program that runs the virtual machine. The bug is tracked as CVE-2026-74580 and named Vghost. Tencent Zhuque Lab, which found the
+
+[Read Original Report](https://thehackernews.com/2026/10/ai-found-linux-kernel-flaw-gives-local.html)
+
+*Actors: AI-Found Linux Kernel Flaw Gives Local Users Root, Can Break a Guest, Vghost, Zhuque Lab | Countries: Linux*
+
+---
+
+### [LOW] [CYBER] The Mecca Pact and Pakistan’s Bid to Become Indispensable
+**Source**: War on the Rocks | **Date**: 2026-10-14 | **Severity**: LOW
+
+For most of its history, Pakistan’s geopolitical value has risen and fallen with other countries’ emergencies. The Mecca Pact may be its most serious attempt yet to break that cycle. On Aug. 31, Pakistan, Saudi Arabia, and Turkey established a secretariat in Saudi Arabia for the Mecca Defence Agreement. The first secretary-general comes from Pakistan for a three-year term. The agreement builds on the Saudi-Pakistani agreement signed in September 2025, locking a decades-old informal security arra
+
+[Read Original Report](https://warontherocks.com/the-mecca-pact-and-pakistans-bid-to-become-indispensable/)
+
+*Actors: The Mecca Pact, the Mecca Defence Agreement, Saudi | Countries: Pakistan, Saudi Arabia, Turkey*
+
+---
+
+### [LOW] [CYBER] The United Kingdom’s Military AI Ambitions Need Guardrails
+**Source**: War on the Rocks | **Date**: 2026-10-14 | **Severity**: LOW
+
+Advancing military AI capability is a priority for the United Kingdom, and in recent weeks, the new government has doubled down on its ambitions for AI and defense via two major partnerships.On Aug. 24, 2026, on his first overseas trip as the new prime minister of the United Kingdom, Andy Burnham signed a landmark partnership: The United Kingdom is the first international partner to receive access to Ukraine’s Avengers AI Labs. The deal will allow the United Kingdom to train its military AI syst
+
+[Read Original Report](https://warontherocks.com/the-united-kingdoms-military-ai-ambitions-need-guardrails/)
+
+*Actors: Andy Burnham | Countries: The United Kingdom’s Military AI Ambitions Need Guardrails, the United Kingdom, Ukraine | Sectors: Government, Defense*
+
+---
+
+### [MEDIUM] [CYBER] Four-Byte Write and Timing Bug Let Researchers Run Code in Windows SmartScreen Enclave
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: MEDIUM
+
+Security researchers ran their own code inside a protected part of Windows that is meant to stay sealed off even when the rest of the computer is taken over. The protected area is a VBS enclave, an isolated slice of memory the operating system uses to guard secrets, and the one they broke into handles passwords for a Windows anti-phishing feature. The work was done in a lab as a proof of
+
+[Read Original Report](https://thehackernews.com/2026/10/four-byte-write-and-timing-bug-let.html)
+
+*Actors: Windows SmartScreen*
+
+---
+
+### [LOW] [CYBER] Ransomware Gangs Embrace Physical Threats, Family Stalking?
+**Source**: Dark Reading | **Date**: 2026-10-14 | **Severity**: LOW
+
+Organizations are reporting that employees face threats of stalking, physical violence, and abduction. But these alarming claims are hard to verify.
+
+[Read Original Report](https://www.darkreading.com/cybersecurity-analytics/ransomware-gangs-physical-threats-family-stalking)
+
+*Actors: Ransomware Gangs Embrace Physical Threats*
+
+---
+
+### [MEDIUM] [CYBER] Microsoft Patches Record 1,413 Flaws, Including Exploited Windows Shell Bug
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: MEDIUM
+
+Microsoft on Tuesday shattered its own Patch Tuesday record by shipping patches for a whopping 1,413 vulnerabilities, including one that it said has come under active exploitation. These include 1,102 flaws in Windows, 134 in Office, 61 in Developer Tools, 36 in SharePoint Server, and 22 in SQL Server. Of these, more than 670 relate to privilege escalation, followed by over 300 remote code
+
+[Read Original Report](https://thehackernews.com/2026/10/microsoft-patches-record-1413-flaws.html)
+
+*Actors: Microsoft, Including Exploited, SharePoint Server | Countries: Patch, Windows, Office, Developer Tools | Sectors: Maritime*
+
+---
+
+### [LOW] [CYBER] Two More Ship Strikes Reported in the Strait of Hormuz
+**Source**: The Maritime Executive | **Date**: 2026-10-14 | **Severity**: LOW
+
+On Tuesday, strikes on merchant shipping in the Strait of Hormuz continued with two reported attacks, according to UK Maritime Trade Operations. UKMTO...
+
+[Read Original Report](https://maritime-executive.com/article/two-more-ship-strikes-reported-in-the-strait-of-hormuz)
+
+*Actors: UK Maritime Trade Operations | Sectors: Maritime*
+
+---
+
+### [LOW] [CYBER] American Nuclear Power Barge Startup Buys its First Uranium Fuel
+**Source**: The Maritime Executive | **Date**: 2026-10-14 | **Severity**: LOW
+
+American ambitions to bring nuclear power back to the waterfront are gathering steam: Bluecore Energy, the Long Beach-based floating nuclear power sta...
+
+[Read Original Report](https://maritime-executive.com/article/american-nuclear-power-barge-startup-buys-its-first-uranium-fuel)
+
+*Actors: American Nuclear Power Barge Startup Buys, First Uranium Fuel, American, Bluecore Energy | Countries: Long Beach | Sectors: Energy, Critical Infrastructure*
+
+---
+
+### [LOW] [CYBER] OpenAI Employee Arrested for Allegedly Planting Hidden Recorder in Executive Conference Room
+**Source**: The Hacker News | **Date**: 2026-10-14 | **Severity**: LOW
+
+A Saudi national and employee of OpenAI has been arrested for allegedly planting a hidden recording device in an executive conference room at the company's San Francisco offices to covertly record sensitive conversations. Abdulrahman Alfozan, 35, has been charged with using or endeavoring to use an electronic, mechanical, or other device to intercept oral communications. He was arrested by
+
+[Read Original Report](https://thehackernews.com/2026/10/openai-employee-arrested-for-allegedly.html)
+
+*Actors: OpenAI Employee Arrested for Allegedly Planting Hidden Recorder, Saudi, Abdulrahman Alfozan | Countries: OpenAI, San Francisco*
+
+---
+
+### [LOW] [CYBER] Panama Moves to Revoke Registry from Three Tankers Sanctioned by U.S.
+**Source**: The Maritime Executive | **Date**: 2026-10-14 | **Severity**: LOW
+
+The Panama Maritime Authority is highlighting that it is moving quickly to expel three tankers that were sanctioned days ago by the United States in t...
+
+[Read Original Report](https://maritime-executive.com/article/panama-moves-to-revoke-registry-from-three-tankers-sanctioned-by-u-s)
+
+*Actors: Panama Moves to Revoke Registry, The Panama Maritime Authority | Countries: U.S, the United States | Sectors: Maritime*
+
+---
+
+### [LOW] [CYBER] One Dead, Two Injured in High-Speed Smuggling Boat Chase off Portugal
+**Source**: The Maritime Executive | **Date**: 2026-10-14 | **Severity**: LOW
+
+A cocaine-smuggling suspect was killed and two others were injured during a high-speed boat chase off the coast of Portugal on Sunday, according to th...
+
+[Read Original Report](https://maritime-executive.com/article/one-dead-two-injured-in-high-speed-smuggling-boat-chase-off-portugal)
+
+*Actors: Chase | Countries: Portugal*
+
+---
+
+### [LOW] [CYBER] Suez Canal Highlights Continued Return of Containerships
+**Source**: The Maritime Executive | **Date**: 2026-10-14 | **Severity**: LOW
+
+The Suez Canal Authority reports it hit a new milestone in rebuilding volumes following the disruptions due to Red Sea security concerns. Despite the...
+
+[Read Original Report](https://maritime-executive.com/article/suez-canal-highlights-continued-return-of-containerships)
+
+*Actors: Suez Canal Highlights Continued Return of Containerships, The Suez Canal Authority*
+
+---
+
+### [MEDIUM] [GEN] Microsoft Patches More Than 1,400 Security Flaws
+**Source**: Krebs on Security | **Date**: 2026-10-13 | **Severity**: MEDIUM
+
+Microsoft today issued updates to fix more than 1,400 security vulnerabilities in its Windows operating systems and other software. Today's epic patch batch dwarfs September's record of nearly 1,000 fixes, which was already about ten times the normal monthly patch load from Redmond.
+
+[Read Original Report](https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/)
+
+*Actors: Microsoft, Security Flaws, Windows*
+
+---
+
+### [LOW] [CYBER] Saudi national charged with planting spy device in OpenAI executive conference room
+**Source**: The Record by Recorded Future | **Date**: 2026-10-13 | **Severity**: LOW
+
+Abdulrahman Alfozan, 35, a Saudi national working as an engineer for OpenAI, was charged Tuesday with secretly bugging an executive conference room at one of the company’s buildings in San Francisco.
+
+[Read Original Report](https://therecord.media/saudi-national-charged-with-spy-device-openai)
+
+*Actors: Saudi, Abdulrahman Alfozan | Countries: OpenAI, San Francisco*
+
+---
+
+### [LOW] [CYBER] OpenAI engineer arrested for allegedly planting spy device in office
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: LOW
+
+A Saudi OpenAI engineer has been arrested for allegedly planting a hidden recording device in an executive conference room at the company's San Francisco offices to secretly record sensitive conversations. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-engineer-arrested-for-allegedly-planting-spy-device-in-office/)
+
+*Actors: Saudi | Countries: San Francisco*
+
+---
+
+### [LOW] [CYBER] Charterparty Details are Key in an Era of Constrained Chokepoints
+**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
+
+Since the February 2026 commencement of the military operations in Iran, the issue of maritime shipping chokepoints has dominated headlines, with the...
+
+[Read Original Report](https://maritime-executive.com/article/charterparty-details-are-key-in-an-era-of-constrained-chokepoints)
+
+*Countries: Iran | Sectors: Maritime, Defense*
+
+---
+
+### [MEDIUM] [CYBER] Zero-Days Lurk in Microsoft's Overgrown October Patch Tuesday
+**Source**: Dark Reading | **Date**: 2026-10-13 | **Severity**: MEDIUM
+
+The scary surprises in the largest security update ever include security bypasses and unauthenticated RCEs.
+
+[Read Original Report](https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday)
+
+*Actors: Microsoft, Overgrown*
+
+---
+
+### [LOW] [CYBER] Trump Administration Asks Court to Let It Re-Evaluate Revolution Wind's COP
+**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
+
+The Trump administration is renewing its challenges to Ørsted’s offshore wind farm, Revolution Wind, located off the coast of Rhode Island. The Depart...
+
+[Read Original Report](https://maritime-executive.com/article/trump-administration-asks-court-to-let-it-re-evaluate-revolution-wind-s-cop)
+
+*Actors: Trump Administration Asks Court, COP, Trump, Revolution Wind, Depart | Countries: Rhode Island*
+
+---
+
+### [LOW] [CYBER] Ghostscript flaw lets hackers hijack servers via PDF uploads
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: LOW
+
+A critical heap buffer overflow vulnerability (CVE-2026-39919) in the Ghostscript interpreter and rendering engine could allow remote code execution through specially crafted PDF files. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/ghostscript-flaw-lets-hackers-hijack-servers-via-pdf-uploads/)
+
+*Actors: PDF*
+
+---
+
+### [MEDIUM] [CYBER] North Korea Phishes Ukrainians for War Intel
+**Source**: Dark Reading | **Date**: 2026-10-13 | **Severity**: MEDIUM
+
+The Democratic People's Republic of Korea (DPRK) is trying to get insight into its own war effort in Ukraine, through simple reply-baiting phishing attacks.
+
+[Read Original Report](https://www.darkreading.com/cyberattacks-data-breaches/north-korea-phishes-ukrainians-war-intel)
+
+*Actors: North Korea Phishes, The Democratic People's Republic of Korea, DPRK | Countries: Ukraine*
+
+---
+
+### [LOW] [CYBER] Taiwan Makes "Landmark" Purchase of American-Made Unmanned Surface Vessels
+**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
+
+Taiwan's Coast Guard Administration has agreed to buy autonomous surface vessels from the American boatbuilder Maritime Tactical Systems (MARTAC), mak...
+
+[Read Original Report](https://maritime-executive.com/article/taiwan-makes-landmark-purchase-of-american-made-unmanned-surface-vessels)
+
+*Actors: American, Coast Guard Administration, Maritime Tactical Systems, MARTAC | Countries: Taiwan | Sectors: Maritime*
+
+---
+
+### [LOW] [CYBER] Anthropic warns self-replicating AI could spread to your smart devices
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: LOW
+
+Anthropic is warning that small AI models could soon be able to self-replicate across consumer IoT devices, from Android TV boxes to smart ovens, creating distributed botnets capable of running AI workloads without relying on data centers. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/anthropic-warns-self-replicating-ai-could-spread-to-your-smart-devices/)
+
+*Actors: IoT, Android*
+
+---
+
+### [LOW] [CYBER] U.S. Navy Seeks Contractors for $15 Billion Puget Sound Shipyard Upgrade
+**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
+
+The U.S. Navy is moving towards the selection of a contractor for its massive Bremerton naval shipyard overhaul, one of the largest maritime infrastr...
+
+[Read Original Report](https://maritime-executive.com/article/u-s-navy-seeks-contractors-for-15-billion-puget-sound-shipyard-upgrade)
+
+*Actors: U.S. Navy Seeks Contractors, The U.S. Navy | Countries: Bremerton | Sectors: Maritime*
+
+---
+
+### [LOW] [CYBER] Anthropic Finds Ingredients for Future AI Worms
+**Source**: Dark Reading | **Date**: 2026-10-13 | **Severity**: LOW
+
+Anthropic's latest study combined IoT and network tests to explore AI self-replication, which researchers said would be "challenging" to shut down.
+
+[Read Original Report](https://www.darkreading.com/perimeter/anthropic-ingredients-future-ai-worms)
+
+*Actors: IoT*
+
+---
+
+### [CRITICAL] [CYBER] Microsoft October 2026 Patch Tuesday fixes 1,411 flaws, 3 zero-days
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: CRITICAL
+
+Today is Microsoft's October 2026 Patch Tuesday, with security updates addressing a record-breaking 1,411 flaws, including one actively exploited and two publicly disclosed zero-day vulnerabilities. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/)
+
+*Actors: Microsoft*
+
+---
+
+### [MEDIUM] [CYBER] Microsoft releases Windows 10 KB5126657 extended security update
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: MEDIUM
+
+Microsoft released the Windows 10 KB5126657 extended security update, which includes this month's record-breaking October 2026 Patch Tuesday fixes and a few bug fixes and changes. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5126657-extended-security-update/)
+
+*Actors: Microsoft*
+
+---
+
+### [LOW] [CYBER] Iran Lodges IMO Protest Over US Use of Channel 16 for Military Intimidation
+**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
+
+Iran filed a formal protest at the International Maritime Organization, asserting that U.S. military forces are misusing VHF Channel 16, turning it in...
+
+[Read Original Report](https://maritime-executive.com/article/iran-lodges-imo-protest-over-us-use-of-channel-16-for-military-intimidation)
+
+*Actors: Lodges IMO Protest, Channel 16 for Military Intimidation, the International Maritime Organization | Countries: Iran, U.S. | Sectors: Maritime, Defense*
+
+---
+
+### [LOW] [CYBER] Op-Ed: Transparency Alone Won't Deter China in the South China Sea
+**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
+
+On 10 October, the National Task Force for the West Philippine Sea (NTF-WPS) reported that 22 vessels from the Chinese maritime militia had been deplo...
+
+[Read Original Report](https://maritime-executive.com/article/op-ed-transparency-alone-won-t-deter-china-in-the-south-china-sea)
+
+*Actors: the National Task Force, Chinese | Countries: China | Sectors: Maritime*
+
+---
+
+### [LOW] [CYBER] Microsoft: Windows 11 24H2 Home and Pro reached end of support
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: LOW
+
+Microsoft announced today that devices running Windows 11 24H2 Home and Pro editions have reached the end of support and will no longer receive monthly security and non-security preview updates. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-11-24h2-home-and-pro-reached-end-of-support/)
+
+*Actors: Microsoft*
+
+---
+
+### [LOW] [MARITIME] OMS Group CS Resilience Reaches Keel-Laying Milestone
+**Source**: Submarine Telecoms Forum | **Date**: 2026-10-13 | **Severity**: LOW
+
+OMS Group CS Resilience Reaches Keel-Laying Milestone Publication Staff, OMS GroupOctober 13, 2026 Workers at CRIST Shipyard in Gdynia, Poland, placed the keel of OMS Group's CS Resilience on September 17, 2026. OMS Group and Ulstein disclosed the milestone in official updates dated October 13. The ceremony begins assembly of the ship's hull and moves [...] The post OMS Group CS Resilience Reaches Keel-Laying Milestone appeared first on SubTel Forum .
+
+[Read Original Report](https://subtelforum.com/oms-group-cs-resilience-keel-laying/)
+
+*Actors: OMS Group CS Resilience, OMS Group, OMS, OMS Group's, CS Resilience | Countries: Gdynia, Poland*
+
+---
+
+### [LOW] [CYBER] Anthropic Warns Small AI Models Could Soon Form Self-Propagating IoT Botnets
+**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
+
+Small artificial intelligence (AI) models may be months away from developing capabilities to self-replicate on IoT devices like smart ovens and off-brand Android TV boxes, according to a warning from Anthropic. The frontier AI lab said small AI models could form autonomous, self-propagating worm botnets that are "challenging to shut down," since "there's no centralized point to shut off."
+
+[Read Original Report](https://thehackernews.com/2026/10/anthropic-warns-small-ai-models-could.html)
+
+*Actors: IoT, Android | Countries: Anthropic*
+
+---
+
+### [LOW] [CYBER] UK Housing Ombudsman Service investigates 'security incident'
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: LOW
+
+The U.K. Housing Ombudsman Service is investigating a third-party IT security incident that impacted its case management system on Tuesday. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/uk-housing-ombudsman-service-investigates-security-incident/)
+
+*Actors: Housing Ombudsman Service, The U.K. Housing Ombudsman Service*
+
+---
+
+### [MEDIUM] [CYBER] Docker Fixes Critical Two-Year-Old Hub Flaw That Let One User Push Images as Another
+**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: MEDIUM
+
+A flaw in Docker Hub, the registry where container images are published and downloaded, let one user push, pull, or delete images as another user. Docker fixed the flaw on September 30 and says it found no evidence that anyone exploited it. The flaw was in the feature that converts a personal account into an organization, Docker said in a security advisory on October 12.
+
+[Read Original Report](https://thehackernews.com/2026/10/docker-fixes-critical-two-year-old-hub.html)
+
+*Actors: Docker Fixes Critical, Docker*
+
+---
+
+### [LOW] [CYBER] Doubts Grow Over the Terms of Ukraine’s European Union Accession
+**Source**: War on the Rocks | **Date**: 2026-10-13 | **Severity**: LOW
+
+Welcome to The Ukraine Compass, a weekly digest of Ukrainian commentary and analysis from across the political spectrum only for War on the Rocks members. Each week, we bring you a curated selection of articles from Ukrainian media offering insight into how Ukrainians themselves debate the issues shaping their country.Western coverage often narrows the view to the battlefield — these pieces widen it, revealing the texture of daily life, politics, and public argument in a nation at war. The persp
+
+[Read Original Report](https://warontherocks.com/doubts-grow-over-the-terms-of-ukraines-european-union-accession/)
+
+*Actors: The Ukraine Compass, Ukrainian, Rocks, Ukrainians*
+
+---
+
+### [LOW] [FINANCE] Minutes of the Board's discount rate meetings on August 17, September 9, and September 16, 2026
+**Source**: Federal Reserve Board | **Date**: 2026-10-13 | **Severity**: LOW
+
+Minutes of the Board's discount rate meetings on August 17, September 9, and September 16, 2026
+
+[Read Original Report](https://www.federalreserve.gov/newsevents/pressreleases/monetary20261013a.htm)
+
+*Actors: Board*
+
+---
+
+### [MEDIUM] [CYBER] Windows 11 KB5127648 & KB5126653 cumulative updates released
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: MEDIUM
+
+Microsoft has released the Patch Tuesday Windows 11 KB5127648 and KB5126653 cumulative updates for versions 26H2/25H2/24H2 and 23H2 to fix security vulnerabilities and bugs, and add new features. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5127648-and-kb5126653-cumulative-updates-released/)
+
+*Actors: Windows 11 KB5127648 & KB5126653, Microsoft | Countries: KB5126653*
+
+---
+
+### [LOW] [CYBER] Bulgaria Calls for EU, NATO, Turkey and Romania to Aid Black Sea Security
+**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
+
+With the security situation deteriorating in the Black Sea, Bulgarian officials are calling for the European Union and NATO to support the efforts to...
+
+[Read Original Report](https://maritime-executive.com/article/bulgaria-calls-for-eu-nato-turkey-and-romania-to-aid-black-sea-security)
+
+*Actors: Bulgaria Calls, NATO, Aid Black Sea Security, Bulgarian, the European Union | Countries: Turkey, Romania | Sectors: Defense*
+
+---
+
+### [CRITICAL] [CYBER] Attacker Chains Three Ivanti Connect Secure Zero-Days for Root Access, Only Two Patched So Far
+**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: CRITICAL
+
+An attacker chained three zero-day flaws in Ivanti Connect Secure, a VPN appliance, to run commands as root without logging in, security firm Volexity said on October 13. Ivanti has released fixes for two of the flaws and told customers on affected versions to "act immediately." A fix for the third is still pending, according to Volexity. Volexity, which reported the flaws to Ivanti,
+
+[Read Original Report](https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html)
+
+*Actors: Attacker Chains, Root Access, Ivanti Connect Secure, Volexity, Ivanti*
+
+---
+
+### [MEDIUM] [CYBER] SAP Discloses Critical CVSS 10 Flaw in Cloud SDK for Python Allowing OAuth2 Credential Theft
+**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: MEDIUM
+
+A flaw in SAP's Cloud SDK for Python can send an application's OAuth2 client credentials to a server an attacker controls, SAP said in a security advisory on October 13. The flaw affects multi-tenant applications on SAP Business Technology Platform (BTP) that use the SDK, SAP's official Python client for BTP services. An attacker must be able to control the tenant subdomain,
+
+[Read Original Report](https://thehackernews.com/2026/10/sap-discloses-critical-cvss-10-flaw-in.html)
+
+*Actors: SAP Discloses Critical CVSS, Cloud SDK, SAP, SAP Business Technology Platform, SDK*
+
+---
+
+### [LOW] [CYBER] TFG London cyberattack disrupts systems at Hobbs and Whistles retailers
+**Source**: Bleeping Computer | **Date**: 2026-10-13 | **Severity**: LOW
+
+TFG London detected a cybersecurity incident that impacted IT systems used by the Phase Eight, Hobbs, and Whistles premium fashion brands. [...]
+
+[Read Original Report](https://www.bleepingcomputer.com/news/security/tfg-london-cyberattack-disrupts-systems-at-hobbs-and-whistles-retailers/)
+
+*Actors: TFG London | Countries: London, Hobbs, Whistles*
+
+---
+
+### [LOW] [CYBER] GitHub Tightens npm Publishing After Flaw Left 1,500+ Packages Vulnerable to Hijacking
+**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
+
+GitHub has taken the step of expiring unvalidated npm trusted publishing configurations 48 hours after creation after researchers found that it was possible for an attacker to push new versions of a different user's package without having to steal their credentials. "Your configuration becomes validated and exempt from expiry after its first successful publish," the Microsoft-owned subsidiary
+
+[Read Original Report](https://thehackernews.com/2026/10/github-tightens-npm-publishing-after.html)
+
+*Actors: GitHub, Tightens npm Publishing, Flaw Left, Hijacking, npm*
+
+---
+
+### [LOW] [CYBER] Chainalysis Reactor Withstands Daubert Scrutiny Again on Appeal
+**Source**: Chainalysis | **Date**: 2026-10-13 | **Severity**: LOW
+
+Summary Chainalysis Reactor’s evidentiary admissibility has now withstood scrutiny at two levels of federal court. In September, the D.C. Circuit… The post Chainalysis Reactor Withstands Daubert Scrutiny Again on Appeal appeared first on Chainalysis .
+
+[Read Original Report](https://www.chainalysis.com/blog/chainalysis-daubert-standard-appeal/)
+
+*Actors: the D.C. Circuit | Sectors: Government*
 
 ---
 
@@ -141,429 +773,4 @@ SAP has addressed 20 security flaws across multiple products in its October 2026
 
 ---
 
-### [LOW] [CYBER] Russian internet provider SkyNet reports outages after cyberattack claimed by Ukrainian hackers
-**Source**: The Record by Recorded Future | **Date**: 2026-10-13 | **Severity**: LOW
-
-One of St. Petersburg's major internet providers said its network had been under a distributed denial-of-service (DDoS) attack since October 6, affecting services including online gaming, voice calls and video conferencing.
-
-[Read Original Report](https://therecord.media/russian-internet-provider-skynet-reports-outages-ddos)
-
-*Actors: Russian, Ukrainian | Countries: St. Petersburg's*
-
----
-
-### [LOW] [CYBER] Ledger says hardware implant in cryptocurrency wallets stole recovery phrases
-**Source**: The Record by Recorded Future | **Date**: 2026-10-13 | **Severity**: LOW
-
-Ledger cryptocurrency wallets sold through a Southeast Asian reseller had an implant allowing outsiders to drain funds, the company said.
-
-[Read Original Report](https://therecord.media/ledger-cryptocurrency-wallet-implant-theft)
-
-*Actors: Southeast Asian*
-
----
-
-### [LOW] [CYBER] Xandr Fined a Record €8.6 Million for Relaying Grindr Data Revealing Sexual Orientation
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
-
-The Norwegian Data Protection Authority (DPA) has fined Xandr, an advertising unit owned by Microsoft, €8.6 million ($9.62 million) for illegally relaying ​Grindr users' sensitive data to advertisers. The administrative penalty is the largest issued by the data protection watchdog, arguing the case merited a high fine because of the "very serious" nature of the breach. The infringements
-
-[Read Original Report](https://thehackernews.com/2026/10/xandr-fined-record-86-million-for.html)
-
-*Actors: Xandr Fined, The Norwegian Data Protection Authority, DPA, Xandr, Microsoft*
-
----
-
-### [LOW] [GEN] How Chiplets Could Transform Server Design – And Data Centers
-**Source**: Data Center Knowledge | **Date**: 2026-10-13 | **Severity**: LOW
-
-Chiplets are reshaping CPU design, enabling data centers to do more without increasing space or power consumption.
-
-[Read Original Report](https://www.datacenterknowledge.com/data-center-chips/how-chiplets-could-transform-server-design-and-data-centers)
-
-*Actors: Data Centers, CPU*
-
----
-
-### [LOW] [GEN] Microsoft Pushes Custom AI Chips with Azure Maia 300
-**Source**: Data Center Knowledge | **Date**: 2026-10-13 | **Severity**: LOW
-
-Microsoft unveiled Maia 300, its third-generation AI chip, as Maia 200 goes live, powering Copilot.
-
-[Read Original Report](https://www.datacenterknowledge.com/data-center-chips/microsoft-pushes-custom-ai-chips-with-azure-maia-300)
-
-*Actors: Microsoft Pushes Custom AI Chips, Microsoft, Maia 300, Maia 200, Copilot*
-
----
-
-### [LOW] [CYBER] South African clothing retailer Foschini Group investigating cyberattack on British fashion brands
-**Source**: The Record by Recorded Future | **Date**: 2026-10-13 | **Severity**: LOW
-
-The South African retail giant The Foschini Group (TFG) disclosed a cyberattack that disrupted IT systems at three of its British fashion brands, leaving some services unavailable.
-
-[Read Original Report](https://therecord.media/foschini-group-south-africa-cyber)
-
-*Actors: South African, Foschini Group, British, The Foschini Group, TFG*
-
----
-
-### [LOW] [CYBER] China Merchants Energy Shipping & RINA to Explore AI-Driven Ship Operations
-**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
-
-China Merchants Energy Shipping (CMES), one of the world's leading shipping and maritime transportation companies, and RINA, the multinational inspect...
-
-[Read Original Report](https://maritime-executive.com/article/china-merchants-energy-shipping-rina-to-explore-ai-driven-ship-operations)
-
-*Actors: China Merchants Energy Shipping & RINA, China Merchants Energy Shipping, CMES | Sectors: Energy, Maritime*
-
----
-
-### [LOW] [CYBER] Everllence Celebrates Century with MITSUI E&S as Two-Stroke Licensee
-**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
-
-On October 2nd 2026, Everllence participated in a ceremony held by MITSUI E&S in Okayama, Japan celebrating its 100th anniversary as an Everllence two...
-
-[Read Original Report](https://maritime-executive.com/article/everllence-celebrates-century-with-mitsui-e-s-as-two-stroke-licensee)
-
-*Countries: Okayama, Japan*
-
----
-
-### [LOW] [CYBER] Kongsberg Maritime Secures Contract for Four Offshore Wind CSOVs
-**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
-
-Kongsberg Maritime has secured a contract with IWS Fleet AS, a subsidiary of Integrated Wind Solutions (IWS), to provide vessel design and integrated...
-
-[Read Original Report](https://maritime-executive.com/article/kongsberg-maritime-secures-contract-for-four-offshore-wind-csovs)
-
-*Actors: Kongsberg Maritime Secures Contract, Kongsberg Maritime, IWS Fleet AS, Integrated Wind Solutions, IWS | Sectors: Maritime*
-
----
-
-### [LOW] [CYBER] Cyber incident hits grocery stores in US, Netherlands and Belgium
-**Source**: The Record by Recorded Future | **Date**: 2026-10-13 | **Severity**: LOW
-
-Ahold Delhaize, the Dutch multinational retailer, announced it was taking precautionary measures following a cybersecurity incident, with stores in the U.S., Netherlands and Belgium reportedly impacted.
-
-[Read Original Report](https://therecord.media/cyberattack-groceru-ahold-delhaize)
-
-*Actors: Dutch | Countries: Netherlands, Belgium, U.S.*
-
----
-
-### [LOW] [MARITIME] Henox Crest Plans Coastal Submarine Cable Network in India
-**Source**: Submarine Telecoms Forum | **Date**: 2026-10-13 | **Severity**: LOW
-
-Henox Crest Plans Coastal Submarine Cable Network in India Henox IT and Data Centers Press ReleaseOctober 12, 2026 For immediate releaseHenox Crest to break India’s two-gateway dependence with a new carrier-neutral coastal submarine networkA new coastal cable system will open multiple carrier-neutral landing hubs along India’s coastline — reducing concentration risk, strengthening national resilience, and [...] The post Henox Crest Plans Coastal Submarine Cable Network in India appeared first on
-
-[Read Original Report](https://subtelforum.com/henox-crest-india-coastal-submarine-cable-network/)
-
-*Actors: Henox Crest, Data Centers Press | Countries: India | Sectors: Telecom*
-
----
-
-### [LOW] [CYBER] \[Webinar\] How to Stop AI-Driven Privilege Escalation With Runtime Identity Controls
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
-
-The dangerous part of a stolen identity isn't always the initial login. It's what an attacker can do with that access next. With AI accelerating reconnaissance, exploitation of vulnerabilities, and privilege escalation, attackers can move through systems faster than security teams can investigate. A compromised account that looks legitimate at first could become the starting point for a much
-
-[Read Original Report](https://thehackernews.com/2026/10/webinar-how-to-stop-ai-driven-privilege.html)
-
----
-
-### [MEDIUM] [CYBER] LG Smart TVs Vulnerable to Pre-Auth Root Takeover From Local Network
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: MEDIUM
-
-Three vulnerabilities in LG's webOS can be chained to give an attacker on the same local network root access to certain smart TVs without a PIN or any interaction from the owner. LG has issued a fix, according to an advisory published by SSD Secure Disclosure on October 12. The chain was tested on two TV models, the 32LQ636BPSA and the 27TQ600SW, running webOS 7.5.7-25 on firmware
-
-[Read Original Report](https://thehackernews.com/2026/10/lg-smart-tvs-vulnerable-to-pre-auth.html)
-
-*Actors: LG Smart, Pre-Auth Root Takeover From Local Network, PIN*
-
----
-
-### [LOW] [CYBER] Product Walkthrough: Bitdefender AI Visibility and Control
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
-
-A user opens a browser tab, pastes data into a chat assistant, and nothing is installed. A developer adds a coding assistant as an editor extension, and nothing shows up in the installed programs list. Someone downloads a local model runtime, a program that runs models directly on the machine instead of sending data to an external service, because they were told not to send company data
-
-[Read Original Report](https://thehackernews.com/2026/10/product-walkthrough-bitdefender-ai.html)
-
----
-
-### [LOW] [CYBER] Attackers Heat French Supermarket Fridges Up to 50°C by Hijacking Danfoss Controllers
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
-
-Attackers took remote control of fridges and freezers at hundreds of French supermarkets on the night of October 11 and warmed them, forcing stores to throw food away, several retail chains said. The attackers reached them through the controller that runs all of a store's fridges and freezers, a device made by Danish company Danfoss that maintenance firms can manage remotely. Les Mousquetaires
-
-[Read Original Report](https://thehackernews.com/2026/10/attackers-heat-french-supermarket.html)
-
-*Actors: Attackers Heat French Supermarket Fridges, French, Danish, Les Mousquetaires*
-
----
-
-### [LOW] [CYBER] Two Critical MarkLogic Flaws Could Give Delegated Managers Persistent Admin Control
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
-
-Two of 31 newly disclosed flaws in Progress Software's MarkLogic Server database could let an account given only some management privileges take administrator control of the server, the company says. Progress published all 31 on October 12 and scored five of them critical. Fixes have been available since September 10, in MarkLogic 11.3.7 and MarkLogic 12.1.0. Affected
-
-[Read Original Report](https://thehackernews.com/2026/10/two-critical-marklogic-flaws-could-give.html)
-
-*Actors: Progress Software's, MarkLogic*
-
----
-
-### [LOW] [CYBER] GitLab Patches CVSS 10.0 Flaw That Could Let Unauthenticated Users Run Server Code
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
-
-GitLab has released patches for a maximum-severity security flaw impacting its Community Edition (CE) and Enterprise Edition (EE) software that could result in arbitrary code execution. "GitLab has remediated an issue that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD
-
-[Read Original Report](https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html)
-
-*Actors: GitLab, Community Edition (CE*
-
----
-
-### [LOW] [CYBER] Building an Arsenal That Survives the Tenth Salvo
-**Source**: War on the Rocks | **Date**: 2026-10-13 | **Severity**: LOW
-
-America faces a well-defined industrial base problem. Whether it’s a hypothetical Taiwan invasion wargame run two dozen times, the current Iranian conflict, or the Russo-Ukrainian War, the same result repeats: Magazines of key weapons such as cruise missile systems and interceptors empty within days, weeks, or months, and the current industrial base takes years to replenish them. Part of that shortfall results from the analog way in which missile structures are designed, tooled, and sourced, whi
-
-[Read Original Report](https://warontherocks.com/cogs-of-war/building-an-arsenal-that-survives-the-tenth-salvo/)
-
-*Actors: Iranian | Countries: America, Taiwan*
-
----
-
-### [LOW] [CYBER] How Taiwan Activates Beijing’s Chosen Fear
-**Source**: War on the Rocks | **Date**: 2026-10-13 | **Severity**: LOW
-
-The standard explanations for why Taiwan is so important to the Chinese Communist Party are familiar: territorial integrity, credibility of deterrence commitments, great power competition with the United States, the strategic value of the first island chain, and the semiconductor industry concentrated in TSMC’s fabrication facilities. These explanations work, but they don’t tell the whole story. Rational strategic calculation does not produce a posture in which a nuclear-armed state with the wor
-
-[Read Original Report](https://warontherocks.com/how-taiwan-activates-beijings-chosen-fear/)
-
-*Actors: the Chinese Communist Party, TSMC | Countries: Taiwan, Beijing, the United States | Sectors: Critical Infrastructure*
-
----
-
-### [LOW] [CYBER] Low-Cost Android Phones Ship With Preinstalled Malware That Turns Them Into Residential Proxies
-**Source**: The Hacker News | **Date**: 2026-10-13 | **Severity**: LOW
-
-Low-cost Android smartphones have been shipped with malicious software baked into the device firmware, allowing bad actors to covertly install apps, conduct ad fraud, and turn devices into residential proxies. The activity, which targets Android devices built on MediaTek platforms across several brands, is being tracked by Bitdefender under the moniker Midnight Mimosa. The preinstalled
-
-[Read Original Report](https://thehackernews.com/2026/10/low-cost-android-phones-ship-with.html)
-
-*Actors: Android, MediaTek, Midnight Mimosa*
-
----
-
-### [LOW] [CYBER] EU Sanctions Russian Shipbuilding Sector, From Top Yards to Small Suppliers
-**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
-
-The European Union has released its largest-ever sanctions package on Russian defense-industry companies, a counterpoint to the Trump administration's...
-
-[Read Original Report](https://maritime-executive.com/article/eu-sanctions-russian-shipbuilding-sector-from-top-yards-to-small-supplier)
-
-*Actors: EU Sanctions Russian Shipbuilding Sector, Top Yards, The European Union, Russian, Trump | Sectors: Defense*
-
----
-
-### [LOW] [CYBER] Metal Shark Building Patrol Boats for Cameroon & Georgia
-**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
-
-Louisiana-based boatbuilder Metal Shark has been awarded two U.S. Coast Guard Foreign Military Sales (FMS) contracts to produce patrol boats for the m...
-
-[Read Original Report](https://maritime-executive.com/article/metal-shark-building-patrol-boats-for-cameroon-georgia)
-
-*Actors: Metal Shark, U.S. Coast Guard Foreign Military Sales | Countries: Georgia, Louisiana | Sectors: Defense*
-
----
-
-### [LOW] [CYBER] Inland Vessel Grounds in the Rhine With 250 Tonnes of Hydrogen on Board
-**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
-
-On Sunday, an inland vessel laden with a cargo of hydrogen went aground on the Rhine, restricting traffic on the upper stretches of the river. It is t...
-
-[Read Original Report](https://maritime-executive.com/article/inland-vessel-grounds-in-the-rhine-with-250-tonnes-of-hydrogen-on-board)
-
-*Actors: Hydrogen on Board, Rhine | Sectors: Maritime*
-
----
-
-### [LOW] [CYBER] Bulgaria Reports One Ship Sunk, One Damaged in Latest Drone Strike
-**Source**: The Maritime Executive | **Date**: 2026-10-13 | **Severity**: LOW
-
-Early Tuesday, two more vessels were hit by suspected Russian drone strikes off the coast of Bulgaria, injuring five and sinking one ship. The attacks...
-
-[Read Original Report](https://maritime-executive.com/article/bulgaria-reports-one-ship-sunk-one-damaged-in-latest-drone-strike)
-
-*Actors: Russian | Countries: Bulgaria*
-
----
-
-### [LOW] [CYBER] French Navy Boards Russia-Linked Tanker in the Indian Ocean
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-The French military has boarded the sanctioned shadow fleet tanker DF Peak on the high seas of the Indian Ocean, hundreds of miles from land. It is pe...
-
-[Read Original Report](https://maritime-executive.com/article/french-navy-boards-russia-linked-tanker-in-the-indian-ocean)
-
-*Actors: French, DF Peak | Countries: Russia | Sectors: Defense*
-
----
-
-### [LOW] [CYBER] First of Matson’s New Containerships Is Christened
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-Work is proceeding on three new large container ships being built for Matson as part of what the company reports is a $1 billion investment in fleet e...
-
-[Read Original Report](https://maritime-executive.com/article/first-of-matson-s-new-containerships-is-christened)
-
-*Actors: Matson’s New Containerships Is Christened, Matson*
-
----
-
-### [LOW] [CYBER] Maximum-Severity SSRF Flaw in SonicWall SMA Devices Under Attack
-**Source**: Dark Reading | **Date**: 2026-10-12 | **Severity**: LOW
-
-Attackers are currently targeting a critical vulnerability in SMA 1000 appliances, putting SonicWall customers in a familiar yet unenviable position.
-
-[Read Original Report](https://www.darkreading.com/vulnerabilities-threats/max-severity-ssrf-flaw-sonicwall-sma-devices-under-attack)
-
-*Actors: SonicWall SMA Devices, SonicWall*
-
----
-
-### [LOW] [CYBER] Chinese-Owned Bulker Driven Ashore Near Russian Resort on the Baltic
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-Russians near the city of Kaliningrad on the Baltic were rushing to the beaches over the weekend to view a large cargo ship that had been driven agrou...
-
-[Read Original Report](https://maritime-executive.com/article/chinese-owned-bulker-washes-ashore-near-russian-resort-on-the-baltic)
-
-*Actors: Chinese, Russians*
-
----
-
-### [LOW] [CYBER] Fire Breaks Out Aboard Seismic Ship off U.S. Gulf Coast
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-A fire has been reported aboard the seismic survey ship Rem Andes off the coast of Grande Isle, Louisiana, according to the U.S. Coast Guard. 46 peop...
-
-[Read Original Report](https://maritime-executive.com/article/fire-breaks-out-aboard-seismic-ship-off-u-s-gulf-coast)
-
-*Actors: Rem Andes, the U.S. Coast Guard | Countries: Louisiana*
-
----
-
-### [LOW] [CYBER] South Korean Containership Completes Demonstration Arctic Voyage
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-South Korea’s containership Panstar Acro arrived back in Busan on Sunday, October 11, completing a 50-day round trip through the Arctic to Europe and...
-
-[Read Original Report](https://maritime-executive.com/article/south-korean-containership-completes-demonstration-arctic-voyage)
-
-*Actors: South Korean, Panstar Acro | Countries: South Korea’s, Busan*
-
----
-
-### [LOW] [CYBER] Norway fines Microsoft ad firm $9.6 million over Grindr data sharing
-**Source**: Bleeping Computer | **Date**: 2026-10-12 | **Severity**: LOW
-
-Norway's Data Protection Authority (Datatilsynet) has fined Microsoft-owned advertising company Xandr NOK 92 million ($9.6M) for unlawfully processing and sharing sensitive data belonging to Grindr users in the country. [...]
-
-[Read Original Report](https://www.bleepingcomputer.com/news/security/norway-fines-microsoft-ad-firm-96-million-over-grindr-data-sharing/)
-
-*Actors: Microsoft, Data Protection Authority, Datatilsynet, Xandr NOK | Countries: Norway, Grindr*
-
----
-
-### [LOW] [CYBER] Prominent Ransomware Negotiator Faces Extortion Charges
-**Source**: Dark Reading | **Date**: 2026-10-12 | **Severity**: LOW
-
-Edward Dubrovsky, a longtime cybersecurity executive, was arrested and charged in Pennsylvania last week under conspiracy to extort money.
-
-[Read Original Report](https://www.darkreading.com/insider-threats/prominent-ransomware-negotiator-extortion-charges)
-
-*Actors: Edward Dubrovsky | Countries: Pennsylvania*
-
----
-
-### [LOW] [CYBER] Yandex confirms service outage as users lose access to cloud files
-**Source**: Bleeping Computer | **Date**: 2026-10-12 | **Severity**: LOW
-
-Russian cloud services provider Yandex announced that drone attacks damaged three of its data centers, forcing it to shut down two facilities and partially disable a third. [...]
-
-[Read Original Report](https://www.bleepingcomputer.com/news/security/yandex-confirms-service-outage-as-users-lose-access-to-cloud-files/)
-
-*Actors: Russian*
-
----
-
-### [LOW] [CYBER] Anthropic takes risky AI tests offline after models breach govt sites
-**Source**: Bleeping Computer | **Date**: 2026-10-12 | **Severity**: LOW
-
-Anthropic announced that its internal AI models undergoing "high-risk and cybersecurity evaluations" no longer have internet access following incidents involving U.S. government websites at the federal, state, and local levels. [...]
-
-[Read Original Report](https://www.bleepingcomputer.com/news/security/anthropic-takes-risky-ai-tests-offline-after-models-breach-govt-sites/)
-
-*Countries: U.S. | Sectors: Government*
-
----
-
-### [LOW] [CYBER] UKMTO Reports Six Strikes in One Day on Tankers in the Mideast
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-UK Maritime Trade Operations, a division of the Royal Navy, has recorded four more previously-unreported attacks on ships in the Strait of Hormuz occ...
-
-[Read Original Report](https://maritime-executive.com/article/ukmto-reports-third-strike-in-a-day-on-a-tanker-in-the-mideast)
-
-*Actors: UKMTO Reports Six Strikes, Maritime Trade Operations, the Royal Navy | Sectors: Maritime*
-
----
-
-### [LOW] [CYBER] No Identity, No Recovery: Cyber Resilience Starts With IAM
-**Source**: Dark Reading | **Date**: 2026-10-12 | **Severity**: LOW
-
-The proliferation of enterprise apps and the centrality of cloud identity providers requires an identity security rethink.
-
-[Read Original Report](https://www.darkreading.com/cybersecurity-operations/cyber-resilience-starts-with-iam)
-
-*Actors: IAM*
-
----
-
-### [LOW] [CYBER] HMM Containership Heading to Port of Refuge Due to Container Fire
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-The HMM containership HMM Platinum is displaying a message of “restricted manoeuvrability” on its AIS transmission as the vessel approaches South Afri...
-
-[Read Original Report](https://maritime-executive.com/article/hmm-containership-heading-to-port-of-refuge-due-to-container-fire)
-
-*Actors: HMM Containership Heading, Container Fire, HMM, HMM Platinum, AIS | Sectors: Maritime*
-
----
-
-### [LOW] [CYBER] Video: MSC Containership Locates Overboard Cruise Passenger After 20 Hours
-**Source**: The Maritime Executive | **Date**: 2026-10-12 | **Severity**: LOW
-
-The Hellenic Coast Guard released the details of a miraculous rescue of a passenger who had jumped overboard from a cruise ship in the Ionian Sea west...
-
-[Read Original Report](https://maritime-executive.com/article/video-msc-containership-locates-overboard-cruise-passenger-after-20-hours)
-
-*Actors: The Hellenic Coast Guard*
-
----
-
-### [LOW] [CYBER] Ledger confirms spy chip implant behind wallet crypto thefts
-**Source**: Bleeping Computer | **Date**: 2026-10-12 | **Severity**: LOW
-
-Ledger has confirmed that some of its devices distributed through Southeast Asian reseller CryptoBilis were compromised with a hardware implant that drained users' cryptocurrency wallets. [...]
-
-[Read Original Report](https://www.bleepingcomputer.com/news/security/ledger-confirms-hardware-wallet-spy-implant-behind-crypto-thefts/)
-
-*Actors: Southeast Asian, CryptoBilis*
-
----
-
-*Generated by GreySignal v2.0 at 2026-10-13 15:51 UTC*
+*Generated by GreySignal v2.0 at 2026-10-14 13:36 UTC*
