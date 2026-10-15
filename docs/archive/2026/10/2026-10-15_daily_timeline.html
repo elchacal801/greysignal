@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreySignal Timeline</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <link href="https://unpkg.com/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            background-color: #0a0e14;
+            color: #b0b8c4;
+            padding: 16px;
+        }
+        .header {
+            text-align: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #1a1f2e;
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            color: #58a6ff;
+            font-size: 1.4em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .header .subtitle {
+            color: #6e7681;
+            font-size: 0.85em;
+            margin-top: 4px;
+        }
+
+        /* Controls Bar */
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 16px;
+            background: #111822;
+            border: 1px solid #1a1f2e;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .controls input[type="text"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 8px 12px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            color: #c9d1d9;
+            font-family: inherit;
+            font-size: 0.9em;
+        }
+        .controls input[type="text"]:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+        .controls select {
+            padding: 8px 12px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            color: #c9d1d9;
+            font-family: inherit;
+        }
+        .controls .btn {
+            padding: 8px 16px;
+            background: #1f6feb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85em;
+        }
+        .controls .btn:hover { background: #388bfd; }
+        .controls .btn.secondary {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+        .controls .btn.secondary:hover { background: #30363d; }
+        .event-count {
+            color: #58a6ff;
+            font-weight: 600;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        /* Legend */
+        .legend {
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 0.85em;
+        }
+        .legend span { margin: 0 12px; }
+
+        /* Timeline Container */
+        #timeline {
+            width: 100%;
+            height: calc(100vh - 220px);
+            min-height: 400px;
+            border: 1px solid #1a1f2e;
+            background-color: #0d1117;
+            border-radius: 6px;
+        }
+
+        /* Vis.js Item Styles */
+        .vis-item {
+            border-width: 2px !important;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .vis-item.default {
+            border-color: #30363d !important;
+            background-color: #161b22 !important;
+            color: #8b949e !important;
+        }
+        .vis-item.cyber {
+            border-color: #ff4466 !important;
+            background-color: #2d0a14 !important;
+            color: #ff99aa !important;
+        }
+        .vis-item.finance {
+            border-color: #ffd700 !important;
+            background-color: #2d2a00 !important;
+            color: #ffe680 !important;
+        }
+        .vis-item.maritime {
+            border-color: #00bfff !important;
+            background-color: #002233 !important;
+            color: #80e5ff !important;
+        }
+        .vis-item.geopolitics {
+            border-color: #a855f7 !important;
+            background-color: #1a0a2e !important;
+            color: #d4a5ff !important;
+        }
+        .vis-item.vis-selected {
+            border-color: #f0f6fc !important;
+            box-shadow: 0 0 12px rgba(88, 166, 255, 0.4);
+            z-index: 10;
+        }
+        .vis-time-axis .vis-text { color: #6e7681; }
+        .vis-panel.vis-background { background-color: #0d1117; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .controls { flex-direction: column; }
+            .controls input[type="text"] { width: 100%; }
+            #timeline { height: 60vh; }
+            .header h1 { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GreySignal — Intelligence Timeline</h1>
+        <div class="subtitle">Click any event to open source article | Scroll to zoom | Drag to pan</div>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="searchBox" placeholder="Search events..." />
+        <select id="domainFilter">
+            <option value="all">All Domains</option>
+            <option value="cyber">Cyber Threat</option>
+            <option value="finance">Finance & Macro</option>
+            <option value="maritime">Maritime & Infra</option>
+            <option value="geopolitics">Geopolitics & Intel</option>
+        </select>
+        <select id="severityFilter">
+            <option value="all">All Severity</option>
+            <option value="critical">Critical</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <button class="btn secondary" onclick="resetFilters()">Reset</button>
+        <span class="event-count" id="eventCount"></span>
+    </div>
+
+    <div class="legend">
+        <span style="color:#ff4466;">&#9632; Cyber</span>
+        <span style="color:#ffd700;">&#9632; Finance</span>
+        <span style="color:#00bfff;">&#9632; Maritime</span>
+        <span style="color:#a855f7;">&#9632; Geopolitics</span>
+        <span style="color:#6e7681;">&#9632; General</span>
+    </div>
+
+    <div id="timeline"></div>
+
+    <script type="text/javascript">
+        var ALL_DATA = [{"id": 0, "content": "<b>Dark Reading</b><br>[Virtual Event] Cybersecurity Outlook 2027", "start": "2026-12-03T16:00:00+00:00", "className": "cyber", "title": "[Virtual Event] Cybersecurity Outlook 2027\n\n", "url": "https://www.darkreading.com/events/virtual-event-cybersecurity-outlook-2027", "source": "Dark Reading", "severity": "low"}, {"id": 1, "content": "<b>Dark Reading</b><br>[Virtual Event] What Every Enterprise Should Know About Securing Cloud Assets in the Age of AI", "start": "2026-11-12T16:00:00+00:00", "className": "cyber", "title": "[Virtual Event] What Every Enterprise Should Know About Securing Cloud Assets in the Age of AI\n\n", "url": "https://www.darkreading.com/events/virtual-event-what-every-enterprise-know-securing-cloud-2026", "source": "Dark Reading", "severity": "low"}, {"id": 2, "content": "<b>The Hacker News</b><br>Drupal Patches Critical Core RCE Flaw with No-Login Path via Contributed Modules", "start": "2026-10-15T12:07:20+00:00", "className": "cyber", "title": "Drupal Patches Critical Core RCE Flaw with No-Login Path via Contributed Modules\n\nDrupal core has a critical flaw in its Field UI module that could let an attacker run code on the site&#x27;s server, and fixes were shipped on October 14 in Drupal 11.4.10, 11.3.19, and 10.6.19. An attacker cannot reach the flaw through core alone, the Drupal Security Team said in its advisory. Several ", "url": "https://thehackernews.com/2026/10/drupal-patches-critical-core-rce-flaw.html", "source": "The Hacker News", "severity": "medium"}, {"id": 3, "content": "<b>Bleeping Computer</b><br>Police arrests 95 suspects in international CSAM crackdown action", "start": "2026-10-15T11:55:38+00:00", "className": "cyber", "title": "Police arrests 95 suspects in international CSAM crackdown action\n\nLaw enforcement authorities from 17 countries in Latin America and Europe have arrested 95 suspects in an INTERPOL-coordinated operation targeting the distribution of child sexual abuse material (CSAM) through online messaging groups. [...]", "url": "https://www.bleepingcomputer.com/news/security/police-arrests-95-suspects-in-child-sexual-abuse-material-crackdown/", "source": "Bleeping Computer", "severity": "low"}, {"id": 4, "content": "<b>The Hacker News</b><br>Fake AI Attacks Spread Across US Companies: How MSSPs Can Stop Incidents Early", "start": "2026-10-15T11:46:59+00:00", "className": "cyber", "title": "Fake AI Attacks Spread Across US Companies: How MSSPs Can Stop Incidents Early\n\nAttackers are impersonating popular AI products to distribute malware, steal browser sessions, and compromise business accounts. ANY.RUN linked 1,258 public sandbox analyses to fake AI campaigns between April and October of 2026. The campaigns also increase operational pressure on MSSPs serving US b", "url": "https://thehackernews.com/2026/10/fake-ai-attacks-spread-across-us.html", "source": "The Hacker News", "severity": "low"}, {"id": 5, "content": "<b>The Hacker News</b><br>Palo Alto Networks Patches PAN-OS Authenticated RCE Flaw Amid Active Exploitation", "start": "2026-10-15T11:46:49+00:00", "className": "cyber", "title": "Palo Alto Networks Patches PAN-OS Authenticated RCE Flaw Amid Active Exploitation\n\nPalo Alto Networks on Wednesday issued security updates for a high-severity flaw in PAN-OS software that has come under active exploitation. The vulnerability, tracked as CVE-2026-0322 (CVSS score: 8.6), is a case of remote code execution in the management interface. &quot;A remote code execution (RCE) v", "url": "https://thehackernews.com/2026/10/palo-alto-networks-patches-pan-os.html", "source": "The Hacker News", "severity": "low"}, {"id": 6, "content": "<b>The Hacker News</b><br>Why AI Confidence Is Not Validation", "start": "2026-10-15T11:04:35+00:00", "className": "cyber", "title": "Why AI Confidence Is Not Validation\n\nAI is already part of digital forensics and incident response work, with or without a policy in place to govern it. The issue is that these tools are growing more confident in their own output faster than practitioners are developing reliable ways to verify it. Without governance models and validati", "url": "https://thehackernews.com/2026/10/why-ai-confidence-is-not-validation.html", "source": "The Hacker News", "severity": "low"}, {"id": 7, "content": "<b>The Hacker News</b><br>India Mandates Registered Caller Name Display on 4G and Newer Networks From November 1", "start": "2026-10-15T10:42:16+00:00", "className": "cyber", "title": "India Mandates Registered Caller Name Display on 4G and Newer Networks From November 1\n\nThe Indian government has directed telecom service providers (TSPs) in the country to mandatorily display callers&#x27; registered names along with their numbers for incoming calls starting November 1, 2026, in an effort to help people identify calls from unknown numbers and tackle spam or fraudulent cal", "url": "https://thehackernews.com/2026/10/india-mandates-registered-caller-name.html", "source": "The Hacker News", "severity": "low"}, {"id": 8, "content": "<b>Bellingcat</b><br>Satellite Images Show Extent of Trump Admin\u2019s Tree-Felling at DC Golf Course, Despite \u2018Furious\u2019 Judge\u2019s Order", "start": "2026-10-15T10:33:36+00:00", "className": "geopolitics", "title": "Satellite Images Show Extent of Trump Admin\u2019s Tree-Felling at DC Golf Course, Despite \u2018Furious\u2019 Judge\u2019s Order\n\nSign up here to receive Bellingcat\u2019s biggest investigations by email as soon as they are published. Satellite imagery obtained by Bellingcat lays bare the extent of tree-felling at a Washington DC golf course that President Trump is reportedly seeking to transform into a championship-level course, d", "url": "https://www.bellingcat.com/news/us-canada/2026/10/15/satellite-images-show-extent-of-trump-admins-tree-felling-at-dc-golf-course-despite-furious-judges-order/", "source": "Bellingcat", "severity": "low"}, {"id": 9, "content": "<b>Bank of England</b><br>David Roberts CV and questionnaire for the Treasury Select Committee", "start": "2026-10-15T09:52:41+00:00", "className": "finance", "title": "David Roberts CV and questionnaire for the Treasury Select Committee\n\nPublished for the Treasury Select Committee", "url": "https://www.bankofengland.co.uk/news/2026/october/david-roberts-tsc-reappointment", "source": "Bank of England", "severity": "low"}, {"id": 10, "content": "<b>Bleeping Computer</b><br>Microsoft fixes bug causing Windows black screens, Explorer crashes", "start": "2026-10-15T09:10:20+00:00", "className": "cyber", "title": "Microsoft fixes bug causing Windows black screens, Explorer crashes\n\nMicrosoft has resolved a known issue that was causing black screens, desktop loading issues, and Explorer crashes after installing Windows 11 updates released since August. [...]", "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-bug-causing-windows-black-screens-explorer-crashes/", "source": "Bleeping Computer", "severity": "low"}, {"id": 11, "content": "<b>The Hacker News</b><br>GhostAction Compromises About 1,900 GitHub Accounts, Targets Over 30,000 Repositories", "start": "2026-10-15T08:45:10+00:00", "className": "cyber", "title": "GhostAction Compromises About 1,900 GitHub Accounts, Targets Over 30,000 Repositories\n\nThe credential-theft campaign known as GhostAction has ramped up, targeting more than 30,000 repositories across 3,000 users and organizations. The spike, according to GitGuardian, was observed on October 8 and 9, 2026. &quot;This resulted from compromising the GitHub accounts of about 1,900 users. It at", "url": "https://thehackernews.com/2026/10/ghostaction-compromises-about-1900.html", "source": "The Hacker News", "severity": "medium"}, {"id": 12, "content": "<b>Bank of England</b><br>Minutes of the SONIA Stakeholder Advisory Group - 25 September 2026", "start": "2026-10-15T08:27:59+00:00", "className": "finance", "title": "Minutes of the SONIA Stakeholder Advisory Group - 25 September 2026\n\nThe SONIA Stakeholder Advisory Group supports the Bank\u2019s administration of SONIA by providing advice and technical input to the Bank and the SONIA Oversight Committee", "url": "https://www.bankofengland.co.uk/minutes/2026/september/sonia-stakeholder-advisory-group-25-september-2026", "source": "Bank of England", "severity": "medium"}, {"id": 13, "content": "<b>Bleeping Computer</b><br>UK Legal Aid Agency: Hackers stole records dating back to 1978", "start": "2026-10-15T08:06:47+00:00", "className": "cyber", "title": "UK Legal Aid Agency: Hackers stole records dating back to 1978\n\nThe Legal Aid Agency (LAA), an executive agency of the UK&#x27;s Ministry of Justice that manages the country&#x27;s Public Defender Service, says attackers who breached its IT systems in April 2025 stole records dating back to 1978. [...]", "url": "https://www.bleepingcomputer.com/news/security/uk-legal-aid-agency-hackers-stole-records-dating-back-to-1978/", "source": "Bleeping Computer", "severity": "low"}, {"id": 14, "content": "<b>War on the Rocks</b><br>Golden Dome Is Technologically and Financially Infeasible", "start": "2026-10-15T08:00:39+00:00", "className": "geopolitics", "title": "Golden Dome Is Technologically and Financially Infeasible\n\nFor as long as nuclear-armed, intercontinental ballistic missiles and submarine-launched ballistic missiles have existed, strategists and engineers have pursued a seductive idea: a shield effective enough to diminish \u2014 or even block \u2014 a ballistic missile attack. The appeal is obvious. A state that c", "url": "https://warontherocks.com/cogs-of-war/golden-dome-is-technologically-and-financially-infeasible/", "source": "War on the Rocks", "severity": "low"}, {"id": 15, "content": "<b>War on the Rocks</b><br>How Sudan Became a Laboratory for Drone Warfare, Thanks to Abu Dhabi", "start": "2026-10-15T07:30:16+00:00", "className": "geopolitics", "title": "How Sudan Became a Laboratory for Drone Warfare, Thanks to Abu Dhabi\n\nIn June 2026, I visited Khartoum, my hometown, for the first time since the war broke out in Sudan in April 2023. I left the city to seek safety with my family after the war spread into civilian neighborhoods. I never imagined I would return to the same city. I was very excited but also traumatized ", "url": "https://warontherocks.com/how-sudan-became-a-laboratory-for-drone-warfare-thanks-to-abu-dhabi/", "source": "War on the Rocks", "severity": "low"}, {"id": 16, "content": "<b>War on the Rocks</b><br>China\u2019s Military Expansion in Southeast Asia Masks a More Complicated Reality", "start": "2026-10-15T07:15:12+00:00", "className": "geopolitics", "title": "China\u2019s Military Expansion in Southeast Asia Masks a More Complicated Reality\n\nThe Chinese Ministry of Defense\u2019s announcement of a \u201cjoint support and training center\u201d at an airport in Ban Keun, Laos, on Sept. 29 drew attention to the People\u2019s Liberation Army\u2019s growing footprint in Southeast Asia. Although China does not call it a \u201cbase\u201d and said it\u2019s \u201cnot targeted at any third", "url": "https://warontherocks.com/chinas-military-expansion-in-southeast-asia-masks-a-more-complicated-reality/", "source": "War on the Rocks", "severity": "low"}, {"id": 17, "content": "<b>The Hacker News</b><br>Langflow&#x27;s Critical Authenticated RCE Flaw Targeted in 1,423 Honeypot Exploit Attempts", "start": "2026-10-15T07:07:05+00:00", "className": "cyber", "title": "Langflow&#x27;s Critical Authenticated RCE Flaw Targeted in 1,423 Honeypot Exploit Attempts\n\nThreat actors are exploiting a critical security flaw in Langflow, according to an alert from Previdian. Langflow is an open-source platform that allows developers to build artificial intelligence (AI) applications and agentic workflows. In February 2025, DataStax, the parent company of Langflow, wa", "url": "https://thehackernews.com/2026/10/langflows-critical-authenticated-rce.html", "source": "The Hacker News", "severity": "low"}, {"id": 18, "content": "<b>Dark Reading</b><br>EU Grocers Pay a Steep Price for Unpatched Fridge Firmware", "start": "2026-10-15T07:00:00+00:00", "className": "cyber", "title": "EU Grocers Pay a Steep Price for Unpatched Fridge Firmware\n\nHundreds of stores lost millions of dollars because they hired third parties to manage the outdated OT firmware running their cooling systems.", "url": "https://www.darkreading.com/ics-ot-security/eu-grocers-unpatched-fridge-firmware", "source": "Dark Reading", "severity": "low"}, {"id": 19, "content": "<b>The Hacker News</b><br>AhsayCBS Flaws Exploited to Deploy Web Shells Get New Fixes After Incomplete Patches", "start": "2026-10-15T06:43:08+00:00", "className": "cyber", "title": "AhsayCBS Flaws Exploited to Deploy Web Shells Get New Fixes After Incomplete Patches\n\nSingapore-based Ahsay Backup has released security updates to address two security flaws in AhsayCBS that have been exploited by bad actors to drop web shells and XMRig cryptocurrency miners. The vulnerabilities in question are CVE-2026-105133 and CVE-2026-105134, which could be chained to sidestep ", "url": "https://thehackernews.com/2026/10/ahsaycbs-flaws-exploited-to-deploy-web.html", "source": "The Hacker News", "severity": "low"}, {"id": 20, "content": "<b>The Maritime Executive</b><br>Viking Line Expands W\u00e4rtsil\u00e4 Service Agreement to a Third Vessel", "start": "2026-10-15T03:30:00+00:00", "className": "maritime", "title": "Viking Line Expands W\u00e4rtsil\u00e4 Service Agreement to a Third Vessel\n\nW\u00e4rtsil\u00e4 Corporation has signed a five-year service agreement with Finnish ferry operator Viking Line covering the passenger ferry &#x27;Viking XPRS&#x27;. The...", "url": "https://maritime-executive.com/article/viking-line-expands-waertsilae-service-agreement-partnership-to-a-third-vessel", "source": "The Maritime Executive", "severity": "low"}, {"id": 21, "content": "<b>The Maritime Executive</b><br>US Coast Guard Cutter Offloads 29,000 Pounds of Cocaine in Port Everglades", "start": "2026-10-15T03:12:01+00:00", "className": "maritime", "title": "US Coast Guard Cutter Offloads 29,000 Pounds of Cocaine in Port Everglades\n\nOn Wednesday, the U.S. Coast Guard cutter Tampa delivered nearly 30,000 pounds of cocaine to a pier in Port Everglades Florida. The crew of the 42-yea...", "url": "https://maritime-executive.com/article/us-coast-guard-cutter-offloads-29-000-pounds-of-cocaine-in-port-everglades", "source": "The Maritime Executive", "severity": "low"}, {"id": 22, "content": "<b>The Maritime Executive</b><br>North Korea Tests Sub-Launched &quot;Strategic&quot; Cruise Missile", "start": "2026-10-15T00:53:40+00:00", "className": "maritime", "title": "North Korea Tests Sub-Launched &quot;Strategic&quot; Cruise Missile\n\nOn Wednesday, North Korean forces tested two different types of missiles that can be launched from underwater, according to Pyongyang&#x27;s state-owned me...", "url": "https://maritime-executive.com/article/north-korea-tests-sub-launched-strategic-cruise-missile", "source": "The Maritime Executive", "severity": "low"}, {"id": 23, "content": "<b>The Maritime Executive</b><br>Taiwan Plans to Invest $4.4B in Alaska LNG, Subject to Negotiations", "start": "2026-10-15T00:15:36+00:00", "className": "maritime", "title": "Taiwan Plans to Invest $4.4B in Alaska LNG, Subject to Negotiations\n\nOn Wednesday, Taiwan&#x27;s government confirmed that it currently plans to buy six million tonnes per annum of LNG from the Alaska LNG megaproject, and it...", "url": "https://maritime-executive.com/article/taiwan-plans-to-invest-4-4b-in-alaska-lng-subject-to-negotiations", "source": "The Maritime Executive", "severity": "low"}, {"id": 24, "content": "<b>The Maritime Executive</b><br>Fincantieri Modernizes Wisconsin Yards with Investment by US Navy and MARAD", "start": "2026-10-14T23:09:17+00:00", "className": "maritime", "title": "Fincantieri Modernizes Wisconsin Yards with Investment by US Navy and MARAD\n\nThe U.S.-based division of Fincantieri reports it is moving forward with $10 million in new U.S. Navy and U.S. Maritime Administration (MARAD) fundin...", "url": "https://maritime-executive.com/article/fincantieri-modernizes-wisconsin-yards-with-investment-by-us-navy-and-marad", "source": "The Maritime Executive", "severity": "low"}, {"id": 25, "content": "<b>The Maritime Executive</b><br>IDsure Powers Malta\u2019s Digital Seaman\u2019s Record Book", "start": "2026-10-14T23:06:29+00:00", "className": "maritime", "title": "IDsure Powers Malta\u2019s Digital Seaman\u2019s Record Book\n\nIDsure.io, the Danish maritime digital identity and credentialing company, today announces that its technology powers the Digital Seaman\u2019s Record Book...", "url": "https://maritime-executive.com/article/idsure-powers-malta-s-digital-seaman-s-record-book", "source": "The Maritime Executive", "severity": "low"}, {"id": 26, "content": "<b>The Record by Recorded Future</b><br>Ukraine says Elon Musk&#x27;s Starshield service partially restored after restrictions disrupted drone missions", "start": "2026-10-14T23:00:00+00:00", "className": "geopolitics", "title": "Ukraine says Elon Musk&#x27;s Starshield service partially restored after restrictions disrupted drone missions\n\nThe Ukrainian military can again use SpaceX\u2019s Starshield satellite service on the move, a Defense Ministry source told Recorded Future News on Thursday, days after sudden restrictions disrupted drone missions along the front line.", "url": "https://therecord.media/ukraine-says-starshield-working-again-after-disruption", "source": "The Record by Recorded Future", "severity": "low"}, {"id": 27, "content": "<b>The Maritime Executive</b><br>ABS Helps Industry Put Augmented Reality to the Test", "start": "2026-10-14T22:58:04+00:00", "className": "maritime", "title": "ABS Helps Industry Put Augmented Reality to the Test\n\nAugmented reality (AR) can help industrial crews perform tasks more efficiently and consistently, but widespread deployment will depend on demonstrati...", "url": "https://maritime-executive.com/article/abs-helps-industry-put-augmented-reality-to-the-test", "source": "The Maritime Executive", "severity": "low"}, {"id": 28, "content": "<b>Bleeping Computer</b><br>Palo Alto Networks warns of PAN-OS RCE flaw exploited in attacks", "start": "2026-10-14T22:56:47+00:00", "className": "cyber", "title": "Palo Alto Networks warns of PAN-OS RCE flaw exploited in attacks\n\nPalo Alto Networks has released security updates for a high-severity PAN-OS RCE zero-day, tracked as CVE-2026-0322, that has been exploited in attacks targeting firewalls. [...]", "url": "https://www.bleepingcomputer.com/news/security/palo-alto-networks-warns-of-pan-os-rce-flaw-exploited-in-attacks/", "source": "Bleeping Computer", "severity": "critical"}, {"id": 29, "content": "<b>The Maritime Executive</b><br>U.S. Forces Destroy a Dhow Suspected of Conducting Surveillance for Iran", "start": "2026-10-14T22:51:04+00:00", "className": "maritime", "title": "U.S. Forces Destroy a Dhow Suspected of Conducting Surveillance for Iran\n\nThe U.S. military claims that Iran has been using scouts embedded in the boat traffic in and around Hormuz for spotting and targeting vessels, includi...", "url": "https://maritime-executive.com/article/u-s-forces-destroy-a-dhow-suspected-of-conducting-surveillance-for-iran", "source": "The Maritime Executive", "severity": "low"}, {"id": 30, "content": "<b>The Maritime Executive</b><br>US Plans Fees Citing Evidence of Spain\u2019s Restrictive Port Practices", "start": "2026-10-14T22:10:18+00:00", "className": "maritime", "title": "US Plans Fees Citing Evidence of Spain\u2019s Restrictive Port Practices\n\nAfter a nearly two-year investigation, the Federal Maritime Commission says it found \u201cconclusive evidence\u201d of restrictive port practices by Spain that...", "url": "https://maritime-executive.com/article/us-plans-fees-citing-evidence-of-spain-s-restrictive-port-practices", "source": "The Maritime Executive", "severity": "low"}, {"id": 31, "content": "<b>The Maritime Executive</b><br>UK\u2019s Only Polar Icebreaker is Towed to Port to Investigate \u201cDefect\u201d", "start": "2026-10-14T21:47:41+00:00", "className": "maritime", "title": "UK\u2019s Only Polar Icebreaker is Towed to Port to Investigate \u201cDefect\u201d\n\nUK media is speculating that the Royal Navy may be facing a significant problem after its only polar icebreaker, HMS Protector, appears to have suffer...", "url": "https://maritime-executive.com/article/uk-s-only-polar-icebreaker-is-towed-to-port-to-investigate-defect", "source": "The Maritime Executive", "severity": "low"}, {"id": 32, "content": "<b>Dark Reading</b><br>Ivanti ICS Zero-Day Attacks Highlight Vendor Patching Hurdles", "start": "2026-10-14T21:20:13+00:00", "className": "cyber", "title": "Ivanti ICS Zero-Day Attacks Highlight Vendor Patching Hurdles\n\nCVE-2026-104935, a high-severity authentication bypass + RCE vulnerability, was only partially discovered and patched in July, leaving an opening for threat actors to capitalize on.", "url": "https://www.darkreading.com/vulnerabilities-threats/ivanti-ics-zero-day-attacks-vendor-patching", "source": "Dark Reading", "severity": "critical"}, {"id": 33, "content": "<b>The Record by Recorded Future</b><br>North Macedonian police arrest alleged administrator behind OLVX cybercrime market", "start": "2026-10-14T21:10:00+00:00", "className": "geopolitics", "title": "North Macedonian police arrest alleged administrator behind OLVX cybercrime market\n\nA raid on a home in a North Macedonian village led to the arrest of the suspected administrator of the OLVX market, according to the Balkan country&#x27;s Interior Ministry along with the FBI.", "url": "https://therecord.media/olvx-cybercrime-marketplace-arrest-north-macedonia", "source": "The Record by Recorded Future", "severity": "low"}, {"id": 34, "content": "<b>The Maritime Executive</b><br>Carrier USS Kennedy Completes First F-35 Fighter Landing and Launch", "start": "2026-10-14T21:09:30+00:00", "className": "maritime", "title": "Carrier USS Kennedy Completes First F-35 Fighter Landing and Launch\n\nOn Tuesday, an F-35 stealth fighter jet landed aboard the newly-built carrier USS John F. Kennedy for the first time, the U.S. Navy says. The landing...", "url": "https://maritime-executive.com/article/carrier-uss-kennedy-completes-first-f-35-fighter-landing-and-launch", "source": "The Maritime Executive", "severity": "low"}, {"id": 35, "content": "<b>Dark Reading</b><br>Yam Store: The Phishing Network Behind a Billion Messages", "start": "2026-10-14T20:57:16+00:00", "className": "cyber", "title": "Yam Store: The Phishing Network Behind a Billion Messages\n\nA sprawling cybercrime marketplace supplied cloud infrastructure and phishing kits that helped fuel more than 1 billion phishing messages worldwide.", "url": "https://www.darkreading.com/cyberattacks-data-breaches/yam-store-phishing-network-behind-billion-messages", "source": "Dark Reading", "severity": "medium"}, {"id": 36, "content": "<b>The Record by Recorded Future</b><br>Brooklyn DA\u2019s office disrupts crypto scam targeting Russian community", "start": "2026-10-14T20:33:00+00:00", "className": "geopolitics", "title": "Brooklyn DA\u2019s office disrupts crypto scam targeting Russian community\n\nRussian-speaking Brooklyn residents began tipping off local authorities to a cryptocurrency fraud scheme three years ago, leading to an operation to take down the associated servers and domains.", "url": "https://therecord.media/brooklyn-da-server-takedowns-crypto-scam-russian-speakers", "source": "The Record by Recorded Future", "severity": "low"}, {"id": 37, "content": "<b>The Maritime Executive</b><br>Austal Continues Efforts for Possible Sale of US Shipbuilding Operations", "start": "2026-10-14T20:19:08+00:00", "className": "maritime", "title": "Austal Continues Efforts for Possible Sale of US Shipbuilding Operations\n\nAustal confirmed in a stock exchange filing on Wednesday, October 14, that it has commenced commercial negotiations with Hanwha Defense USA while also...", "url": "https://maritime-executive.com/article/austal-continues-efforts-for-possible-sale-of-us-shipbuilding-operations", "source": "The Maritime Executive", "severity": "low"}, {"id": 38, "content": "<b>Dark Reading</b><br>Anthropic &#x27;SneakPeek&#x27; Flaw Is a Silent Zero-Click Threat", "start": "2026-10-14T20:09:42+00:00", "className": "cyber", "title": "Anthropic &#x27;SneakPeek&#x27; Flaw Is a Silent Zero-Click Threat\n\nA bug in Claude Code Desktop&#x27;s preview pane can allow adversaries to quietly steal credentials from developers, including SSH private keys, AWS credentials, and Claude 0Auth tokens.", "url": "https://www.darkreading.com/threat-intelligence/new-anthropic-sneakpeek-silent-zero-click-threat", "source": "Dark Reading", "severity": "low"}, {"id": 39, "content": "<b>Bleeping Computer</b><br>FBI raids DPRK IT worker laptop farms in Texas, US nationals arrested", "start": "2026-10-14T19:41:43+00:00", "className": "cyber", "title": "FBI raids DPRK IT worker laptop farms in Texas, US nationals arrested\n\nThe U.S. Department of Justice (DoJ) has disrupted the Famous Chollima threat group&#x27;s operations by arresting two suspects, charging 14 individuals, and seizing nearly 187 laptops used in North Korean remote IT worker schemes. [...]", "url": "https://www.bleepingcomputer.com/news/security/fbi-raids-dprk-it-worker-laptop-farms-in-texas-us-nationals-arrested/", "source": "Bleeping Computer", "severity": "low"}, {"id": 40, "content": "<b>The Maritime Executive</b><br>Despite Rumors, Logistical Shortfalls Rule Out Russian-Iranian Oil Blending", "start": "2026-10-14T19:39:00+00:00", "className": "maritime", "title": "Despite Rumors, Logistical Shortfalls Rule Out Russian-Iranian Oil Blending\n\nSpeculation has recently mounted that Iran is managing to export its crude oil using routes over the Caspian Sea. Given the Iranian regime\u2019s sanctions...", "url": "https://maritime-executive.com/article/iran-has-few-options-for-northbound-oil-shipments", "source": "The Maritime Executive", "severity": "low"}, {"id": 41, "content": "<b>The Hacker News</b><br>Cisco Warns of Active Attacks Exploiting New Critical Secure Email Gateway Vulnerability", "start": "2026-10-14T18:38:56+00:00", "className": "cyber", "title": "Cisco Warns of Active Attacks Exploiting New Critical Secure Email Gateway Vulnerability\n\nAttackers are exploiting a critical flaw in Cisco Secure Email Gateway that lets a sender with no login write files to the appliance&#x27;s operating system, Cisco said in an advisory on Wednesday. The attacker sends an email with a crafted attachment through the gateway and, if it succeeds, could then r", "url": "https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html", "source": "The Hacker News", "severity": "medium"}, {"id": 42, "content": "<b>The Maritime Executive</b><br>Abandoned Tanker Driven Ashore in Turkey Weeks After Attack off Russia", "start": "2026-10-14T18:14:55+00:00", "className": "maritime", "title": "Abandoned Tanker Driven Ashore in Turkey Weeks After Attack off Russia\n\nTurkish authorities are once again dealing with an abandoned tanker that washed up on its shores as a casualty of the ongoing war in the Black Sea. In...", "url": "https://maritime-executive.com/article/abandoned-tanker-driven-ashore-in-turkey-weeks-after-attack-off-russia", "source": "The Maritime Executive", "severity": "low"}, {"id": 43, "content": "<b>Bleeping Computer</b><br>Ledger asks sellers across Asia to halt sales after supply-chain attack", "start": "2026-10-14T17:46:50+00:00", "className": "cyber", "title": "Ledger asks sellers across Asia to halt sales after supply-chain attack\n\nLedger has asked resellers and distributors of its wallets in Indonesia, Singapore, Thailand, the Philippines, Vietnam, Malaysia, and Hong Kong to suspend device sales and remove products from shelves while it investigates device tampering. [...]", "url": "https://www.bleepingcomputer.com/news/security/ledger-asks-sellers-across-asia-to-halt-sales-after-supply-chain-attack/", "source": "Bleeping Computer", "severity": "high"}, {"id": 44, "content": "<b>The Hacker News</b><br>Hackers Backdoor Nextcloud Servers Through Critical Flaw in Collabora\u2019s Built-in CODE App", "start": "2026-10-14T17:38:31+00:00", "className": "cyber", "title": "Hackers Backdoor Nextcloud Servers Through Critical Flaw in Collabora\u2019s Built-in CODE App\n\nAttackers exploited a flaw in an optional Nextcloud app, Collabora Online - Built-in CODE Server, to plant web shells on Nextcloud servers. Three administrators reported the issue on GitHub, with the first logged attack on September 10. A web shell is a small file that executes any command an attack", "url": "https://thehackernews.com/2026/10/hackers-backdoor-nextcloud-servers.html", "source": "The Hacker News", "severity": "medium"}, {"id": 45, "content": "<b>Data Center Knowledge</b><br>Brazil\u2019s Data Center Growth Pushes Beyond S\u00e3o Paulo", "start": "2026-10-14T17:30:34+00:00", "className": "maritime", "title": "Brazil\u2019s Data Center Growth Pushes Beyond S\u00e3o Paulo\n\nBrazil\u2019s data center growth is spreading beyond S\u00e3o Paulo to Rio, Fortaleza, and the south, but power grid delays and lengthy permitting will decide which markets actually succeed.", "url": "https://www.datacenterknowledge.com/data-center-site-selection/brazil-s-data-center-growth-pushes-beyond-s-o-paulo", "source": "Data Center Knowledge", "severity": "low"}, {"id": 46, "content": "<b>War on the Rocks</b><br>The Paradox of Victory: When Winning in Ukraine Raises the Nuclear Stakes", "start": "2026-10-14T17:30:24+00:00", "className": "geopolitics", "title": "The Paradox of Victory: When Winning in Ukraine Raises the Nuclear Stakes\n\nIn 2022, Jeremy Shapiro warned in \u201cWe Are on a Path to Nuclear War\u201d that the war between Russia and Ukraine was heading toward nuclear escalation. Four years into the war, we asked him to revisit that argument.Image: Vyacheslav Argenberg via Wikimedia CommonsIn your original piece, you named nuclear", "url": "https://warontherocks.com/the-paradox-of-victory-when-winning-in-ukraine-raises-the-nuclear-stakes/", "source": "War on the Rocks", "severity": "low"}, {"id": 47, "content": "<b>Bleeping Computer</b><br>Cisco patches new Secure Email Gateway zero-day exploited in attacks", "start": "2026-10-14T17:29:14+00:00", "className": "cyber", "title": "Cisco patches new Secure Email Gateway zero-day exploited in attacks\n\nCisco has patched another actively exploited zero-day flaw in its Secure Email Gateway (SEG) that lets remote unauthenticated attackers execute commands with root privileges. [...]", "url": "https://www.bleepingcomputer.com/news/security/cisco-patches-actively-exploited-secure-email-gateway-zero-day/", "source": "Bleeping Computer", "severity": "critical"}, {"id": 48, "content": "<b>The Maritime Executive</b><br>Jones Walker Adds Partner - Cross-Border Maritime Disputes", "start": "2026-10-14T17:29:00+00:00", "className": "maritime", "title": "Jones Walker Adds Partner - Cross-Border Maritime Disputes\n\nAs cross-border commerce, nearshoring, and geopolitical tensions reshape global shipping, maritime disputes increasingly demand counsel who can naviga...", "url": "https://maritime-executive.com/article/jones-walker-adds-partner-cross-border-maritime-disputes", "source": "The Maritime Executive", "severity": "low"}, {"id": 49, "content": "<b>The Maritime Executive</b><br>Massive Cyber Attack Threatens Release of Data from 38 Maritime Companies", "start": "2026-10-14T17:27:10+00:00", "className": "maritime", "title": "Massive Cyber Attack Threatens Release of Data from 38 Maritime Companies\n\nCybersecurity firms are alerting the maritime community to what appears to be a massive data breach possibly exposing 38 organizations ranging from sh...", "url": "https://maritime-executive.com/article/massive-cyber-attack-threatens-release-of-data-from-38-maritime-companies", "source": "The Maritime Executive", "severity": "critical"}, {"id": 50, "content": "<b>The Hacker News</b><br>Microsoft Disrupts 3 Phishing Kits Linked to Over 1 Billion Scam Messages", "start": "2026-10-14T17:09:15+00:00", "className": "cyber", "title": "Microsoft Disrupts 3 Phishing Kits Linked to Over 1 Billion Scam Messages\n\nMicrosoft and Health-ISAC, along with the Japan Cybercrime Control Center (JC3) and a coalition of private sector companies, such as Resecurity, Cloudflare, Oracle, Proofpoint, and TRM Labs, announced the disruption of three phishing kits, CoGUI (aka NX or FA), Haozi (aka Phoenix), and Iron Man Syst", "url": "https://thehackernews.com/2026/10/microsoft-disrupts-3-phishing-kits.html", "source": "The Hacker News", "severity": "medium"}, {"id": 51, "content": "<b>The Record by Recorded Future</b><br>Spyware manufacturer had access to data harvested by former Polish government, current PM says", "start": "2026-10-14T16:50:00+00:00", "className": "geopolitics", "title": "Spyware manufacturer had access to data harvested by former Polish government, current PM says\n\nPrime Minister Donald Tusk, who ordered the investigation, on Monday called the sprawling spyware operation spearheaded by the country\u2019s previous ruling party \u201cone of the biggest scandals in Polish history since the fall of communism.\u201d", "url": "https://therecord.media/spyware-manufacturer-had-access-to-data-harvested-by-previous-polish-government", "source": "The Record by Recorded Future", "severity": "low"}, {"id": 52, "content": "<b>The Hacker News</b><br>U.S. Shuts Down Over 40 Laptop Farms, Charges 14 in North Korean IT Worker Fraud", "start": "2026-10-14T16:34:31+00:00", "className": "cyber", "title": "U.S. Shuts Down Over 40 Laptop Farms, Charges 14 in North Korean IT Worker Fraud\n\nThe U.S. Department of Justice (DoJ) on Tuesday charged 14 people and seized about 187 computers and KVM devices as part of its ongoing efforts to disrupt North Korea&#x27;s fraudulent remote IT worker (ITW) scheme. The indictment charges a mix of U.S. citizens and Chinese nationals for their roles in an", "url": "https://thehackernews.com/2026/10/us-shuts-down-over-40-laptop-farms.html", "source": "The Hacker News", "severity": "low"}, {"id": 53, "content": "<b>Schneier on Security</b><br>Upcoming Speaking Engagements", "start": "2026-10-14T16:02:17+00:00", "className": "finance", "title": "Upcoming Speaking Engagements\n\nThis is a current list of where and when I am scheduled to speak: I\u2019m speaking at ATTENTION: Democracy, Rebuilt in Montreal, Quebec, Canada. The event runs October 21\u201323, 2026, and my talk is on Wednesday, October 21. I\u2019m speaking at the University of Toronto in Toronto, Ontario, Canada, at 5 PM ET ", "url": "https://www.schneier.com/blog/archives/2026/10/upcoming-speaking-engagements-61.html", "source": "Schneier on Security", "severity": "low"}, {"id": 54, "content": "<b>Data Center Knowledge</b><br>AI Data Center Land Buying Hits $6B as Power Premiums Rise", "start": "2026-10-14T15:10:44+00:00", "className": "maritime", "title": "AI Data Center Land Buying Hits $6B as Power Premiums Rise\n\nUS data center land spending hit roughly $6 billion in the first half of 2026, as power access now drives land value and pricing more than location alone.", "url": "https://www.datacenterknowledge.com/data-center-construction/ai-data-center-land-buying-hits-6b-as-power-premiums-rise", "source": "Data Center Knowledge", "severity": "low"}, {"id": 55, "content": "<b>Data Center Knowledge</b><br>Why AI Data Center Cooling Needs to Get Smarter", "start": "2026-10-14T14:54:42+00:00", "className": "maritime", "title": "Why AI Data Center Cooling Needs to Get Smarter\n\nAI is pushing data center cooling to its limits, so the real advantage comes from integrating smart sensing, motor control, and power management into a single responsive, failure-anticipating system.", "url": "https://www.datacenterknowledge.com/cooling/why-ai-data-center-cooling-needs-to-get-smarter", "source": "Data Center Knowledge", "severity": "low"}, {"id": 56, "content": "<b>The Maritime Executive</b><br>Iran Claims Containership Hit Mine and Sank in Strait of Hormuz", "start": "2026-10-14T14:47:48+00:00", "className": "maritime", "title": "Iran Claims Containership Hit Mine and Sank in Strait of Hormuz\n\nThe Islamic Revolutionary Guard Corps Navy released images on Wednesday morning, October 14, claiming that a containership had struck a mine while tra...", "url": "https://maritime-executive.com/article/iran-claims-containership-hit-mine-and-sank-in-strait-of-hormuz", "source": "The Maritime Executive", "severity": "low"}, {"id": 57, "content": "<b>Bleeping Computer</b><br>Microsoft fixes VPN issues caused by September Windows updates", "start": "2026-10-14T14:27:01+00:00", "className": "cyber", "title": "Microsoft fixes VPN issues caused by September Windows updates\n\nMicrosoft has resolved a known issue that caused Always On VPN connection issues after installing the September 2026 Windows 11 security updates. [...]", "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-vpn-issues-caused-by-september-windows-updates/", "source": "Bleeping Computer", "severity": "low"}, {"id": 58, "content": "<b>Schneier on Security</b><br>The Future of AI Cryptanalysis", "start": "2026-10-14T14:24:18+00:00", "className": "finance", "title": "The Future of AI Cryptanalysis\n\nMatthew Green has been writing a rather pessimistic series of posts about the potential for AI systems to vastly outperform humans in cryptanalysis of both symmetric and public-key ciphers. I am more optimistic than he is. That is, I have stronger faith in the over-engineering cryptographers tend to", "url": "https://www.schneier.com/blog/archives/2026/10/the-future-of-ai-cryptanalysis.html", "source": "Schneier on Security", "severity": "low"}, {"id": 59, "content": "<b>Krebs on Security</b><br>U.K. Sanctions Cryptomus for RU Money Laundering", "start": "2026-10-14T14:22:49+00:00", "className": "default", "title": "U.K. Sanctions Cryptomus for RU Money Laundering\n\nThe United Kingdom has issued economic sanctions against Cryptomus, a chameleonic cryptocurrency platform that experts say serves as a major conduit for payments related to ransomware, narcotics, darknet markets, fraud and cybercrime services that are helping Russia circumvent existing financial res", "url": "https://krebsonsecurity.com/2026/10/u-k-sanctions-cryptomus-for-ru-money-laundering/", "source": "Krebs on Security", "severity": "low"}, {"id": 60, "content": "<b>Schneier on Security</b><br>Cyberattack on Connected Fridges in France", "start": "2026-10-14T14:10:22+00:00", "className": "finance", "title": "Cyberattack on Connected Fridges in France\n\nAnother IoT cyberattack , this one in France: Hackers gained control of the software that regulates the temperatures of the refrigeration units, forcing some to warm to 50C (120F) overnight, according to one supermarket chain affected. [\u2026] Normally, supermarket freezers go through a short period of ", "url": "https://www.schneier.com/blog/archives/2026/10/cyberattack-on-connected-fridges-in-france.html", "source": "Schneier on Security", "severity": "low"}, {"id": 61, "content": "<b>Bleeping Computer</b><br>The Blind Spots of Agentic Pentesting and How to Close Them", "start": "2026-10-14T14:00:10+00:00", "className": "cyber", "title": "The Blind Spots of Agentic Pentesting and How to Close Them\n\nAI-powered penetration testing can uncover complex attack paths, but safety restrictions and network limitations leave many assets and vulnerabilities untested. Picus Security explains how combining agentic pentesting with exposure validation and breach simulation can help close these gaps. [...]", "url": "https://www.bleepingcomputer.com/news/security/the-blind-spots-of-agentic-pentesting-and-how-to-close-them/", "source": "Bleeping Computer", "severity": "low"}, {"id": 62, "content": "<b>Submarine Telecoms Forum</b><br>Pisces JV Advances EU-Backed Atlantic Cable Project", "start": "2026-10-14T14:00:00+00:00", "className": "maritime", "title": "Pisces JV Advances EU-Backed Atlantic Cable Project\n\nPisces JV Advances EU-Backed Atlantic Cable Project Publication Staff, Orange NewsroomOctober 14, 2026 Equitix, MDM and Orange have established a joint venture to develop Pisces, a submarine cable project intended to give Ireland a direct connection to mainland Europe along the Atlantic coast. The v", "url": "https://subtelforum.com/pisces-jv-eu-backed-atlantic-cable/", "source": "Submarine Telecoms Forum", "severity": "low"}];
+        var timeline, dataSet;
+
+        function initTimeline(data) {
+            var container = document.getElementById('timeline');
+            if (!data || data.length === 0) {
+                container.innerHTML = '<p style="text-align:center; padding:50px; color:#6e7681;">No events to display.</p>';
+                updateCount(0);
+                return;
+            }
+            dataSet = new vis.DataSet(data);
+            var options = {
+                height: '100%',
+                start: '2026-10-14T14:00:00+00:00',
+                end: '2026-12-03T16:00:00+00:00',
+                zoomMin: 1000 * 60 * 60 * 12,
+                zoomMax: 1000 * 60 * 60 * 24 * 365,
+                orientation: 'top',
+                tooltip: { followMouse: true, overflowMethod: 'cap' },
+                clickToUse: false,
+            };
+            timeline = new vis.Timeline(container, dataSet, options);
+
+            // Click to open source URL
+            timeline.on('select', function(props) {
+                if (props.items && props.items.length > 0) {
+                    var item = dataSet.get(props.items[0]);
+                    if (item && item.url) {
+                        window.open(item.url, '_blank', 'noopener,noreferrer');
+                    }
+                }
+            });
+            updateCount(data.length);
+        }
+
+        function updateCount(n) {
+            document.getElementById('eventCount').textContent = n + ' events';
+        }
+
+        function applyFilters() {
+            var query = document.getElementById('searchBox').value.toLowerCase();
+            var domain = document.getElementById('domainFilter').value;
+            var severity = document.getElementById('severityFilter').value;
+
+            var filtered = ALL_DATA.filter(function(item) {
+                if (query && item.content.toLowerCase().indexOf(query) === -1 &&
+                    item.title.toLowerCase().indexOf(query) === -1) {
+                    return false;
+                }
+                if (domain !== 'all' && item.className !== domain) return false;
+                if (severity !== 'all' && item.severity !== severity) return false;
+                return true;
+            });
+
+            if (timeline) timeline.destroy();
+            initTimeline(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchBox').value = '';
+            document.getElementById('domainFilter').value = 'all';
+            document.getElementById('severityFilter').value = 'all';
+            if (timeline) timeline.destroy();
+            initTimeline(ALL_DATA);
+        }
+
+        // Event listeners
+        document.getElementById('searchBox').addEventListener('input', applyFilters);
+        document.getElementById('domainFilter').addEventListener('change', applyFilters);
+        document.getElementById('severityFilter').addEventListener('change', applyFilters);
+
+        // Initialize
+        try {
+            initTimeline(ALL_DATA);
+        } catch (e) {
+            console.error("Timeline Error:", e);
+            document.getElementById('timeline').innerHTML =
+                '<p style="text-align:center; padding:50px; color:#ff4466;">Error loading timeline: ' + e.message + '</p>';
+        }
+    </script>
+</body>
+</html>
