@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreySignal Timeline</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <link href="https://unpkg.com/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            background-color: #0a0e14;
+            color: #b0b8c4;
+            padding: 16px;
+        }
+        .header {
+            text-align: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #1a1f2e;
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            color: #58a6ff;
+            font-size: 1.4em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .header .subtitle {
+            color: #6e7681;
+            font-size: 0.85em;
+            margin-top: 4px;
+        }
+
+        /* Controls Bar */
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 16px;
+            background: #111822;
+            border: 1px solid #1a1f2e;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .controls input[type="text"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 8px 12px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            color: #c9d1d9;
+            font-family: inherit;
+            font-size: 0.9em;
+        }
+        .controls input[type="text"]:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+        .controls select {
+            padding: 8px 12px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            color: #c9d1d9;
+            font-family: inherit;
+        }
+        .controls .btn {
+            padding: 8px 16px;
+            background: #1f6feb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85em;
+        }
+        .controls .btn:hover { background: #388bfd; }
+        .controls .btn.secondary {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+        .controls .btn.secondary:hover { background: #30363d; }
+        .event-count {
+            color: #58a6ff;
+            font-weight: 600;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        /* Legend */
+        .legend {
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 0.85em;
+        }
+        .legend span { margin: 0 12px; }
+
+        /* Timeline Container */
+        #timeline {
+            width: 100%;
+            height: calc(100vh - 220px);
+            min-height: 400px;
+            border: 1px solid #1a1f2e;
+            background-color: #0d1117;
+            border-radius: 6px;
+        }
+
+        /* Vis.js Item Styles */
+        .vis-item {
+            border-width: 2px !important;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .vis-item.default {
+            border-color: #30363d !important;
+            background-color: #161b22 !important;
+            color: #8b949e !important;
+        }
+        .vis-item.cyber {
+            border-color: #ff4466 !important;
+            background-color: #2d0a14 !important;
+            color: #ff99aa !important;
+        }
+        .vis-item.finance {
+            border-color: #ffd700 !important;
+            background-color: #2d2a00 !important;
+            color: #ffe680 !important;
+        }
+        .vis-item.maritime {
+            border-color: #00bfff !important;
+            background-color: #002233 !important;
+            color: #80e5ff !important;
+        }
+        .vis-item.geopolitics {
+            border-color: #a855f7 !important;
+            background-color: #1a0a2e !important;
+            color: #d4a5ff !important;
+        }
+        .vis-item.vis-selected {
+            border-color: #f0f6fc !important;
+            box-shadow: 0 0 12px rgba(88, 166, 255, 0.4);
+            z-index: 10;
+        }
+        .vis-time-axis .vis-text { color: #6e7681; }
+        .vis-panel.vis-background { background-color: #0d1117; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .controls { flex-direction: column; }
+            .controls input[type="text"] { width: 100%; }
+            #timeline { height: 60vh; }
+            .header h1 { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GreySignal — Intelligence Timeline</h1>
+        <div class="subtitle">Click any event to open source article | Scroll to zoom | Drag to pan</div>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="searchBox" placeholder="Search events..." />
+        <select id="domainFilter">
+            <option value="all">All Domains</option>
+            <option value="cyber">Cyber Threat</option>
+            <option value="finance">Finance & Macro</option>
+            <option value="maritime">Maritime & Infra</option>
+            <option value="geopolitics">Geopolitics & Intel</option>
+        </select>
+        <select id="severityFilter">
+            <option value="all">All Severity</option>
+            <option value="critical">Critical</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <button class="btn secondary" onclick="resetFilters()">Reset</button>
+        <span class="event-count" id="eventCount"></span>
+    </div>
+
+    <div class="legend">
+        <span style="color:#ff4466;">&#9632; Cyber</span>
+        <span style="color:#ffd700;">&#9632; Finance</span>
+        <span style="color:#00bfff;">&#9632; Maritime</span>
+        <span style="color:#a855f7;">&#9632; Geopolitics</span>
+        <span style="color:#6e7681;">&#9632; General</span>
+    </div>
+
+    <div id="timeline"></div>
+
+    <script type="text/javascript">
+        var ALL_DATA = [{"id": 0, "content": "<b>Dark Reading</b><br>[Virtual Event] Cybersecurity Outlook 2027", "start": "2026-12-03T16:00:00+00:00", "className": "cyber", "title": "[Virtual Event] Cybersecurity Outlook 2027\n\n", "url": "https://www.darkreading.com/events/virtual-event-cybersecurity-outlook-2027", "source": "Dark Reading", "severity": "low"}, {"id": 1, "content": "<b>Data Center Knowledge</b><br>[Industry Event] Advancing Data Center Construction East 2026", "start": "2026-12-01T12:00:00+00:00", "className": "maritime", "title": "[Industry Event] Advancing Data Center Construction East 2026\n\n", "url": "https://www.datacenterknowledge.com/events/advancing-data-center-construction-east-2026", "source": "Data Center Knowledge", "severity": "low"}, {"id": 2, "content": "<b>Dark Reading</b><br>[Virtual Event] What Every Enterprise Should Know About Securing Cloud Assets in the Age of AI", "start": "2026-11-12T16:00:00+00:00", "className": "cyber", "title": "[Virtual Event] What Every Enterprise Should Know About Securing Cloud Assets in the Age of AI\n\n", "url": "https://www.darkreading.com/events/virtual-event-what-every-enterprise-know-securing-cloud-2026", "source": "Dark Reading", "severity": "low"}, {"id": 3, "content": "<b>The Hacker News</b><br>MALFEX npm Package &#x27;imgdecode&#x27; Hides Shellcode Loader in Windows Native Addon", "start": "2026-10-17T11:11:56+00:00", "className": "cyber", "title": "MALFEX npm Package &#x27;imgdecode&#x27; Hides Shellcode Loader in Windows Native Addon\n\nCybersecurity researchers have discovered a malicious npm package that&#x27;s part of a recently disclosed software supply chain attack campaign dubbed MALFEX. The package, named &quot;imgdecode,&quot; was uploaded to the package registry on September 30, 2026, by a user named &quot;malfexteste8.&quot; It has been downloade", "url": "https://thehackernews.com/2026/10/malfex-npm-package-imgdecode-hides.html", "source": "The Hacker News", "severity": "high"}, {"id": 4, "content": "<b>The Hacker News</b><br>Hackers Use Compromised ConnectWise Credential to Sign In to 173 Microsoft 365 Tenants", "start": "2026-10-17T06:16:46+00:00", "className": "cyber", "title": "Hackers Use Compromised ConnectWise Credential to Sign In to 173 Microsoft 365 Tenants\n\nCybersecurity researchers are sounding the alarm related to an active campaign in which unknown threat actors are abusing a compromised Microsoft 365 (M365) credential belonging to ConnectWise Cloud Backup (formerly SkyKick) to gain unauthorized access to customers&#x27; M365 environments. ConnectWise Cl", "url": "https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html", "source": "The Hacker News", "severity": "medium"}, {"id": 5, "content": "<b>The Maritime Executive</b><br>Seaspan Lays the Keel for Canada&#x27;s Biggest Domestically-Built Icebreaker", "start": "2026-10-17T02:52:39+00:00", "className": "maritime", "title": "Seaspan Lays the Keel for Canada&#x27;s Biggest Domestically-Built Icebreaker\n\nSeaspan&#x27;s Vancouver Shipyards has carried out the keel-laying ceremony for the Canadian Coast Guard&#x27;s next polar icebreaker, the future CCGS Imnaryuaq...", "url": "https://maritime-executive.com/article/seaspan-lays-the-keel-for-canada-s-biggest-domestically-built-icebreaker", "source": "The Maritime Executive", "severity": "low"}, {"id": 6, "content": "<b>The Maritime Executive</b><br>Maritime Piracy in 2026 Fell to 1992 Levels Despite Somalia-Yemen Surge", "start": "2026-10-16T22:56:29+00:00", "className": "maritime", "title": "Maritime Piracy in 2026 Fell to 1992 Levels Despite Somalia-Yemen Surge\n\nThe waters off the Horn of Africa are now the most dangerous for the merchant shipping industry owing to the resurgence of Somali piracy, a developmen...", "url": "https://maritime-executive.com/article/maritime-piracy-in-2026-fell-to-1992-levels-despite-somalia-yemen-surge", "source": "The Maritime Executive", "severity": "low"}, {"id": 7, "content": "<b>The Maritime Executive</b><br>Australia Investigates Hidden Camera Found in Women\u2019s Bathroom on Navy Ship", "start": "2026-10-16T22:34:01+00:00", "className": "maritime", "title": "Australia Investigates Hidden Camera Found in Women\u2019s Bathroom on Navy Ship\n\nThe Australian Defence Force is reporting that a person of interest has been identified and is cooperating with its investigation into a hidden camera...", "url": "https://maritime-executive.com/article/australia-investigates-hidden-camera-found-in-women-s-bathroom-on-navy-ship", "source": "The Maritime Executive", "severity": "low"}, {"id": 8, "content": "<b>The Maritime Executive</b><br>South Korean Yard Completes Repairs for USNS Amelia Earhart", "start": "2026-10-16T21:56:44+00:00", "className": "maritime", "title": "South Korean Yard Completes Repairs for USNS Amelia Earhart\n\nSouth Korea\u2019s HJ Heavy Industries completed a larger-than-planned overhaul and repair project for the Military Sealift Command supply ship USNS Amelia...", "url": "https://maritime-executive.com/article/south-korean-yard-completes-repairs-for-usns-amelia-earhart", "source": "The Maritime Executive", "severity": "low"}, {"id": 9, "content": "<b>The Maritime Executive</b><br>Salvage Operation Has Cleared More Than Two-Thirds of MSC Baltic III", "start": "2026-10-16T21:14:14+00:00", "className": "maritime", "title": "Salvage Operation Has Cleared More Than Two-Thirds of MSC Baltic III\n\nThe salvage and recycling operation for the wrecked containershp MSC Baltic III continues to make strong progress. The Canadian Coast Guard in its mos...", "url": "https://maritime-executive.com/article/salvage-operation-has-cleared-more-than-two-thirds-of-msc-baltic-iii", "source": "The Maritime Executive", "severity": "low"}, {"id": 10, "content": "<b>Schneier on Security</b><br>Friday Squid Blogging: Squid Before the Chicxulub Meteor Impact", "start": "2026-10-16T21:06:47+00:00", "className": "finance", "title": "Friday Squid Blogging: Squid Before the Chicxulub Meteor Impact\n\nNew research shows that squid lived all around the globe even before the Cretaceous-Paleogene mass extinction event. As usual, you can also use this squid post to talk about the security stories in the news that I haven\u2019t covered. Blog moderation policy.", "url": "https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html", "source": "Schneier on Security", "severity": "low"}, {"id": 11, "content": "<b>Dark Reading</b><br>BeyondTrust Remote Support Zero-Day Continues Trend of Exploited Edge Bugs", "start": "2026-10-16T20:34:37+00:00", "className": "cyber", "title": "BeyondTrust Remote Support Zero-Day Continues Trend of Exploited Edge Bugs\n\nIvanti, Cisco, and Palo Alto Networks all had vulnerabilities in edge devices come under fire this week. Now BeyondTrust joins the group.", "url": "https://www.darkreading.com/endpoint-security/beyondtrust-remote-support-exploited-edge-bugs", "source": "Dark Reading", "severity": "critical"}, {"id": 12, "content": "<b>The Maritime Executive</b><br>Shanghai Moved a Staggering 5.1M TEU in September Recovering from Typhoons", "start": "2026-10-16T20:31:15+00:00", "className": "maritime", "title": "Shanghai Moved a Staggering 5.1M TEU in September Recovering from Typhoons\n\nWhile already recognized for many years as the world\u2019s busiest container port, Shanghai exceeded its own records, handling a staggering 5.135 million...", "url": "https://maritime-executive.com/article/shanghai-moved-a-staggering-5-1m-teu-in-september-recovering-from-typhoons", "source": "The Maritime Executive", "severity": "low"}, {"id": 13, "content": "<b>Bleeping Computer</b><br>Critical BlockStrap flaw lets hackers run code on Magento servers", "start": "2026-10-16T20:00:59+00:00", "className": "cyber", "title": "Critical BlockStrap flaw lets hackers run code on Magento servers\n\nResearchers warn that hackers could soon exploit a maximum-severity vulnerability (CVE-2026-103849) affecting Magento and Adobe Commerce, potentially allowing them to execute arbitrary PHP code on store servers. [...]", "url": "https://www.bleepingcomputer.com/news/security/critical-blockstrap-flaw-lets-hackers-run-code-on-magento-servers/", "source": "Bleeping Computer", "severity": "low"}, {"id": 14, "content": "<b>Dark Reading</b><br>Fake Claude, ChatGPT Attacks Surge, Putting Developers at Risk", "start": "2026-10-16T19:49:30+00:00", "className": "cyber", "title": "Fake Claude, ChatGPT Attacks Surge, Putting Developers at Risk\n\nCampaigns that impersonate popular AI brands are on the rise, and they typically use ClickFix-like tactics to target unsuspecting enterprise employees.", "url": "https://www.darkreading.com/application-security/fake-claude-chatgpt-attacks-developers-risk", "source": "Dark Reading", "severity": "low"}, {"id": 15, "content": "<b>Dark Reading</b><br>Biomemory Launches DNA Shield, First Commercial Product Built on Its Molecular IT Platform", "start": "2026-10-16T19:22:12+00:00", "className": "cyber", "title": "Biomemory Launches DNA Shield, First Commercial Product Built on Its Molecular IT Platform\n\nThe launch follows the acquisition of catalog&#x27;s assets and the appointment of Laurent Guengant as CEO earlier this year.", "url": "https://www.darkreading.com/data-privacy/biomemory-launches-dna-shield", "source": "Dark Reading", "severity": "low"}, {"id": 16, "content": "<b>Dark Reading</b><br>Enterprise AI Enters Risk Management Phase as Security Concerns Rise", "start": "2026-10-16T19:13:59+00:00", "className": "cyber", "title": "Enterprise AI Enters Risk Management Phase as Security Concerns Rise\n\nCompanies are increasingly discovering that the challenge with AI is no longer adoption, but execution.", "url": "https://www.darkreading.com/cyber-risk/enterprise-ai-risk-management-phase-security-concerns-rise", "source": "Dark Reading", "severity": "low"}, {"id": 17, "content": "<b>The Maritime Executive</b><br>Ukraine is Trying to Auction Off Seized Bulker Stuck in Chornomorsk", "start": "2026-10-16T19:06:56+00:00", "className": "maritime", "title": "Ukraine is Trying to Auction Off Seized Bulker Stuck in Chornomorsk\n\nUkraine\u2019s Asset Recovery and Management Agency (ARMA) reports it is ready to sell a seized bulker that it has been fighting over for the past several...", "url": "https://maritime-executive.com/article/ukraine-is-trying-to-auction-off-seized-bulker-stuck-in-chornomorsk", "source": "The Maritime Executive", "severity": "low"}, {"id": 18, "content": "<b>The Maritime Executive</b><br>War in Yemen Now Impacting the Whole Gulf Region", "start": "2026-10-16T18:46:57+00:00", "className": "maritime", "title": "War in Yemen Now Impacting the Whole Gulf Region\n\nThe Houthis have intensified their attacks on the forces of Yemen\u2019s Internationally Recognized Government (IRG) over the last week but have also widen...", "url": "https://maritime-executive.com/article/war-in-yemen-now-impacting-the-whole-gulf-region", "source": "The Maritime Executive", "severity": "low"}, {"id": 19, "content": "<b>Dark Reading</b><br>AI Takes Control of Robotic Arm in 16 Minutes Flat", "start": "2026-10-16T18:37:50+00:00", "className": "cyber", "title": "AI Takes Control of Robotic Arm in 16 Minutes Flat\n\nMost OT devices at utilities, factories, and elsewhere have been deployed for a decade or more, but operators need to get agile and deploy new cyber defenses.", "url": "https://www.darkreading.com/ics-ot-security/ai-takes-control-robotic-arm-16-minutes", "source": "Dark Reading", "severity": "low"}, {"id": 20, "content": "<b>The Maritime Executive</b><br>Bulgaria and Romania Continue Black Sea Searches After Attacks", "start": "2026-10-16T17:52:06+00:00", "className": "maritime", "title": "Bulgaria and Romania Continue Black Sea Searches After Attacks\n\nSearch and rescue and salvage efforts are continuing in both the Bulgarian and Romanian zones of the Black Sea after the attacks earlier this week on...", "url": "https://maritime-executive.com/article/bulgaria-and-romania-continue-black-sea-searches-after-attacks", "source": "The Maritime Executive", "severity": "low"}, {"id": 21, "content": "<b>The Hacker News</b><br>Researchers Demonstrate OpenBSD Root Exploit Chaining 37-Year-Old Shared-Memory Bug", "start": "2026-10-16T17:48:45+00:00", "className": "cyber", "title": "Researchers Demonstrate OpenBSD Root Exploit Chaining 37-Year-Old Shared-Memory Bug\n\nA local privilege escalation exploit published today gains root on OpenBSD 7.9 by chaining a roughly 37-year-old integer overflow with a separate kernel flaw, bypassing OpenBSD&#x27;s KARL kernel-address randomization and its SMAP and SMEP hardware protections. Security firm Calif, which found and report", "url": "https://thehackernews.com/2026/10/researchers-demonstrate-openbsd-root.html", "source": "The Hacker News", "severity": "low"}, {"id": 22, "content": "<b>Bleeping Computer</b><br>Targeted ads installed Candiru spyware in zero-click attacks", "start": "2026-10-16T17:20:03+00:00", "className": "cyber", "title": "Targeted ads installed Candiru spyware in zero-click attacks\n\nCandiru spyware was delivered to devices at Al Jazeera Media Network via targeted online advertisements in a zero-click attack that required only rendering the malicious ads on the victim&#x27;s device. [...]", "url": "https://www.bleepingcomputer.com/news/security/zero-click-attacks-used-targeted-ads-to-deliver-candiru-spyware/", "source": "Bleeping Computer", "severity": "low"}, {"id": 23, "content": "<b>Data Center Knowledge</b><br>Closing the Skills Gap in Data Center Facilities Management", "start": "2026-10-16T17:18:01+00:00", "className": "maritime", "title": "Closing the Skills Gap in Data Center Facilities Management\n\nData centers require skilled professionals. Collaboration between IT and facilities, along with proactive maintenance and remote monitoring, helps address workforce shortages.", "url": "https://www.datacenterknowledge.com/management/closing-the-skills-gap-in-data-center-facilities-management", "source": "Data Center Knowledge", "severity": "low"}, {"id": 24, "content": "<b>The Hacker News</b><br>Attackers Tampered with AOMEI Backupper&#x27;s Update Servers for Minutes to Deliver a Backdoor", "start": "2026-10-16T16:43:39+00:00", "className": "cyber", "title": "Attackers Tampered with AOMEI Backupper&#x27;s Update Servers for Minutes to Deliver a Backdoor\n\nAttackers repeatedly changed the files that AOMEI Backupper fetches from the vendor&#x27;s own update servers, in windows of five to ten minutes at a time between May and July 2026, so that any copy of the Windows backup program that checked for an update during one of those windows would download and ru", "url": "https://thehackernews.com/2026/10/attackers-tampered-with-aomei.html", "source": "The Hacker News", "severity": "medium"}, {"id": 25, "content": "<b>The Hacker News</b><br>UAT-11985 Uses Fake Event Invites to Target Taiwan Research Affiliates With Google AitM Phishing", "start": "2026-10-16T16:16:44+00:00", "className": "cyber", "title": "UAT-11985 Uses Fake Event Invites to Target Taiwan Research Affiliates With Google AitM Phishing\n\nCybersecurity researchers have disclosed details of an advanced persistent threat (APT) spear-phishing campaign that has targeted individuals affiliated with Taiwan research organizations to direct victims to an adversary-in-the-middle (AitM) phishing framework designed to harvest their Google accou", "url": "https://thehackernews.com/2026/10/uat-11985-uses-fake-event-invites-to.html", "source": "The Hacker News", "severity": "high"}, {"id": 26, "content": "<b>Microsoft Security</b><br>Managing open-weight model risk in enterprise deployments", "start": "2026-10-16T16:00:00+00:00", "className": "default", "title": "Managing open-weight model risk in enterprise deployments\n\nNew whitepaper from Microsoft and NVIDIA helps enterprises manage open-weight AI model risks with a shared taxonomy, evaluations, and controls. The post Managing open-weight model risk in enterprise deployments appeared first on Microsoft Security Blog .", "url": "https://www.microsoft.com/en-us/security/blog/2026/10/16/managing-open-weight-model-risk-in-enterprise-deployments/", "source": "Microsoft Security", "severity": "low"}, {"id": 27, "content": "<b>Federal Reserve Board</b><br>Federal Reserve Board announces termination of enforcement actions with Gardner Bancshares, Inc. and Small Business Bank", "start": "2026-10-16T15:00:00+00:00", "className": "finance", "title": "Federal Reserve Board announces termination of enforcement actions with Gardner Bancshares, Inc. and Small Business Bank\n\nFederal Reserve Board announces termination of enforcement actions with Gardner Bancshares, Inc. and Small Business Bank", "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261016a.htm", "source": "Federal Reserve Board", "severity": "low"}, {"id": 28, "content": "<b>The Record by Recorded Future</b><br>Proofpoint lines up $6.3 billion deal for Varonis\u2019 data security", "start": "2026-10-16T14:45:00+00:00", "className": "geopolitics", "title": "Proofpoint lines up $6.3 billion deal for Varonis\u2019 data security\n\nCybersecurity giant Proofpoint says it will acquire Miami-based data visibility and security company Varonis in an all-cash transaction worth $6.3 billion.", "url": "https://therecord.media/proofpoint-varonis-cybersecurity-acquisition", "source": "The Record by Recorded Future", "severity": "low"}, {"id": 29, "content": "<b>The Hacker News</b><br>OpenAI Research Model Spent 3rd-Party Test ETH Without Permission to Deploy Smart Contract", "start": "2026-10-16T14:03:04+00:00", "className": "cyber", "title": "OpenAI Research Model Spent 3rd-Party Test ETH Without Permission to Deploy Smart Contract\n\nOpenAI has disclosed seven new incidents in which its artificial intelligence (AI) models exhibited misaligned behavior, including one case where its research model, after not having funds on an Ethereum test network, spent test cryptocurrency from a third-party&#x27;s wallet without authorization to com", "url": "https://thehackernews.com/2026/10/openai-research-model-spent-3rd-party.html", "source": "The Hacker News", "severity": "low"}, {"id": 30, "content": "<b>Dark Reading</b><br>When Your Ransomware Negotiator Works for the Other Side", "start": "2026-10-16T14:00:00+00:00", "className": "cyber", "title": "When Your Ransomware Negotiator Works for the Other Side\n\nThe shocking arrest of a well-known ransomware negotiator reveals the critical need for vendor program oversight.", "url": "https://www.darkreading.com/cyber-risk/when-your-ransomware-negotiator-works-other-side", "source": "Dark Reading", "severity": "low"}, {"id": 31, "content": "<b>Bleeping Computer</b><br>Employees using personal ChatGPT at work? Here&#x27;s what IT admins need to do", "start": "2026-10-16T13:50:59+00:00", "className": "cyber", "title": "Employees using personal ChatGPT at work? Here&#x27;s what IT admins need to do\n\nEmployees using personal ChatGPT accounts at work can expose sensitive company data, even when their organization provides an approved Enterprise workspace. NordLayer explains how IT teams can investigate unauthorized AI use and block sensitive information before it reaches personal accounts. [...]", "url": "https://www.bleepingcomputer.com/news/security/employees-using-personal-chatgpt-at-work-heres-what-it-admins-need-to-do/", "source": "Bleeping Computer", "severity": "low"}, {"id": 32, "content": "<b>The Record by Recorded Future</b><br>Moscow police detain suspected DataSuckers hackers linked to breaches in Ukraine and Russia", "start": "2026-10-16T13:30:00+00:00", "className": "geopolitics", "title": "Moscow police detain suspected DataSuckers hackers linked to breaches in Ukraine and Russia\n\nRussian authorities have reportedly detained three suspected members of the DataSuckers hacking group following a cyberattack on a popular restaurant chain that exposed vast amounts of customer information.", "url": "https://therecord.media/russia-datasuckers-hackers-arrested", "source": "The Record by Recorded Future", "severity": "low"}, {"id": 33, "content": "<b>The Record by Recorded Future</b><br>Baltimore suburb confirms August data breach after ransomware claims", "start": "2026-10-16T13:05:00+00:00", "className": "geopolitics", "title": "Baltimore suburb confirms August data breach after ransomware claims\n\nAnne Arundel County, Maryland, said an intruder stole files from government systems, and investigators are working to assess how much data was exposed.", "url": "https://therecord.media/anne-arundel-county-maryland-confirms-data-breach", "source": "The Record by Recorded Future", "severity": "critical"}, {"id": 34, "content": "<b>Dark Reading</b><br>When AI Agents Commit Breaches, Humans May Not Be Held Liable", "start": "2026-10-16T13:00:00+00:00", "className": "cyber", "title": "When AI Agents Commit Breaches, Humans May Not Be Held Liable\n\nAs agents escape containment and access external systems, responsibility remains human. Accountability, however, is much less settled.", "url": "https://www.darkreading.com/insider-threats/ai-agents-breaches-humans-liable", "source": "Dark Reading", "severity": "low"}, {"id": 35, "content": "<b>The Record by Recorded Future</b><br>Suspected Chinese espionage attackers abusing BeyondTrust IT support zero-day", "start": "2026-10-16T13:00:00+00:00", "className": "geopolitics", "title": "Suspected Chinese espionage attackers abusing BeyondTrust IT support zero-day\n\nAn alleged Chinese state-backed group is using a new zero-day affecting BeyondTrust IT support software to conduct espionage attacks.", "url": "https://therecord.media/beyond-trust-cyberattack-china", "source": "The Record by Recorded Future", "severity": "critical"}, {"id": 36, "content": "<b>Submarine Telecoms Forum</b><br>Prysmian Completes Xtera Acquisition", "start": "2026-10-16T13:00:00+00:00", "className": "maritime", "title": "Prysmian Completes Xtera Acquisition\n\nPrysmian Completes Xtera Acquisition Publication Staff, PrysmianOctober 13, 2026 Prysmian has completed its acquisition of Xtera Topco, a submarine telecommunications systems specialist based in the United Kingdom and United States. The purchase was made through a joint venture in which Prysmian hol", "url": "https://subtelforum.com/prysmian-completes-xtera-acquisition/", "source": "Submarine Telecoms Forum", "severity": "low"}];
+        var timeline, dataSet;
+
+        function initTimeline(data) {
+            var container = document.getElementById('timeline');
+            if (!data || data.length === 0) {
+                container.innerHTML = '<p style="text-align:center; padding:50px; color:#6e7681;">No events to display.</p>';
+                updateCount(0);
+                return;
+            }
+            dataSet = new vis.DataSet(data);
+            var options = {
+                height: '100%',
+                start: '2026-10-16T13:00:00+00:00',
+                end: '2026-12-03T16:00:00+00:00',
+                zoomMin: 1000 * 60 * 60 * 12,
+                zoomMax: 1000 * 60 * 60 * 24 * 365,
+                orientation: 'top',
+                tooltip: { followMouse: true, overflowMethod: 'cap' },
+                clickToUse: false,
+            };
+            timeline = new vis.Timeline(container, dataSet, options);
+
+            // Click to open source URL
+            timeline.on('select', function(props) {
+                if (props.items && props.items.length > 0) {
+                    var item = dataSet.get(props.items[0]);
+                    if (item && item.url) {
+                        window.open(item.url, '_blank', 'noopener,noreferrer');
+                    }
+                }
+            });
+            updateCount(data.length);
+        }
+
+        function updateCount(n) {
+            document.getElementById('eventCount').textContent = n + ' events';
+        }
+
+        function applyFilters() {
+            var query = document.getElementById('searchBox').value.toLowerCase();
+            var domain = document.getElementById('domainFilter').value;
+            var severity = document.getElementById('severityFilter').value;
+
+            var filtered = ALL_DATA.filter(function(item) {
+                if (query && item.content.toLowerCase().indexOf(query) === -1 &&
+                    item.title.toLowerCase().indexOf(query) === -1) {
+                    return false;
+                }
+                if (domain !== 'all' && item.className !== domain) return false;
+                if (severity !== 'all' && item.severity !== severity) return false;
+                return true;
+            });
+
+            if (timeline) timeline.destroy();
+            initTimeline(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchBox').value = '';
+            document.getElementById('domainFilter').value = 'all';
+            document.getElementById('severityFilter').value = 'all';
+            if (timeline) timeline.destroy();
+            initTimeline(ALL_DATA);
+        }
+
+        // Event listeners
+        document.getElementById('searchBox').addEventListener('input', applyFilters);
+        document.getElementById('domainFilter').addEventListener('change', applyFilters);
+        document.getElementById('severityFilter').addEventListener('change', applyFilters);
+
+        // Initialize
+        try {
+            initTimeline(ALL_DATA);
+        } catch (e) {
+            console.error("Timeline Error:", e);
+            document.getElementById('timeline').innerHTML =
+                '<p style="text-align:center; padding:50px; color:#ff4466;">Error loading timeline: ' + e.message + '</p>';
+        }
+    </script>
+</body>
+</html>
